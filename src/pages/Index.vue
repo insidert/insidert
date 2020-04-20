@@ -27,13 +27,13 @@
 
 <page-query>
 query {
-  posts: allPost(sortBy: "publishedOn", order: DESC, limit:5) {
+  posts: allPost(sortBy: "updatedOn", order: DESC, limit:5) {
     edges {
       node {
         id
         title
         excerpt
-        publishedOn
+        updatedOn
         path
       }
     }

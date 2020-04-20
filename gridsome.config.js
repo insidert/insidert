@@ -11,7 +11,14 @@ module.exports = {
       use: '@gridsome/source-filesystem',
       options: {
         typeName: 'Post',
-        path: './content/**/*.md',
+        path: './content/posts/**/*.md',
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Project',
+        path: './content/projects/**/*.md',
       }
     }
   ],
@@ -21,6 +28,7 @@ module.exports = {
     }
   },
   templates: {
-    Post: '/posts/:title'
+    Post: '/posts/:title',
+    Project: '/projects/:title'
   }
 }

@@ -18,7 +18,7 @@ query {
         title
         excerpt
         path
-        publishedOn
+        updatedOn
       }
     }
   }

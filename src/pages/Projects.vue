@@ -3,22 +3,29 @@
     <page-head title="Projects" description="List of projects I am working on. Click on a project to read more about the idea, implementations, technology stack and other updates."></page-head>
     
     <section class="pad">
-      <p>I post the content on these platforms at once so you can find the content in every network except on Instagram.</p>
-      <ol>
-        <li><a href="https://facebook.com/insideraviteja">Facebook</a></li>
-        <li><a href="https://twitter.com/_insidert">Twitter</a></li>
-        <li><a href="https://linkedin.com/veligatlraviteja">LinkedIn</a></li>
-        <li><a href="https://instagram.com/_insidert">Instagram</a></li>
-      </ol>
-
-      <p>I share technical writings of Coder Bootcamp on these platforms.</p>
-      <ol>
-        <li><a href="https://medium.com/@insidert">Medium</a></li>
-        <li><a href="https://dev.to/insidert">Devto</a></li>
-      </ol>
+      <div v-for="edge in $page.projects.edges" v-bind:key="edge.node.id">
+        <h3 class="mb-0"><a v-bind:href="edge.node.path">{{ edge.node.title }}</a></h3>
+        <p class="mt-0">{{ edge.node.excerpt }}</p>
+      </div>
     </section>
   </Layout>
 </template>
+
+<page-query>
+query {
+  projects: allProject {
+    edges {
+      node {
+        id
+        title
+        excerpt
+        path
+        updatedOn
+      }
+    }
+  }
+}
+</page-query>
 
 <script>
 import PageHead from "~/components/PageHead.vue";
@@ -29,7 +36,3 @@ export default {
   }  
 }
 </script>
-
-<style>
-
-</style>
