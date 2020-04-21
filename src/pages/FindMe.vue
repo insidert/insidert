@@ -24,6 +24,13 @@
 import PageHead from "~/components/PageHead.vue";
 
 export default {
+  metaInfo: {
+    title: "Contact Ravi Teja",
+    meta: [
+      {key: "description", name: "description", content: "Ways to connect with Ravi Teja."}
+    ]
+  },
+
   components: {
     PageHead
   }  

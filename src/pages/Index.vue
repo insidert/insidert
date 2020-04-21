@@ -46,7 +46,10 @@ import PostsList from "~/components/PostsList.vue";
 
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: "Inside Ravi Teja",
+    meta: [
+      {key: "description", name: "description", content: "Personal blog of Ravi Teja."}
+    ]
   },
 
   components: {

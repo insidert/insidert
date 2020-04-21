@@ -34,6 +34,16 @@ main {
   box-shadow: 0 25px 50px -12px rgba(0,0,0,.25);
 }
 
+@media screen and (max-width: 600px) {
+  main {
+    margin: auto;
+  }
+
+  body {
+    font-size: large;
+  }
+}
+
 .mb-0 {
   margin-bottom: 0rem;
 }

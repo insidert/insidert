@@ -30,6 +30,13 @@ import PageHead from "~/components/PageHead.vue";
 import PostsList from "~/components/PostsList.vue";
 
 export default {
+  metaInfo: {
+    title: "Posts from Ravi Teja",
+    meta: [
+      {key: "description", name: "description", content: "Writings of Ravi Teja."}
+    ]
+  },
+
   components: {
     PostsList,
     PageHead

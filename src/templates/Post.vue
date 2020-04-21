@@ -28,6 +28,13 @@ query ($path: String!) {
 import PostHeader from "~/components/PostHeader.vue"
 
 export default {
+  metaInfo: {
+      title: this.$page.post.title,
+      meta: [
+        {key: "description", name: "description", content: this.$page.post.excerpt}
+      ]
+  },
+
   components: {
     PostHeader
   }

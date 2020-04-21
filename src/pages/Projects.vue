@@ -31,6 +31,13 @@ query {
 import PageHead from "~/components/PageHead.vue";
 
 export default {
+  metaInfo: {
+    title: "Projects of Ravi Teja",
+    meta: [
+      {key: "description", name: "description", content: "Projects built by Ravi Teja."}
+    ]
+  },
+
   components: {
     PageHead
   }  

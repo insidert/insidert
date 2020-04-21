@@ -8,6 +8,12 @@
 <script>
 export default {
   metaInfo: {
+    title: "About Ravi Teja",
+    meta: [
+      {key: "description", name: "description", content: "Short story of Ravi Teja."}
+    ]
+  },
+  metaInfo: {
     title: 'About us'
   }
 }
