@@ -4,7 +4,7 @@
 
     <post-header v-bind:post="$page.post"></post-header>
 
-    <section class="pad">
+    <section class="pad" id="post-content">
       <div v-html="$page.post.content" />
     </section>  
   </Layout>
@@ -28,11 +28,13 @@ query ($path: String!) {
 import PostHeader from "~/components/PostHeader.vue"
 
 export default {
-  metaInfo: {
+  metaInfo() {
+    return {
       title: this.$page.post.title,
       meta: [
         {key: "description", name: "description", content: this.$page.post.excerpt}
       ]
+    }
   },
 
   components: {

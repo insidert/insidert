@@ -11,7 +11,7 @@
 
 <page-query>
 query {
-  posts: allPost {
+  posts: allPost(sortBy: "updatedOn", order: DESC) {
     edges {
       node {
         id

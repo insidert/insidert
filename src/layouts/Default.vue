@@ -71,18 +71,19 @@ a:link {
   color: blue;
 }
 
-/* visited link */
 a:visited {
   color: blue;
 }
 
-/* mouse over link */
 a:hover {
   color: blue;
 }
 
-/* selected link */
 a:active {
   color: blue;
+}
+
+#post-content img {
+  width: 100%;
 }
 </style>
