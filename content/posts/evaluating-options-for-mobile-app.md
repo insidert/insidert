@@ -21,6 +21,6 @@ The last option I have is cross-platform native applications. Even though there 
 
 ## Resources
 
-- [Different ways](https://www.youtube.com/watch?v=4m7msadL5iA) to build mobile apps by Microsoft.
-- Understand [PWA](https://www.youtube.com/watch?v=z2JgN6Ae-Bo)
-- React Native [docs](http://reactnative.dev/)
+- [Different ways](https://www.youtube.com/watch?v=4m7msadL5iA) to build mobile apps.
+- Understand [PWA.](https://www.youtube.com/watch?v=z2JgN6Ae-Bo)
+- React Native [docs.](http://reactnative.dev/)
