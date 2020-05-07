@@ -7,7 +7,7 @@
         Prasanta Communications
       </g-link> and a full-stack developer.
       </p>
-      <p>I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms and read my technical writings at <a href="https://coderbootcamp.in">Coder Bootcamp.</a></p>
+      <p>I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms. I am also writing and maintaining <a href="https://coderbootcamp.in">Coder Bootcamp</a>.</p>
 
 
     </nav>
