@@ -30,11 +30,46 @@ import PageHead from "~/components/PageHead.vue";
 import PostsList from "~/components/PostsList.vue";
 
 export default {
-  metaInfo: {
-    title: "Posts from Ravi Teja",
-    meta: [
-      {key: "description", name: "description", content: "Writings of Ravi Teja."}
-    ]
+  metaInfo() {
+    const title = "Posts from Ravi Teja";
+
+    const description = "Writings of Ravi Teja.";
+
+    return {
+      title: title,
+      meta: [
+        {
+          key: "description", 
+          name: "description", 
+          content: description
+        },
+        {
+          key: "og:type",
+          name: "og:type",
+          content: "website"
+        },
+        {
+          key: "og:url",
+          name: "og:url",
+          content: "https://insidert.com/posts"
+        },
+        {
+          key: "og:title",
+          name: "og:title",
+          content: title
+        },
+        {
+          key: "og:description",
+          name: "og:description",
+          content: description
+        },
+        {
+          key: "og:image",
+          name: "og:image",
+          content: "/insidert-banner.png"
+        },
+      ]
+    }
   },
 
   components: {

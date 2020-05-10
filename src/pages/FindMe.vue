@@ -24,11 +24,46 @@
 import PageHead from "~/components/PageHead.vue";
 
 export default {
-  metaInfo: {
-    title: "Contact Ravi Teja",
-    meta: [
-      {key: "description", name: "description", content: "Ways to connect with Ravi Teja."}
-    ]
+  metaInfo() {
+    const title = "Contact Ravi Teja";
+
+    const description = "Ways to connect with Ravi Teja.";
+
+    return {
+      title: title,
+      meta: [
+        {
+          key: "description", 
+          name: "description", 
+          content: description
+        },
+        {
+          key: "og:type",
+          name: "og:type",
+          content: "website"
+        },
+        {
+          key: "og:url",
+          name: "og:url",
+          content: "https://insidert.com/find-me"
+        },
+        {
+          key: "og:title",
+          name: "og:title",
+          content: title
+        },
+        {
+          key: "og:description",
+          name: "og:description",
+          content: description
+        },
+        {
+          key: "og:image",
+          name: "og:image",
+          content: "/insidert-banner.png"
+        },
+      ]
+    }
   },
 
   components: {

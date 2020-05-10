@@ -29,10 +29,47 @@ import PostHeader from "~/components/PostHeader.vue"
 
 export default {
   metaInfo() {
+    const title = this.$page.post.title;
+
+    const description = this.$page.post.excerpt;
+
+    const image = this.$page.post.imageUrl != "" ? this.$page.post.imageUrl : '/insidert-post-banner.png';
+
+    const url = "https://insidert.com" + this.$route.fullPath;
+
     return {
-      title: this.$page.post.title,
+      title: title,
       meta: [
-        {key: "description", name: "description", content: this.$page.post.excerpt}
+        {
+          key: "description", 
+          name: "description", 
+          content: description
+        },
+        {
+          key: "og:type",
+          name: "og:type",
+          content: "website"
+        },
+        {
+          key: "og:url",
+          name: "og:url",
+          content: url
+        },
+        {
+          key: "og:title",
+          name: "og:title",
+          content: title
+        },
+        {
+          key: "og:description",
+          name: "og:description",
+          content: description
+        },
+        {
+          key: "og:image",
+          name: "og:image",
+          content: image
+        },
       ]
     }
   },

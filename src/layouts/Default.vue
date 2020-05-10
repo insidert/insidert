@@ -83,6 +83,10 @@ a:active {
   color: blue;
 }
 
+.text-center {
+  text-align: center;
+}
+
 #post-content img {
   width: 100%;
 }

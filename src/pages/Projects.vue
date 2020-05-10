@@ -7,6 +7,8 @@
         <h3 class="mb-0"><a v-bind:href="edge.node.path">{{ edge.node.title }}</a></h3>
         <p class="mt-0">{{ edge.node.excerpt }}</p>
       </div>
+
+      <in-progress item="Page"></in-progress>
     </section>
   </Layout>
 </template>
@@ -29,17 +31,54 @@ query {
 
 <script>
 import PageHead from "~/components/PageHead.vue";
+import InProgress from "~/components/InProgress.vue";
 
 export default {
-  metaInfo: {
-    title: "Projects of Ravi Teja",
-    meta: [
-      {key: "description", name: "description", content: "Projects built by Ravi Teja."}
-    ]
+  metaInfo() {
+    const title = "Projects of Ravi Teja";
+
+    const description = "Projects built by Ravi Teja.";
+
+    return {
+      title: title,
+      meta: [
+        {
+          key: "description", 
+          name: "description", 
+          content: description
+        },
+        {
+          key: "og:type",
+          name: "og:type",
+          content: "website"
+        },
+        {
+          key: "og:url",
+          name: "og:url",
+          content: "https://insidert.com/projects"
+        },
+        {
+          key: "og:title",
+          name: "og:title",
+          content: title
+        },
+        {
+          key: "og:description",
+          name: "og:description",
+          content: description
+        },
+        {
+          key: "og:image",
+          name: "og:image",
+          content: "/insidert-banner.png"
+        },
+      ]
+    }
   },
 
   components: {
-    PageHead
+    PageHead,
+    InProgress
   }  
 }
 </script>

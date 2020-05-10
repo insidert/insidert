@@ -20,8 +20,9 @@
     </section>
 
     <footer>
-      <g-image src="~/assets/images/insidert.png" /> <br>
-      <small>Made with Gridsome, hosted with Netlify.</small>
+      <g-image src="~/assets/images/insidert.png" width="256"/>
+      <p class="mb-0">Made with Gridsome, hosted on Netlify.</p>
+      <p class="mt-0 mb-0">Source code on <a href="https://github.com/insidert/insidert" target="_blank">GitHub</a>.</p>
     </footer>
 
   </Layout>
@@ -47,11 +48,46 @@ query {
 import PostsList from "~/components/PostsList.vue";
 
 export default {
-  metaInfo: {
-    title: "Inside Ravi Teja",
-    meta: [
-      {key: "description", name: "description", content: "Personal blog of Ravi Teja."}
-    ]
+  metaInfo() {
+    const title = "Inside Ravi Teja";
+
+    const description = "Personal blog of Ravi Teja.";
+
+    return {
+      title: title,
+      meta: [
+        {
+          key: "description", 
+          name: "description", 
+          content: description
+        },
+        {
+          key: "og:type",
+          name: "og:type",
+          content: "website"
+        },
+        {
+          key: "og:url",
+          name: "og:url",
+          content: "https://insidert.com"
+        },
+        {
+          key: "og:title",
+          name: "og:title",
+          content: title
+        },
+        {
+          key: "og:description",
+          name: "og:description",
+          content: description
+        },
+        {
+          key: "og:image",
+          name: "og:image",
+          content: "/insidert-banner.png"
+        },
+      ]
+    }
   },
 
   components: {
