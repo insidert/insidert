@@ -90,4 +90,11 @@ a:active {
 #post-content img {
   width: 100%;
 }
+
+code {
+  display: inline-block;
+  color: white;
+  background-color: black;
+  padding: 4px 12px;
+}
 </style>
