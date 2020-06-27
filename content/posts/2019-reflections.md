@@ -3,6 +3,7 @@ title: "2019 Reflections."
 excerpt: "Looking back at the things I have done this year."
 updatedOn: "2019-12-28"
 imageUrl: ""
+tags: ["reflections"]
 ---
 
 ## Work

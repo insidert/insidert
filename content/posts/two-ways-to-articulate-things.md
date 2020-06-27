@@ -3,6 +3,7 @@ title: "Two ways to articulate things."
 excerpt: "How can we understand better."
 updatedOn: "2020-03-20"
 imageUrl: ""
+tags: ["thought"]
 ---
 
 I things we need to understand things. We all do. But how do we do that? How can you articulate things better? Well, I think there are two ways.

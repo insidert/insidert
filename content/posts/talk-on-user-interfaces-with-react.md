@@ -3,6 +3,7 @@ title: "Talk on building user interfaces with React JS."
 excerpt: "Webinar about the evolution of user interfaces."
 updatedOn: "2020-06-03"
 imageUrl: "https://imgur.com/VYEgPBY.png"
+tags: ["talk"]
 ---
 
 In a webinar conducted by CMR college of engineering on June 03, 2020, I talked about user interfaces, how they evolved, the need for rich interfaces, how to build one with modern frameworks like React JS and the mental models to understand the concepts better.

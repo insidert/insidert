@@ -1,9 +1,3 @@
-// This is where project configuration and plugin options are located. 
-// Learn more: https://gridsome.org/docs/config
-
-// Changes here require a server restart.
-// To restart press CTRL + C in terminal and run `gridsome develop`
-
 module.exports = {
   siteName: 'Insidert',
   titleTemplate: '%s',
@@ -13,7 +7,14 @@ module.exports = {
       options: {
         typeName: 'Post',
         path: './content/posts/**/*.md',
-      }
+        refs: {
+          tag: 'Tag',
+          tags: {
+            typeName: 'Tag',
+            create: true
+          }
+        }
+      },
     },
     {
       use: '@gridsome/source-filesystem',
@@ -31,11 +32,12 @@ module.exports = {
   ],
   transformers: {
     remark: {
-      // global remark options
+      externalLinksTarget: '_blank',
     }
   },
   templates: {
     Post: '/posts/:title',
+    Tag: '/tags/:title',
     Project: '/projects/:title'
   }
 }

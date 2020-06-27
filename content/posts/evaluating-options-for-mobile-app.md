@@ -3,6 +3,7 @@ title: "Evaluating options for mobile app."
 excerpt: "How I chose React Native to build the mobile app."
 updatedOn: "2020-04-29"
 imageUrl: "https://imgur.com/f7Zd0yV.png"
+tags: ["coding"]
 ---
 
 The time has come to build a mobile app for Craypolar - A CRM for gyms. I'm building this app for the customers of our clients. So, after evaluating three options on how can I achieve mobile experience I finally chose to build the app with React Native.

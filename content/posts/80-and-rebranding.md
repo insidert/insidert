@@ -3,6 +3,7 @@ title: "80 and rebranding"
 excerpt: "I will rebrand my first product when I reach 80kgs."
 updatedOn: "2020-06-11"
 imageUrl: ""
+tags: ["work", "craypolar", "goal"]
 ---
 
 I am now at 95 kilograms. That's very close to 100 and it's really dangerous. This is the first time I reached this mark and I watched it happen. In one of the monthly updates I wrote about my exercising schedule during the Covid-19 lockdown - I walked only for a week in two months.

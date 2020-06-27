@@ -3,6 +3,7 @@ title: "February 2020 - monthly update."
 excerpt: "What I have worked on in February 2020."
 updatedOn: "2020-02-27"
 imageUrl: ""
+tags: ["monthly-update"]
 ---
 
 ### Craypolar

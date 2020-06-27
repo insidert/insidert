@@ -3,6 +3,7 @@ title: "May 2020 - monthly update."
 excerpt: "What I did in May 2020."
 updatedOn: "2020-05-29"
 imageUrl: ""
+tags: ["monthly-update"]
 ---
 
 ### New Coder Bootcamp

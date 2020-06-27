@@ -6,6 +6,13 @@
 
     <section class="pad" id="post-content">
       <div v-html="$page.post.content" />
+
+      <div style="margin-top: 3rem;">
+        <h3 class="mb-0">Tags:</h3>
+        <p v-for="tag in $page.post.tags" v-bind:key="tag.title" class="mb-0 mt-0">
+          <a v-bind:href="tag.path">#{{ tag.title }}</a>
+        </p>
+      </div>
     </section>  
   </Layout>
 </template>
@@ -19,6 +26,11 @@ query ($path: String!) {
     timeToRead
     updatedOn
     imageUrl
+    tags {
+      id
+      title
+      path
+    }
   }
 }
 </page-query>

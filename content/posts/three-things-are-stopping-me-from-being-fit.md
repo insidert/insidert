@@ -3,6 +3,7 @@ title: "Three things are stopping me from being fit."
 excerpt: "What went wrong for my fitness routine and what I could do."
 updatedOn: "2020-05-20"
 imageUrl: ""
+tags: ["thought"]
 ---
 
 So, the important question. What is being fit?

@@ -3,6 +3,7 @@ title: "Thoughts on my new blog."
 excerpt: "The journey of my blogging and how I made this website including the stack."
 updatedOn: "2019-09-06"
 imageUrl: "https://imgur.com/otbqhXn.png"
+tags: ["coding", "thought"]
 ---
 
 ## Looking back

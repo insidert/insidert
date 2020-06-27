@@ -3,6 +3,7 @@ title: "March 2020 - monthly update: new features, testing and Corona virus."
 excerpt: "What I did in March 2020."
 updatedOn: "2020-03-28"
 imageUrl: ""
+tags: ["monthly-update"]
 ---
 
 ### Static Sites

@@ -3,6 +3,7 @@ title: "April 2020 - monthly update."
 excerpt: "What I did in April 2020."
 updatedOn: "2020-04-30"
 imageUrl: ""
+tags: ["monthly-update"]
 ---
 
 ### New Blog

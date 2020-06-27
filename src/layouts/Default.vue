@@ -97,4 +97,9 @@ code {
   background-color: black;
   padding: 4px 12px;
 }
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
