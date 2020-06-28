@@ -17,7 +17,7 @@
 
 <page-query>
 query Posts ($title: String!) {
-  posts: allPost(filter: { tags: { contains: [$title] }}) {
+  posts: allPost(filter: { tags: { contains: [$title] }}, sortBy: "updatedOn", order: DESC) {
     edges {
       node {
         id

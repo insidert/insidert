@@ -5,9 +5,7 @@
       <h1 class="mb-0">Inside Ravi Teja</h1>
       <p class="mt-0">Hello! welcome to my website, I am co-founder of <g-link to="/prasanta-communications">
         Prasanta Communications
-      </g-link> and a full-stack developer.
-      </p>
-      <p>I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms. I am also writing and maintaining <a href="https://coderbootcamp.in">Coder Bootcamp</a>.</p>
+      </g-link> and a full-stack developer. I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms.</p>
 
 
     </nav>
@@ -16,7 +14,10 @@
       <h3>Latest Posts</h3>
       <posts-list v-bind:posts="$page.posts.edges"></posts-list>
 
-      <g-link to="/posts">View more posts</g-link>
+      <div class="flex-between">
+        <g-link to="/posts">View More Posts</g-link>
+        <g-link to="/tags">Explore Tags</g-link>
+      </div>
     </section>
 
     <footer>

@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <page-head title="Projects" description="List of projects I am working on. Click on a project to read more about the idea, implementations, technology stack and other updates."></page-head>
+    <page-head title="Projects" description="List of my projects. Click on a project to read more about the idea, implementations, technology stack and other updates."></page-head>
     
     <section class="pad">
       <div v-for="edge in $page.projects.edges" v-bind:key="edge.node.id">
@@ -15,7 +15,7 @@
 
 <page-query>
 query {
-  projects: allProject {
+  projects: allProject(sortBy: "title", order: ASC) {
     edges {
       node {
         id
