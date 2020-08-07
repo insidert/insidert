@@ -22,6 +22,7 @@ query Posts ($title: String!) {
       node {
         id
         title
+        excerpt
         path
         updatedOn
         tags {

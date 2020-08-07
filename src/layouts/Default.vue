@@ -94,8 +94,18 @@ a:active {
 code {
   display: inline-block;
   color: white;
-  background-color: black;
+  background-color: #003b48;
   padding: 4px 12px;
+  border-radius: 0.25rem
+}
+
+pre code {
+  display: block;
+  color: white;
+  background-color: #003b48;
+  padding: 4px 12px;
+  overflow: auto;
+  border-radius: 0.25rem
 }
 
 .flex-between {
