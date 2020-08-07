@@ -1,6 +1,6 @@
 ---
 title: "July 2020 - monthly update."
-excerpt: "Rethinking business, new projects and going forward."
+excerpt: "Published the first android app."
 updatedOn: "2020-07-29"
 imageUrl: ""
 tags: ["monthly-update"]
@@ -8,7 +8,7 @@ tags: ["monthly-update"]
 
 ### IOTD app
 
-We have published our first app on the Play Store. IOTD - Image of the day. Read [why we have built this](/posts/publishing-the-first-android-app/) and the [technical internals](http://localhost:8080/posts/how-i-built-iotd-app/) I am really happy with the results.
+We have published our first app on the Play Store. **IOTD - Image of the day**. Read [why we have built this](/posts/publishing-the-first-android-app/) and the [technical internals](/posts/how-i-built-iotd-app/) I am really happy with the results.
 
 ### Craypolar is not MF7
 

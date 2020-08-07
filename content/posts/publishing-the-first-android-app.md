@@ -26,6 +26,6 @@ Then I remembered the "Image of the day" functionality from the MF7 app. I thoug
 
 I finished the app and published on Play Store. It's not available on App Store yet. Apple charges a recurring fee of 99$ to host the apps. Eventually, we will be publishing the app on the App store too but not yet.
 
-[Read how I built IOTD.](/posts/how-i-built-iotd/)
+[Read how I built IOTD.](/posts/how-i-built-iotd-app/)
 
 [Download the app from Play Store.](https://play.google.com/store/apps/details?id=com.craypolar.image_of_the_day)
