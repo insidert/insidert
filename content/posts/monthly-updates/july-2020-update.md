@@ -10,9 +10,11 @@ tags: ["monthly-update"]
 
 We have published our first app on the Play Store. **IOTD - Image of the day**. Read [why we have built this](/posts/publishing-the-first-android-app/) and the [technical internals](/posts/how-i-built-iotd-app/) I am really happy with the results.
 
-### Craypolar is not MF7
+### Craypolar is now MF7
 
 I have thought of rebranding Craypolar when I reach 80kgs of weight. But the domain is due for renewal on August 8. I decided that it's better to rebrand now instead of waiting until I reach the weight mark. We are building two apps for Craypolar and the name is so long to remember and hard to memorize. It's always good to have a short name so that it's easy to remember and easier to share with other people while conversing. We considered MH7 - mind and health, and MF7 - mind and fitness. The 7 is just there for a unique domain. Getting two-letter domains is hard and costly. After our internal discussion, we chose MF7 and I have changed a lot of files to change the name. I have uploaded all the changes and called all of our clients to share the new domain.
+
+Visit the new domain [https://mf7.in](https://mf7.in)
 
 ### Public Opinion
 

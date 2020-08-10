@@ -13,10 +13,13 @@ query {
 </static-query>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;800&display=swap');
 
 body {
-  font-family: 'Inter', sans-serif;
+  /* font-family: 'Inter', sans-serif; */
+  font-family: 'Recursive', sans-serif;
   margin:0;
   padding:0;
   line-height: 1.5;
