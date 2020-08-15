@@ -7,7 +7,7 @@
       <ol>
         <li><a href="https://facebook.com/insideraviteja">Facebook</a></li>
         <li><a href="https://twitter.com/_insidert">Twitter</a></li>
-        <li><a href="https://linkedin.com/veligatlraviteja">LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/ravitejaveligatla/">LinkedIn</a></li>
         <li><a href="https://instagram.com/_insidert">Instagram</a></li>
       </ol>
 

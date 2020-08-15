@@ -24,6 +24,13 @@ module.exports = {
       }
     },
     {
+      use: '@gridsome/source-filesystem',
+      options: {
+        typeName: 'Snippet',
+        path: './content/snippets/**/*.md',
+      }
+    },
+    {
       use: '@gridsome/plugin-google-analytics',
       options: {
         id: 'UA-76337962-3'
@@ -33,11 +40,15 @@ module.exports = {
   transformers: {
     remark: {
       externalLinksTarget: '_blank',
+      plugins: [
+        ['@gridsome/remark-prismjs', { transformInlineCode: true }]
+      ]
     }
   },
   templates: {
     Post: '/posts/:title',
     Tag: '/tags/:title',
-    Project: '/projects/:title'
+    Project: '/projects/:title',
+    Snippet: '/snippets/:title'
   }
 }
