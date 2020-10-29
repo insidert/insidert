@@ -3,18 +3,14 @@
     <page-head title="Snippets" description="Snippets are blog posts about code. They are mostly short and concise."></page-head>
     
     <section class="pad">
-      <div v-for="edge in $page.snippets.edges" v-bind:key="edge.node.id">
-        <small>{{ new Date(edge.node.updatedOn).toDateString() }}</small>
-        <h2 class="mb-0 mt-0"><a v-bind:href="edge.node.path">{{ edge.node.title }}</a></h2>
-        <p class="mt-0">{{ edge.node.excerpt }}</p>
-      </div>
+      <posts-list v-bind:posts="$page.snippets.edges"></posts-list>
     </section>
   </Layout>
 </template>
 
 <page-query>
 query {
-  snippets: allSnippet(sortBy: "title", order: ASC) {
+  snippets: allSnippet(sortBy: "title", order: DESC) {
     edges {
       node {
         id
@@ -30,7 +26,7 @@ query {
 
 <script>
 import PageHead from "~/components/PageHead.vue";
-import InProgress from "~/components/InProgress.vue";
+import PostsList from "~/components/PostsList.vue";
 
 export default {
   metaInfo() {
@@ -77,7 +73,7 @@ export default {
 
   components: {
     PageHead,
-    InProgress
+    PostsList
   }  
 }
 </script>
