@@ -21,7 +21,6 @@ body {
   padding:0;
   line-height: 1.5;
   font-size: x-large;
-  background-color: aliceblue;
 }
 
 main {

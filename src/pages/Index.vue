@@ -8,10 +8,9 @@
       </g-link> and a full-stack developer. I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms.</p>
     </nav>
 
-    <section class="pad text-center">
-      <div>
-        <p>function <i>whatIsNewHere</i>() { return <g-link to="/snippets">'Snippets'</g-link>; }</p>
-      </div>
+    <section style="background-color: antiquewhite; padding: 2rem; margin-top: 3rem; box-shadow: 0 25px 25px -12px rgba(0,0,0,.25);">
+        <p class="mb-0 mt-0">Developer?</p>
+        <p class="mb-0 mt-0">Checkout my short code <g-link to="/snippets">snippets.</g-link></p>
     </section>
 
     <section class="pad">

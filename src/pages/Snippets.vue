@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <page-head title="Snippets" description="Snippets are blog posts about code. They are mostly short and concise."></page-head>
+    <page-head title="Snippets" description="Snippets are about short and concise code."></page-head>
     
     <section class="pad">
       <posts-list v-bind:posts="$page.snippets.edges"></posts-list>
