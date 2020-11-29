@@ -6,28 +6,29 @@
         <small><g-link to="/posts">All Posts</g-link></small>
         <small><g-link to="/tags">Explore Tags</g-link></small>
       </div>
-      <h1 class="mb-0">Posts with <u>#{{ tag }}</u> tag</h1>
+      <h1 class="mb-0">Posts with <u>#{{ $page.tag.title }}</u> tag</h1>
     </nav>
   
     <div class="pad">
-      <posts-list v-bind:posts="$page.posts.edges"></posts-list>
+      <posts-list v-bind:posts="$page.tag.belongsTo.edges"></posts-list>
     </div>
   </Layout>
 </template>
 
 <page-query>
-query Posts ($title: String!) {
-  posts: allPost(filter: { tags: { contains: [$title] }}, sortBy: "updatedOn", order: DESC) {
-    edges {
-      node {
-        id
-        title
-        excerpt
-        path
-        updatedOn
-        tags {
-          id
-          title
+query ($id: ID!) {
+  tag (id: $id) {
+    title
+    belongsTo {
+      edges {
+        node {
+          ...on Post {
+            id
+            title
+            updatedOn
+            excerpt
+            path
+          }
         }
       }
     }
@@ -41,25 +42,13 @@ import PostsList from "~/components/PostsList.vue";
 export default {
   metaInfo() {
     return {
-      title: this.tag,
-      meta: [{ name: "description", content: 'Posts from Ravi Teja with ' + this.tag + ' tag.' }]
+      title: this.$page.tag.title,
+      meta: [{ name: "description", content: this.$page.tag.title + ' posts from Ravi Teja.' }]
     };
-  },
-
-  data() {
-    return {
-      tag: ''
-    }
   },
 
   components: {
     PostsList
   },
-
-  mounted() {
-    const pageParams = location.href.split("tags/");
-    
-    this.tag = pageParams[1].replace("/", "");
-  }
 }
 </script>
