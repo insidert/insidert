@@ -54,8 +54,9 @@ main {
 
 .nav {
   padding: 2rem;
-  background-color: lightcyan;
+  background-color: darkorange;
   box-shadow: 0 25px 25px -12px rgba(0,0,0,.25);
+  color: white;
 }
 
 footer {
@@ -96,5 +97,16 @@ a:active {
 h1 {
   font-size: 42px;
   line-height: normal;
+}
+
+.links {
+  display: flex; 
+  justify-content: space-between; 
+  margin: 1rem 0rem;
+  padding: 0rem 2rem;
+}
+
+small {
+  font-size: 16px;
 }
 </style>

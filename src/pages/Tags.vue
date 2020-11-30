@@ -1,13 +1,14 @@
 <template>
   <Layout>
-    <nav class="nav">
-      <div class="flex-between">
+    <div class="links">
         <small><g-link to="/">Home</g-link></small>
         <small><g-link to="/posts">All Posts</g-link></small>
       </div>
+
+    <div class="nav">
       <h1 class="mb-0">Tags</h1>
       <p class="mt-0 mb-0">Click on a tag to read posts of that topic. Tags are sorted alphabetically.</p>
-    </nav>
+    </div>
 
     <div class="pad">
       <ul>

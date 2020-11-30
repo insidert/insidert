@@ -12,7 +12,7 @@
         <p v-for="tag in $page.post.tags" v-bind:key="tag.title" class="mb-0 mt-0">
           <a v-bind:href="tag.path">#{{ tag.title }}</a>
         </p>
-      </div>
+      </div>      
     </section>  
   </Layout>
 </template>
