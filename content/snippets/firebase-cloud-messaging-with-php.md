@@ -3,7 +3,7 @@ title: "Firebase cloud messaging with PHP"
 excerpt: "Send notifications from your PHP code."
 updatedOn: "2020-08-15"
 imageUrl: ""
-tags: ["coding"]
+tags: ["firebase", "php", "laravel"]
 ---
 
 If your mobile app backend is written with PHP or any PHP framework like Laravel, you may need to trigger notifications programatically. These are the short steps to send notifications from your PHP project.

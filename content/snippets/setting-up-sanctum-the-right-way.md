@@ -3,7 +3,7 @@ title: "Fixing 'unauthenticated error' while using Laravel Sanctum for SPA."
 excerpt: "Take care of two configurations and you are done."
 updatedOn: "2020-10-28"
 imageUrl: ""
-tags: ["coding", "laravel"]
+tags: ["sanctum", "laravel"]
 ---
 
 You may be working **locally** with the Laravel project; scaffolded a front-end app with React/Vue/Angular and when making requests to routes wrapped within **auth:sanctum** middleware, you may get an *unauthenticated error*. It is because of misconfigurations. Let's fix this.

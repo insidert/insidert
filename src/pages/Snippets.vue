@@ -10,7 +10,7 @@
 
 <page-query>
 query {
-  snippets: allSnippet(sortBy: "title", order: DESC) {
+  snippets: allSnippet(sortBy: "updatedOn", order: DESC) {
     edges {
       node {
         id
