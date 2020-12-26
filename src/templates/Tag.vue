@@ -1,12 +1,13 @@
 <template>
   <Layout>
-    <nav class="nav">
-       <div class="flex-between">
+    <div class="links">
         <small><g-link to="/">Home</g-link></small>
         <small><g-link to="/posts">All Posts</g-link></small>
         <small><g-link to="/tags">Explore Tags</g-link></small>
       </div>
-      <h1 class="mb-0">Posts with <u>#{{ $page.tag.title }}</u> tag</h1>
+
+    <nav class="nav">
+      <h1 class="mb-0 mt-0">Posts with <u>#{{ $page.tag.title }}</u> tag</h1>
     </nav>
   
     <div class="pad">
