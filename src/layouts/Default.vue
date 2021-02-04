@@ -54,7 +54,7 @@ main {
 
 .nav {
   padding: 2rem;
-  background-color: darkorange;
+  background-color: black;
   box-shadow: 0 25px 25px -12px rgba(0,0,0,.25);
   color: white;
 }
