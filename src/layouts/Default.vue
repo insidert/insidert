@@ -54,9 +54,10 @@ main {
 
 .nav {
   padding: 2rem;
-  background-color: black;
+  /* background-color: black;
   box-shadow: 0 25px 25px -12px rgba(0,0,0,.25);
-  color: white;
+  color: white; */
+  border-bottom: 10px solid red;
 }
 
 footer {
@@ -108,5 +109,9 @@ h1 {
 
 small {
   font-size: 16px;
+}
+
+.text-muted {
+  color: lightslategrey;
 }
 </style>

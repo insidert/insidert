@@ -2,13 +2,13 @@
   <Layout>
     <nav class="nav" style="display: flex; justify-content: space-between; align-items: center;">
       <div>
-        <h4 class="mb-0 mt-0">Inside</h4>
+        <h4 class="mb-0 mt-0 text-muted">Inside</h4>
       <h1 class="mb-0 mt-0">Ravi Teja</h1>
       </div>
       <g-image src="~/assets/images/raviteja.png" height="128" width="128" />
     </nav>
 
-    <div style="margin-top: 3rem;" class="pad">
+    <div class="pad">
       <p class="mt-0">Hello! welcome to my website.</p> 
       
       <p>I am co-founder of <g-link to="/prasanta-communications">
@@ -27,8 +27,8 @@
       <posts-list v-bind:posts="$page.posts.edges"></posts-list>
 
       <div class="flex-between">
-        <g-link to="/posts">View More Posts</g-link>
-        <g-link to="/tags">Explore Tags</g-link>
+        <g-link to="/posts">View All Posts</g-link>
+        <g-link to="/tags">View Tags</g-link>
       </div>
 
       <div style="margin-top: 6rem; margin-bottom: 1rem; text-align: center;">

@@ -8,7 +8,7 @@
         <h1 class="mb-0 mt-0">{{ post.title }}</h1>
         <p class="mt-0">{{ post.excerpt }}</p>
 
-        <small style="display:flex; justify-content: space-between; flex-wrap: wrap;">Updated On {{ new Date(post.updatedOn).toDateString() }}. <span>{{ post.timeToRead }} {{ post.timeToRead == 1 ? 'minute' : 'minutes' }} read</span></small>
+        <small class="text-muted" style="display:flex; justify-content: space-between; flex-wrap: wrap;">Updated On {{ new Date(post.updatedOn).toDateString() }}. <span>{{ post.timeToRead }} {{ post.timeToRead == 1 ? 'minute' : 'minutes' }} read</span></small>
       </section>
     </div>
 </template>

@@ -3,7 +3,7 @@ title: "Should we stop expecting?"
 excerpt: "People say that all the time. But is it the way?"
 updatedOn: "2021-02-09"
 imageUrl: ""
-tags: ["thought",]
+tags: ["thought"]
 ---
 
 I have noticed people telling the best way to stay at peace is to stop expecting from people. It's true. If you stop expecting, you will not be upset no matter the result. I am wondering whether it could be done effectively. It definitely could be done to a degree. From a psychological standpoint, I think it's cannot be applied to every aspect of our lives.
