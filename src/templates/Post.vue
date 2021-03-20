@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <img v-bind:src="$page.post.imageUrl" alt="Post Image" v-if="$page.post.imageUrl" style="width: 100%; margin-bottom: -1rem;">
+    <img v-bind:src="$page.post.imageUrl" alt="Post Image" v-if="$page.post.imageUrl" style="width: 100%;">
 
     <post-header v-bind:post="$page.post"></post-header>
 
