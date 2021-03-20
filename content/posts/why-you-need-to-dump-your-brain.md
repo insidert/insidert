@@ -26,7 +26,7 @@ This is why, sometimes, when needed, you need to dump your brain.
 
 But, here is the catch. You need to have very quality people in your life to dump the darkest and deepest parts of your life. It's not necessary or compulsory. But, things will go upside down. And then we need to take some help, like re-routing the traffic. It's okay to take help. We share parts of our life with our family, friends, acquaintances and partner differently. Only a few know the majority of us. That is the reason why I always tell people to make quality and meaningful connections.
 
-To close, lean on to a person(s) when needed. It's not a weakness. It's a survival strategy. Strength comes when things are held together. Like a rope made of individual fibres. Invest your time in meaningful connections and relationships.
+To close, do not take suffering more than necessary. Lean on to a person(s) when needed. It's not a weakness. It's a survival strategy. Strength comes when things are held together. Like a rope made of individual fibres. Invest your time in meaningful connections and relationships.
 
 Although, I am sceptical about the following approach, still I want to take a chance. If you feel like you have no one to share with and you feel lonely and you are okay sharing with me; you can make a call or leave a message any time. I am all ears.
 
