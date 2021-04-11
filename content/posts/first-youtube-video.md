@@ -1,7 +1,7 @@
 ---
 title: "First YouTube video for InsideRT"
 excerpt: "A new beginning."
-updatedOn: "2021-30-28"
+updatedOn: "2021-03-28"
 imageUrl: "https://imgur.com/tFw0dwb.png"
 tags: ["insidert-youtube"]
 ---

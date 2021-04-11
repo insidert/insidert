@@ -1,7 +1,7 @@
 ---
 title: "Books I read"
 excerpt: "List."
-updatedOn: "2021-03-05"
+updatedOn: "2021-04-10"
 imageUrl: ""
 tags: ["books", "list"]
 ---
@@ -23,6 +23,7 @@ tags: ["books", "list"]
 - Blink.
 - FAQs on marketing.
 - Never split the difference.
+- The lean startup.
 
 ## I recommend
 
@@ -33,6 +34,6 @@ tags: ["books", "list"]
 
 ## For business
 
-1. The lean startup. (Still reading.)
+1. The lean startup.
 2. Zero to one.
 3. Never split the difference.

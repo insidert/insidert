@@ -9,9 +9,7 @@
     </nav>
 
     <div class="pad">
-      <p class="mt-0">Hello! welcome to my website.</p> 
-      
-      <p>I am co-founder of <g-link to="/prasanta-communications">
+      <p class="mt-0">Hello! welcome to my website. I am co-founder of <g-link to="/prasanta-communications">
         Prasanta Communications
       </g-link> and a full-stack developer. I write about <g-link to="/projects">my projects</g-link>, thoughts and important updates here. You can also <g-link to="/find-me">find me</g-link> on other social platforms.</p>
       <p class="mb-0 mt-0">If you are a developer, checkout my code <g-link to="/snippets">snippets.</g-link></p>
