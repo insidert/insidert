@@ -26,6 +26,6 @@ Fortunately, I could fix everything and published it. It got approved for testin
 
 I need to fill a lot of forms about the app. Age rating, copyrights, versions, build number etc. Pure developer task. But one thing bugged me so much. App screenshots.  I spent almost a day just to get the screenshot dimensions right. I went back to my favourite service, Canva, for the required dimensions.
 
-Finally, on April 15, I submitted for review and on 16 I received an email about approval.
+Finally, on April 15, I submitted for review and on 16 I received an email about approval. I also [thanked Codemagic on twitter.](https://twitter.com/_insidert/status/1379788501202313216)
 
 That's my initial journey with iOS.
