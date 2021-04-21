@@ -1,7 +1,7 @@
 ---
 title: "Deploy laravel to VPS from scratch"
 excerpt: "A step by step guide to deploying Laravel app to Vultr or Digital Ocean."
-updatedOn: "2020-12-22"
+updatedOn: "2021-04-21"
 imageUrl: ""
 tags: ["servers", "laravel"]
 ---
@@ -57,7 +57,9 @@ Installs the latest version if you have not added PPA package.
 ```bash
 sudo apt-get install git curl wget zip unzip
 
-sudo apt install php php-cli php-fpm php-mysql php-zip php-gd php-mbstring php-curl php-xml php-pear php-bcmath php-mcrypt php-mbstring php-xml
+sudo apt-get install -y php8.0-fpm php8.0-cli php8.0-mysql \
+        php8.0-mcrypt php8.0-gd php8.0-imap php8.0-curl \
+       php8.0-mbstring php8.0-xml php8.0-bcmath
 ```
 
 - [Video](https://serversforhackers.com/c/lemp-nginx-php-laravel)
@@ -92,7 +94,7 @@ server {
   ssl_certificate      /etc/letsencrypt/live/<thedomain.in>/fullchain.pem;
   ssl_certificate_key  /etc/letsencrypt/live/<thedomain.in>/privkey.pem;
 
-	root /var/www/ourprojectfolder/public;
+  root /var/www/ourprojectfolder/public;
 
   index index.php;
 
@@ -160,7 +162,7 @@ create user databaseclient@'localhost' identified by 'a-password';
 grant all privileges on yourdatabase.* to databaseclient@'localhost';
 ```
 
-Import/Export database 
+Import/Export database
 
 ```bash
 // Export
