@@ -13,6 +13,7 @@ This post is a collection of commands that helped me setup Laravel in a VPS. I h
 - [Install PHP](#install-php)
 - [Install Composer](#install-composer)
 - [Install Nginx](#install-nginx)
+- [Setup Git](#setup-git)
 - [Set permissions](#set-permissions)
 - [Setup MySQL](#setup-mysql)
 - [Setup Redis](#setup-redis)
@@ -28,6 +29,12 @@ After logging in as root, add a new user and add to sudo group.
 sudo adduser raviteja
 
 usermod -aG sudo raviteja
+```
+
+Run commands as the new user with sudo permissions.
+
+```bash
+sudo su raviteja
 ```
 
 - [Video](https://serversforhackers.com/c/creating-users-and-ssh-security)
@@ -57,9 +64,13 @@ Installs the latest version if you have not added PPA package.
 ```bash
 sudo apt-get install git curl wget zip unzip
 
+sudo add-apt-repository -y ppa:ondrej/php
+
+sudo apt-get update
+
 sudo apt-get install -y php8.0-fpm php8.0-cli php8.0-mysql \
-        php8.0-mcrypt php8.0-gd php8.0-imap php8.0-curl \
-       php8.0-mbstring php8.0-xml php8.0-bcmath
+  php8.0-mcrypt php8.0-gd php8.0-imap php8.0-curl \
+  php8.0-mbstring php8.0-xml php8.0-bcmath php8.0-zip
 ```
 
 - [Video](https://serversforhackers.com/c/lemp-nginx-php-laravel)
@@ -76,7 +87,11 @@ php -r "readfile('http://getcomposer.org/installer');" | sudo php -- --install-d
 sudo apt-get install nginx
 ```
 
-Change config at */etc/nginx/sites-available/default*
+Change nginx config
+
+```bash
+sudo nano /etc/nginx/sites-available/default
+```
 
 We should add ssl_certificate details in the config only after installing ssl certificate with certbot.
 
@@ -99,12 +114,12 @@ server {
   index index.php;
 
   location / {
-    try_files $uri $uri/ /index.php$is_args$args;
+    try_files $uri $uri/ /index.php?$query_string;
   }
 
   location ~ \.php$ {
     include snippets/fastcgi-php.conf;
-    fastcgi_pass unix:/var/run/php/php7.3-fpm.sock;
+    fastcgi_pass unix:/var/run/php/php8.0-fpm.sock;
   }
 
   location ~* (?:^|/)\. {
@@ -117,7 +132,68 @@ server {
 }
 ```
 
+Test the configuration
+
+```bash
+sudo nginx -t
+
+sudo systemctl reload nginx
+```
+
 - Nginx setup in [Laravel docs](https://laravel.com/docs/8.x/deployment#nginx)
+
+## Setup Git
+
+```bash
+cd /var
+
+sudo mkdir repo && cd repo
+
+sudo mkdir site.git && cd site.git
+
+sudo git init --bare
+```
+
+After initiating the repo, you need to change the ownership for the current user
+
+```bash
+cd /var/repo
+
+sudo chown -R raviteja site.git
+```
+
+Setup post-receive hoook
+
+```bash
+cd /var/repo/site.git/hooks
+
+sudo nano post-receive
+```
+
+Add the contents to the post-recieve file
+
+```bash
+#!/bin/sh
+git --work-tree=/var/www/laravel --git-dir=/var/repo/site.git checkout -f
+```
+
+Change the permission
+
+```bash
+sudo chmod +x post-receive
+```
+
+On your local system, inside your Laravel project
+
+```bash
+git remote add production ssh://raviteja@example.com/var/repo/site.git
+
+git push production master
+```
+
+If you are using main branch locally, do ```git push production main:master```
+
+- [Dev Marketer Post](https://devmarketer.io/learn/deploy-laravel-5-app-lemp-stack-ubuntu-nginx/)
 
 ## Set permissions
 
@@ -125,27 +201,8 @@ server {
 ps aux | grep php
 
 cd /var/www/thelaravelappfolder
+
 sudo chown -R www-data: storage bootstrap
-```
-
-If that does not work, try this.
-
-```bash
-chown -R {username}:www-data {laravel-folder}
-chmod -R 777 {laravel-folder}/storage
-chmod -R 777 {laravel-folder}/bootstrap/cache/
-```
-
-If that does not work too, try
-
-```bash
-find /path/to/your/root/dir/ -type f -exec chmod 644 {} \;
-find /path/to/your/root/dir/ -type d -exec chmod 755 {} \;
-
-chown -R www-data:www-data /path/to/your/root/dir/
-
-chgrp -R www-data storage bootstrap/cache
-chmod -R ug+rwx storage bootstrap/cache
 ```
 
 ## Setup MySQL
@@ -192,7 +249,7 @@ Create new file *laravel-worker.conf* inside */etc/supervisor/conf.d* directory.
 
 ```bash
 process_name=%(program_name)s_%(process_num)02d
-command=php /var/www/thelaravelfolder/artisan queue:work redis --tries=1 --max-time=3600
+command=php /var/www/thelaravelfolder/artisan queue:work redis --tries=1 --timeout=3600 --max-time=3600
 autostart=true
 autorestart=true
 stopasgroup=true
@@ -214,6 +271,14 @@ sudo supervisorctl reread
 sudo supervisorctl update
 
 sudo supervisorctl start laravel-worker:*
+
+sudo supervisorctl status
+```
+
+For timeout function to work on the queues, pcntl extension should be enabled.
+
+```bash
+php -i | grep pcntl
 ```
 
 ## Setup Cron for Scheduled jobs
@@ -226,14 +291,13 @@ crontab -e
 
 ## SSL Certificate
 
-Install certbot from the [official website.](https://certbot.eff.org/)
-
 ```bash
-sudo certbot certonly 
-  --webroot -w /var/www/yourlaravelproject/public 
-  -d thedomain.com 
-  --non-interactive 
-  --agree-tos 
-  --email raviteja@thedomain.com 
-  --force-renew
+sudo snap install --classic certbot
+
+sudo certbot --nginx
+
+// testing to renew
+sudo certbot renew --dry-run
 ```
+
+More instructions on the [official website.](https://certbot.eff.org/)
