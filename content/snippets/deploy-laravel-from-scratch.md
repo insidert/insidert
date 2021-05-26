@@ -154,14 +154,6 @@ sudo mkdir site.git && cd site.git
 sudo git init --bare
 ```
 
-After initiating the repo, you need to change the ownership for the current user
-
-```bash
-cd /var/repo
-
-sudo chown -R raviteja site.git
-```
-
 Setup post-receive hoook
 
 ```bash
@@ -183,6 +175,14 @@ Change the permission
 sudo chmod +x post-receive
 ```
 
+Change the ownership for the current user
+
+```bash
+cd /var/repo
+
+sudo chown -R raviteja site.git
+```
+
 On your local system, inside your Laravel project
 
 ```bash
@@ -202,13 +202,13 @@ ps aux | grep php
 
 cd /var/www/thelaravelappfolder
 
-sudo chown -R www-data: storage bootstrap
+sudo chown -R www-data:raviteja storage bootstrap
 ```
 
 ## Setup MySQL
 
 ```bash
-sudo apt-get install -y mysql-server 
+sudo apt-get install -y mysql-server
 
 sudo mysql_secure_installation
 

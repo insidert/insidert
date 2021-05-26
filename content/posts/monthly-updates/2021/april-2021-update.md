@@ -1,6 +1,6 @@
 ---
 title: "April 2021 - monthly update."
-excerpt: "UI updates, biometric, queries and teaching."
+excerpt: "Just some MF7 things."
 updatedOn: "2021-04-28"
 imageUrl: ""
 tags: ["monthly-update"]
