@@ -28,6 +28,13 @@ module.exports = {
       options: {
         typeName: 'Snippet',
         path: './content/snippets/**/*.md',
+        refs: {
+          tag: 'SnippetTag',
+          tags: {
+            typeName: 'SnippetTag',
+            create: true
+          }
+        }
       }
     },
     {
@@ -47,8 +54,9 @@ module.exports = {
   },
   templates: {
     Post: '/posts/:title',
-    Tag: '/tags/:title',
+    Tag: '/posts/tags/:title',
     Project: '/projects/:title',
-    Snippet: '/snippets/:title'
+    Snippet: '/snippets/:title',
+    SnippetTag: '/snippets/tags/:title'
   }
 }
