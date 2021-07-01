@@ -1,6 +1,6 @@
 ---
 title: "June 2021 - monthly update."
-excerpt: "Help19 and new possibilities."
+excerpt: "Work and beauty"
 updatedOn: "2021-06-28"
 imageUrl: ""
 tags: ["monthly-update"]
