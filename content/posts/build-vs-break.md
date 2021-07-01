@@ -1,6 +1,6 @@
 ---
 title: "Build vs break"
-excerpt: ""
+excerpt: "Why we choose only one."
 updatedOn: "2021-07-01"
 imageUrl: ""
 tags: ["thought"]

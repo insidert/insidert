@@ -1,7 +1,7 @@
 ---
 title: "June 2021 - monthly update."
 excerpt: "Help19 and new possibilities."
-updatedOn: "2021-05-28"
+updatedOn: "2021-06-28"
 imageUrl: ""
 tags: ["monthly-update"]
 ---
