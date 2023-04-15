@@ -36,22 +36,21 @@ const posts = (await getCollection('blog')).sort(
 		<Header />
 		<main>
 			<section>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<time datetime={post.data.pubDate.toISOString()}>
+        {
+          posts.map((post) => (
+            <article style="margin-bottom: 3rem; border: 1.5px solid black; padding: 2rem;">
+              <time class="mb-0" datetime={post.data.pubDate.toISOString()}>
 									{post.data.pubDate.toLocaleDateString('en-us', {
 										year: 'numeric',
 										month: 'short',
 										day: 'numeric',
 									})}
 								</time>
-								<a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-							</li>
-						))
-					}
-				</ul>
+              <h3 class="mb-0 mt-0">{post.data.title}</h3>
+              <a href={`/blog/${post.slug}/`}>Read Post</a>  
+            </article>
+          ))
+        }
 			</section>
 		</main>
 		<Footer />

@@ -3,11 +3,14 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+
 body {
-	font-family: Verdana, sans-serif;
+	font-family: 'Archivo', sans-serif;
+  font-size: large;
 	margin: auto;
 	padding: 20px;
-	max-width: 65ch;
+	max-width: 80ch;
 	text-align: left;
 	background-color: #fff;
 	word-wrap: break-word;
@@ -64,4 +67,13 @@ blockquote {
 	padding: 2px 0px 2px 20px;
 	margin: 0px;
 	font-style: italic;
+}
+
+.mb-0 {
+  margin-bottom: 0rem;
+}
+
+
+.mt-0 {
+  margin-top: 0rem;
 }
