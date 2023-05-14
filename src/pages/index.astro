@@ -3,6 +3,17 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+
+const latestPosts = [];
+
+for (let i = 0; i <= 5; i++) {
+  latestPosts.push(posts[i]);
+}
 ---
 
 <!DOCTYPE html>
@@ -15,13 +26,30 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<main>
 			<h1>Inside Ravi Teja</h1>
 			<p>
-        I am a full-stack, app developer and Entrepreneur. I have co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> along with my brother. I share about my projects, thoughts, productivity and important updates.
+         Entrepreneur with a passion for full-stack and app development. Co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> along with my brother. I share about my projects, thoughts, productivity and important updates.
 			</p>
 
       <div>
-        <h4>Featured articles</h4>
+        <h4>Latest articles</h4>
+        <section>
+          {
+            posts.map((post) => (
+              <article style="margin-bottom: 3rem; border: 1.5px solid black; padding: 2rem;">
+                <time class="mb-0" datetime={post.data.pubDate.toISOString()}>
+                    {post.data.pubDate.toLocaleDateString('en-us', {
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </time>
+                <h3 class="mb-0 mt-0">{post.data.title}</h3>
+                <a href={`/blog/${post.slug}/`}>Read Post</a>  
+              </article>
+            ))
+          }
+        </section>
       </div>
-      <div>
+      <!-- <div>
         <h4>Latest articles</h4>
       </div>
       <div>
@@ -32,7 +60,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
       </div>
       <div>
         <h4>My Projects</h4>
-      </div>
+      </div> -->
 
 		</main>
 		<Footer />

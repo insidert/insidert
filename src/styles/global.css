@@ -3,11 +3,11 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
-@import url('https://fonts.googleapis.com/css2?family=Archivo&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
 body {
-	font-family: 'Archivo', sans-serif;
-  font-size: large;
+	font-family: 'IBM Plex Sans', sans-serif;
+  font-size: x-large;
 	margin: auto;
 	padding: 20px;
 	max-width: 80ch;

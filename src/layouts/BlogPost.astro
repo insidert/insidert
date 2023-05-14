@@ -30,14 +30,21 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 			<article>
 				{heroImage && <img width={720} height={360} src={heroImage.url} alt="{heroImage.alt}" />}
 				<h1 class="title">{title}</h1>
-				{pubDate && <time>{pubDate}</time>}
-				{
-					updatedDate && (
-						<div>
-							Last updated on <time>{updatedDate}</time>
-						</div>
-					)
-				}
+        <div style="display: flex; justify-content: between;">
+          {pubDate && (
+              <p>
+                Posted <time>{pubDate}</time>
+              </p>
+            )}
+          {
+            updatedDate && (
+              <p>
+                Updated <time>{updatedDate}</time>
+              </p>
+            )
+          }
+        </div>
+				
 				<hr />
 				<slot />
 
