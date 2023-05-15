@@ -5,6 +5,12 @@
  */
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
 
+/* 606C38
+283618
+FEFAE0
+DDA15E
+BC6C25 */
+
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
   font-size: x-large;
@@ -12,12 +18,13 @@ body {
 	padding: 20px;
 	max-width: 80ch;
 	text-align: left;
-	background-color: #fff;
+	background-color: #FEFAE0;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
 	color: #444;
 }
+
 h1,
 h2,
 h3,
@@ -26,10 +33,10 @@ h5,
 h6,
 strong,
 b {
-	color: #222;
+	color: #283618;
 }
 a {
-	color: #3273dc;
+	color: #BC6C25;
 }
 nav a {
 	margin-right: 10px;
