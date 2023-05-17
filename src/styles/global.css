@@ -18,7 +18,6 @@ body {
 	padding: 20px;
 	max-width: 80ch;
 	text-align: left;
-	background-color: #FEFAE0;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	line-height: 1.5;
@@ -38,36 +37,46 @@ b {
 a {
 	color: #BC6C25;
 }
+
 nav a {
 	margin-right: 10px;
 }
+
 textarea {
 	width: 100%;
 	font-size: 16px;
 }
+
 input {
 	font-size: 16px;
 }
+
 content {
 	line-height: 1.6;
 }
+
 table {
 	width: 100%;
 }
+
 img {
 	max-width: 100%;
 	height: auto;
 }
+
 code {
 	padding: 2px 5px;
 	background-color: #f2f2f2;
 }
+
 pre {
 	padding: 1rem;
 }
+
 pre > code {
 	all: unset;
 }
+
 blockquote {
 	border: 1px solid #999;
 	color: #222;
@@ -80,7 +89,20 @@ blockquote {
   margin-bottom: 0rem;
 }
 
-
 .mt-0 {
   margin-top: 0rem;
+}
+
+.bg-light {
+  background-color: #FEFAE0;
+}
+
+p {
+  color: black;
+}
+
+.post-tile {
+  padding: 2rem 4rem;
+  border-radius: 3rem;
+  box-shadow: 1px 7px 8px 0px #DDA15E;
 }

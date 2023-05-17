@@ -34,7 +34,7 @@ for (let i = 0; i <= 5; i++) {
         <section>
           {
             posts.map((post) => (
-              <article style="margin-bottom: 3rem; border: 1.5px solid black; padding: 2rem;">
+              <article class="bg-light post-tile">
                 <time class="mb-0" datetime={post.data.pubDate.toISOString()}>
                     {post.data.pubDate.toLocaleDateString('en-us', {
                       year: 'numeric',
