@@ -2,11 +2,12 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import DateFormatter from '../components/DateFormatter.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+	(a, b) => a.data.updatedDate.valueOf() - b.data.updatedDate.valueOf()
 );
 
 const latestPosts = [];
@@ -35,13 +36,7 @@ for (let i = 0; i <= 5; i++) {
           {
             posts.map((post) => (
               <article class="bg-light post-tile">
-                <time class="mb-0" datetime={post.data.pubDate.toISOString()}>
-                    {post.data.pubDate.toLocaleDateString('en-us', {
-                      year: 'numeric',
-                      month: 'short',
-                      day: 'numeric',
-                    })}
-                  </time>
+                <DateFormatter date={post.data.updatedDate}></DateFormatter>
                 <h3 class="mb-0 mt-0">{post.data.title}</h3>
                 <a href={`/blog/${post.slug}/`}>Read Post</a>  
               </article>

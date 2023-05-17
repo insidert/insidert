@@ -3,20 +3,21 @@ import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import DateFormatter from '../components/DateFormatter.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, description, publishedDate, updatedDate, heroImage, tags } = Astro.props;
 ---
 
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
 		<style>
-			.title {
+			/* .title {
 				font-size: 2em;
 				margin: 0.25em 0 0;
-			}
+			} */
 			hr {
 				border-top: 1px solid #ddd;
 				margin: 1rem 0;
@@ -28,25 +29,22 @@ const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.prop
 		<Header />
 		<main>
 			<article>
-				{heroImage && <img width={720} height={360} src={heroImage.url} alt="{heroImage.alt}" />}
-				<h1 class="title">{title}</h1>
-        <div style="display: flex; justify-content: between;">
-          {pubDate && (
-              <p>
-                Posted <time>{pubDate}</time>
-              </p>
-            )}
-          {
-            updatedDate && (
-              <p>
-                Updated <time>{updatedDate}</time>
-              </p>
-            )
-          }
+				{heroImage.url && <img width={'100%'} src={heroImage.url} alt="{heroImage.alt}" />}
+				
+        <div class="bg-primary text-white post-tile">
+          <h1 class="mb-0 text-white">{title}</h1>
+          <small>
+            <DateFormatter date={updatedDate}></DateFormatter>
+          </small>
         </div>
 				
-				<hr />
 				<slot />
+
+        <hr>
+
+        <small>
+          First published on <DateFormatter date={publishedDate}></DateFormatter>
+        </small>
 
         <ul>
           {tags && tags.map((tag) => (

@@ -1,13 +1,13 @@
 ---
 title: "How I built this blog"
 description: "Evolution of the technologies behind this blog"
-pubDate: "Jun 06 2019"
-updatedDate: "May 13 2022"
+publishedDate: "Jun 06 2019"
+updatedDate: "May 13 2023"
 isFeatured: false
 tags: ['technology', 'how-i-built']
 heroImage:
-    url: "/placeholder-hero.jpg"
-    alt: "The hero image"
+    url: ""
+    alt: ""
 ---
 
 ## Looking back
