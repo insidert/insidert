@@ -8,9 +8,14 @@ export async function get(context) {
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,
 		site: context.site,
-		items: posts.map((post) => ({
-			...post.data,
-			link: `/blog/${post.slug}/`,
-		})),
+    items: posts.map((post) => {
+      const postContent = post.data;
+      postContent['pubDate'] = post.data.publishedDate;
+
+      return {
+        ...postContent,
+        link: `/blog/${post.slug}/`,
+      };
+    }),
 	});
 }
