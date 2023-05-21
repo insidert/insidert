@@ -2,11 +2,12 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PostHeader from '../../components/PostHeader.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.publishedDate.valueOf() - b.data.publishedDate.valueOf()
+	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
 );
 ---
 
@@ -38,17 +39,7 @@ const posts = (await getCollection('blog')).sort(
 			<section>
         {
           posts.map((post) => (
-            <article style="margin-bottom: 3rem; border: 1.5px solid black; padding: 2rem;">
-              <time class="mb-0" datetime={post.data.publishedDate.toISOString()}>
-									{post.data.publishedDate.toLocaleDateString('en-us', {
-										year: 'numeric',
-										month: 'short',
-										day: 'numeric',
-									})}
-								</time>
-              <h3 class="mb-0 mt-0">{post.data.title}</h3>
-              <a href={`/blog/${post.slug}/`}>Read Post</a>  
-            </article>
+            <PostHeader post={post} />
           ))
         }
 			</section>

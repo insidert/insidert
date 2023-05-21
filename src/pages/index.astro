@@ -2,12 +2,12 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import DateFormatter from '../components/DateFormatter.astro';
+import PostHeader from '../components/PostHeader.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.updatedDate.valueOf() - b.data.updatedDate.valueOf()
+	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
 );
 
 const latestPosts = [];
@@ -21,6 +21,15 @@ for (let i = 0; i <= 5; i++) {
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/v1/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/v1/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/v1/favicon-16x16.png">
+    <link rel="manifest" href="/favicons/v1/site.webmanifest">
+    <link rel="mask-icon" href="/favicons/v1/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/favicons/v1/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/favicons/v1/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
@@ -35,11 +44,7 @@ for (let i = 0; i <= 5; i++) {
         <section>
           {
             posts.map((post) => (
-              <article class="bg-light post-tile">
-                <DateFormatter date={post.data.updatedDate}></DateFormatter>
-                <h3 class="mb-0 mt-0">{post.data.title}</h3>
-                <a href={`/blog/${post.slug}/`}>Read Post</a>  
-              </article>
+              <PostHeader post={post} />
             ))
           }
         </section>

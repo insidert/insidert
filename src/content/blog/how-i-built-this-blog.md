@@ -10,6 +10,20 @@ heroImage:
     alt: ""
 ---
 
+Navigate for tl;dr
+
+- [Looking back](#looking-back)
+- [Fast forward](#fast-forward)
+- [The beginning with HTML](#the-beginning-with-html)
+- [Moving to SPA](#moving-to-spa)
+- [Getting serious with Web App](#getting-serious-with-web-app)
+- [JSON file as a database](#json-file-as-a-database)
+- [JSON is not enjoyable](#json-is-not-enjoyable)
+- [Let me try Express JS](#let-me-try-express-js)
+- [Back to Gridsome](#back-to-gridsome)
+- [Astro (2023)](#astro-2023)
+- [Why you should build your blog](#why-you-should-build-your-blog)
+
 ## Looking back
 
 Blogging is not new to me. I hosted my first blog on blogger.com almost 13 years ago. It was amusing setting up a page on the internet. I maintained a technical blog during my engineering which has internet tips and tricks, links to ebooks and syllabus. I also used MediaFire to host those ebooks. Next, I opened a personal blog - insidert (still functional)- and a magazine - skatespace (deleted a year later) - on wordpress.com.
@@ -18,7 +32,7 @@ Blogging is not new to me. I hosted my first blog on blogger.com almost 13 years
 
 When I started coding I did not concentrate on building my blog with my own hands. I used WordPress for a long time and then tried a few different services. I was not happy with them so I decided to build one.
 
-## The beginning
+## The beginning with HTML
 
 For the start, I wanted to build a single-page website just like a one-page resume. At first, there are a lot of options to host static sites. GitHub, GitLab pages are a good start. We can deploy plain HTML files and add a custom domain. But watching the extension '.html' in the address bar was a huge upset for me. REST architecture is awesome.
 
@@ -35,7 +49,7 @@ I started with my go-to framework bootstrap, customized using SASS and made the 
 
 I started with CSS grid but it seems like a dragon to handle for a novice. Meanwhile, I tried Gridsome – the JAM stack revolution. When I created a project with it, the homepage has a single column layout with just a few lines of CSS. That is all I need for my blog. I copied it and started building the content.
 
-## Getting serious
+## Getting serious with Web App
 
 Again I was not happy with the output. I thought it was enough with these static generators and static files and decided to try NodeJS. I wanted to write NodeJS since its first days but could not find time for it. Now anyway I want to code my blog badly, I thought this is the right time to try node for serious.
 
@@ -55,7 +69,7 @@ I googled it and I found out that I can deploy express apps with firebase. There
 
 I Got bored with JSON as database. I then wanted to use a real database. I use MySQL daily but wanted to use something different this time just like NodeJS. I chose MongoDB. With mongo atlas, we can host the database in the cloud. So another new technology has added to the stack.
 
-## Testing Node
+## Let me try Express JS
 
 ExpressJS + MongoDB.
 
@@ -75,18 +89,22 @@ But finally the site is breathing and I like the output. I want to continue with
 
 ## Back to Gridsome
 
-After a while, I wanted to try a new stack. Cricling back, I wanted to give Gridsome a try. This time, I did not want to have any database connections, any CRUD operations. I want a simple setup. That's where markdown has come.
+After a while, I wanted to try a new stack. Cricling back, I wanted to give Gridsome a try. This time, I did not want to have any database connections and CRUD operations. I want a simple setup. That's where markdown has come.
 
-The beauty with the markdown is that you don't have to worry about the changes. Just edit the file and save. SSG will recopile the site and the changes are live. It's as simple as that. 
+The beauty with the markdown is that you don't have to worry about the changes. Just edit the file and save. SSG will recompile the site and the changes are live. It's as simple as that. 
 
-So I started with Gridsome, changed the layouts and also started writing in markdown. Simple and powerful. 
+I liked the markdown content query with GraphQL. It was impressive. 
 
-## Astro
+## Astro (2023)
 
-I was happy with Gridsome but it's not actively maintained. Github is also throwing security issues. And also I want to try a new technology. I considered next.js and tried to implement the blog few times. But did not happen. Then Astro has come from no-where and people it looked like the prefect tech to try. 
+I was happy with Gridsome but it's not actively maintained. Github is also throwing security issues in the repo. And also I want to try a new technology. I considered next.js and tried to implement the blog few times. But did not happen. Then I came across Astro. 
 
-It's 2023 and I started this blog again with Astro. This time I removed all my previous content and starting fresh. 
+It's 2023 and I started this blog again with Astro. This time I removed all my previous content and starting fresh. This will be my first post in my redesigned blog.
 
-## Final thoughts
+## Why you should build your blog
 
-I think everyone should write something to the world and I strongly recommend it. If you are a developer do create a blog on your own. It allows for trying different technologies and different approaches which you cannot do that in your job. You can make a lot of trial and errors with your website and it costs nothing. Expand your technical horizons.
+I think everyone should write something to the world and I strongly recommend it. Writing clears your mind. It's a skill worth having. 
+
+If you are a developer, do create a blog on your own. It allows for trying different technologies and different approaches which you cannot do in your job. You can make a lot of trial and errors with your website and it costs nothing. 
+
+Expand your technical horizons.

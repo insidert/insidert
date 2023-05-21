@@ -1,0 +1,12 @@
+---
+import DateFormatter from '../components/DateFormatter.astro';
+
+const { post } = Astro.props;
+---
+
+<article class="bg-light post-tile">
+  <DateFormatter date={post.data.updatedDate}></DateFormatter>
+  <h3 class="mb-0 mt-0">{post.data.title}</h3>
+  <small>{post.data.description}</small> <br>
+  <a href={`/blog/${post.slug}/`}>Read Post</a>  
+</article>
