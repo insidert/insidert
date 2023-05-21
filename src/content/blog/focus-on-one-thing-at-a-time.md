@@ -1,5 +1,5 @@
 ---
-title: "Focus on one things at a time"
+title: "Focus on one thing at a time"
 description: "A simple hack to be more productive."
 publishedDate: "May 21 2023"
 updatedDate: "May 21 2023"
