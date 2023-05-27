@@ -19,9 +19,8 @@ Instead, it's better to focus on one task at a time and give it our full attenti
 Here are a few tips for focusing on one thing at a time:
 
 - Plan your day ahead of time. Decide what you need to accomplish, and then break down each task into smaller steps.
-- Set aside time for each task. Don't try to multitask or rush through your work.
-- Eliminate distractions. Turn off your phone, close your email, and find a quiet place to work.
-- Take breaks. Get up and move around every 20-30 minutes to avoid burnout.
-- Break down large tasks into smaller steps. This will make them seem less daunting and more manageable.
-- Estimate how long each task will take. This will help you to plan your time effectively.
-- Reward yourself for completing tasks. This will help you to stay motivated and productive.
+- Set aside time for each task. 
+- Don't try to multitask.
+- Eliminate distractions. Especially meetings. Move all your meeting to the end of the day (If that's possible).
+- Take breaks. Get up and move around every 20-30 minutes.
+- Break down large tasks into smaller steps.
