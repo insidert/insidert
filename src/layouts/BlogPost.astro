@@ -46,7 +46,7 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
             <DateFormatter date={updatedDate}></DateFormatter>
           </p>
           {
-            (publishedDate != updatedDate)
+            publishedDate.toString() != updatedDate.toString()
             && (
               <small>
                 First published on <DateFormatter date={publishedDate}></DateFormatter>
