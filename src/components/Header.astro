@@ -3,7 +3,7 @@ import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
-<header style="display: flex; justify-content:space-between; align-items: center;">
+<header style="display: flex; justify-content:space-between; align-items: center; flex-wrap: wrap;">
   <img src="/insidert.png" alt="insidert" width="128">
 	<!-- <h2>
 		{SITE_TITLE}
@@ -11,6 +11,7 @@ import { SITE_TITLE } from '../consts';
 	<nav>
 		<HeaderLink href="/">Home</HeaderLink>
 		<HeaderLink href="/blog">Blog</HeaderLink>
+		<HeaderLink href="/tags">Tags</HeaderLink>
 		<!-- <HeaderLink href="/about">Projects</HeaderLink> -->
 		<!-- <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
 		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink> -->

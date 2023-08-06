@@ -1,68 +1,33 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import PostHeader from '../components/PostHeader.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
-import { getCollection } from 'astro:content';
+import MasterLayout from "../layouts/MasterLayout.astro";
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import PostHeader from "../components/PostHeader.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import { getCollection } from "astro:content";
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
 );
 
-const latestPosts = [];
-
-for (let i = 0; i <= 5; i++) {
-  latestPosts.push(posts[i]);
-}
+const featuredPosts = posts.filter(post => post.data.isFeatured)
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/v1/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/v1/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/v1/favicon-16x16.png">
-    <link rel="manifest" href="/favicons/v1/site.webmanifest">
-    <link rel="mask-icon" href="/favicons/v1/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/favicons/v1/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/favicons/v1/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<h1>Inside Ravi Teja</h1>
-			<p>
-         Entrepreneur with a passion for full-stack and app development. Co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> along with my brother. I share about my projects, thoughts, productivity and important updates.
-			</p>
+<MasterLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1>Inside Ravi Teja</h1>
+  <p>
+    Entrepreneur with a passion for full-stack and app development. Co-founded <a
+      href="https://prasanta.business"
+      target="_blank">Prasanta Communications</a
+    > along with my brother. I share about my projects, thoughts, productivity and
+    important updates.
+  </p>
 
-      <div>
-        <h4>Latest articles</h4>
-        <section>
-          {
-            posts.map((post) => (
-              <PostHeader post={post} />
-            ))
-          }
-        </section>
-      </div>
-      <!-- <div>
-        <h4>Latest articles</h4>
-      </div>
-      <div>
-        <h4>Book recommendations</h4>
-      </div>
-      <div>
-        <h4>Referrals</h4>
-      </div>
-      <div>
-        <h4>My Projects</h4>
-      </div> -->
-
-		</main>
-		<Footer />
-	</body>
-</html>
+  <div>
+    <h4>Featured articles</h4>
+    <div>
+      {featuredPosts.map((post) => <PostHeader post={post} />)}
+    </div>
+  </div>
+</MasterLayout>

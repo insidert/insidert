@@ -12,12 +12,18 @@ heroImage:
 
 This is a step-by-step guide to setup your Laravel application on Vultr or Digital Ocean. 
 
-First you need to select a server in one of the service providers.
+First you need to select a server in one of the service providers. I deploy all my servers on Vultr. I have been using this service since 2017. [Get 100$ as signup bonus on Vultr.](https://www.vultr.com/?ref=9367505-8H)
+
+Or you can use DigitalOcean. [Get 200$ as signup bonus on DigitalOcean.](https://m.do.co/c/84577e41997d)
+
+*Do note that the signup bonus expires after 2 months from signup.*
 
 This post is a collection of commands that helped me setup Laravel in a VPS. I have written this for myself to just copy and past the commands directly so that I don't have to go to individual resources. Most of the resources are from [serversforhackers.com](https://serversforhackers.com/) by [Chris Fidao.](https://twitter.com/fideloper)
 
+- [Creating a server](#creating-a-server)
+- [Login to your server](#login-to-your-server)
 - [Add a user](#add-a-user)
-- [Setup SSH](#setup-ssh)
+- [Setup SSH for the new user](#setup-ssh-for-the-new-user)
 - [Install PHP](#install-php)
 - [Install Composer](#install-composer)
 - [Install Nginx](#install-nginx)
@@ -31,6 +37,22 @@ This post is a collection of commands that helped me setup Laravel in a VPS. I h
 - [SSL Certificate](#ssl-certificate)
 - [Storage Symlink](#storage-symlink)
 
+## Creating a server
+
+After creating an account on Vultr or DigitalOcean, you should select a server size based on your needs and opt to install Ubuntu.
+
+Please choose Ubuntu LTS version. If it is not LTS version, it will be hard to update our softwares - like PHP - in future. 
+
+## Login to your server
+
+After creating a server, you will be given the IP address and login credentails for root user.
+
+You will need an ssh client to log into your newly created server. I use Windows Terminal app. 
+
+To login, do ```ssh root@192.168.0.1``` from your terminal app.
+
+Replace 192.168.0.1 with the IP address of your server.
+
 ## Add a user
 
 After logging in as root, add a new user and add to sudo group.
@@ -41,7 +63,7 @@ sudo adduser raviteja
 usermod -aG sudo raviteja
 ```
 
-Run commands as the new user with sudo permissions.
+From here on, run commands as the new user with sudo permissions.
 
 ```bash
 sudo su raviteja
@@ -49,7 +71,7 @@ sudo su raviteja
 
 - [Video](https://serversforhackers.com/c/creating-users-and-ssh-security)
 
-## Setup SSH
+## Setup SSH for the new user
 
 ```bash
 cd ~/.ssh
@@ -84,10 +106,12 @@ sudo add-apt-repository -y ppa:ondrej/php
 
 sudo apt-get update
 
-sudo apt-get install -y php8.0-fpm php8.0-cli php8.0-mysql \
-  php8.0-mcrypt php8.0-gd php8.0-imap php8.0-curl \
-  php8.0-mbstring php8.0-xml php8.0-bcmath php8.0-zip
+sudo apt-get install -y php8.1-fpm php8.1-cli php8.1-mysql \
+  php8.1-mcrypt php8.1-gd php8.1-imap php8.1-curl \
+  php8.1-mbstring php8.1-xml php8.1-bcmath php8.1-zip
 ```
+
+You can replace the version number if you are installing more latest versions.
 
 - [Video](https://serversforhackers.com/c/lemp-nginx-php-laravel)
 
@@ -323,7 +347,11 @@ sudo snap install --classic certbot
 
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
+// This command will edit the nginx configuration
 sudo certbot --nginx
+
+// I use this command so that the nginx configuration is not edited
+sudo certbot certonly --nginx
 
 // testing to renew
 sudo certbot renew --dry-run

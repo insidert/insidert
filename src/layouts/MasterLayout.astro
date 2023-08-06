@@ -7,7 +7,7 @@ import DateFormatter from '../components/DateFormatter.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, publishedDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <html lang="en">
@@ -22,50 +22,12 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/favicons/v1/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-		<style>
-			/* .title {
-				font-size: 2em;
-				margin: 0.25em 0 0;
-			} */
-			hr {
-				border-top: 1px solid #ddd;
-				margin: 1rem 0;
-			}
-		</style>
 	</head>
 
 	<body>
 		<Header />
 		<main>
-			<article>
-				{heroImage.url && <img width={'100%'} src={heroImage.url} alt="{heroImage.alt}" />}
-				
-        <div class="bg-primary text-white post-tile">
-          <h1 class="mb-0 text-white" style="margin-top: 4rem;">{title}</h1>
-          <p class="mb-0 mt-0 text-white">
-            <DateFormatter date={updatedDate}></DateFormatter>
-          </p>
-          {
-            publishedDate.toString() != updatedDate.toString()
-            && (
-              <small>
-                First published on <DateFormatter date={publishedDate}></DateFormatter>
-              </small>
-            )
-          }
-        </div>
-				
-				<slot />
-
-        <hr/>
-
-        <p>Post Tags:</p>
-        <ul>
-          {tags && tags.map((tag) => (
-            <li>{tag}</li>
-          ))}
-        </ul>
-			</article>
+			<slot />
 		</main>
 		<Footer />
 	</body>

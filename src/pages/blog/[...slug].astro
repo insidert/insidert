@@ -1,21 +1,57 @@
 ---
-import { CollectionEntry, getCollection } from 'astro:content';
-import BlogPost from '../../layouts/BlogPost.astro';
+import { CollectionEntry, getCollection } from "astro:content";
+import MasterLayout from "../../layouts/MasterLayout.astro";
+import DateFormatter from "../../components/DateFormatter.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<BlogPost {...post.data}>
-	<!-- <h1>{post.data.title}</h1> -->
-	<Content />
-</BlogPost>
+<MasterLayout {...post.data}>
+  <article>
+    {
+      post.data.heroImage.url && (
+        <img
+          width={"100%"}
+          src={post.data.heroImage.url}
+          alt="{post.data.heroImage.alt}"
+        />
+      )
+    }
+
+    <div class="bg-primary text-white post-tile">
+      <h1 class="mb-0 text-white" style="margin-top: 4rem;">
+        {post.data.title}
+      </h1>
+      <p class="mb-0 mt-0 text-white">
+        <DateFormatter date={post.data.updatedDate} />
+      </p>
+      {
+        post.data.publishedDate.toString() !=
+          post.data.updatedDate.toString() && (
+          <small>
+            First published on <DateFormatter date={post.data.publishedDate} />
+          </small>
+        )
+      }
+    </div>
+
+    <Content />
+
+    <hr />
+
+    <p>Post Tags:</p>
+    <div>
+      {post.data.tags && post.data.tags.map((tag) => <div><a href={`/tags/${tag}`}>#{tag}</a></div>)}
+    </div>
+  </article>
+</MasterLayout>

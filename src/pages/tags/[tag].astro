@@ -1,0 +1,37 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import MasterLayout from "../../layouts/MasterLayout.astro";
+import DateFormatter from "../../components/DateFormatter.astro";
+import PostHeader from '../../components/PostHeader.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
+
+  return uniqueTags.map((tag) => {
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<MasterLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1>Posts tagged with {tag}</h1>
+
+  <div>
+    {
+      posts.map((post) => (
+        <PostHeader post={post} />
+      ))
+    }
+  </div>
+
+</MasterLayout>
