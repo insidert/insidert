@@ -14,4 +14,7 @@ heroImage:
 - Go to a place where there are near zero distractions. 
 - A well lit place is necessary. You should have the light source in a way that you face is well lit.
 - Check the microphones of your devices. A bad sound quality is very unacceptable. People may compromise on the video but won't on audio.
-- List of the topics you want to discuss
+- List of the topics you want to discuss.
+- Prepare a good introduction about yourself. 
+- Dive into the topics according to the list prepared.
+- Have closing anchors. Like subscribing to your channels or newsletter.

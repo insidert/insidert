@@ -28,7 +28,10 @@ The list in the order of my completion.
     - This is about how to build habit forming products. Example Instagram, Facebook. They keep us so hooked we subconsciously take action to open the apps and check Author details about the psychology and behavioural changes these apps brought to us.
     - Year of completion: 2016
 - The power of subconscious mind.
+    - The best books on how to train your mind for good things. Your mind is so powerful and you can tame it for good things you need. A definite ready.
+    - Year of completion: 2017
 - Think and grow rich.
+    - 
 - Zero to one.
 - How to win friends and influence people.
 - Rework.
@@ -41,16 +44,20 @@ The list in the order of my completion.
 - Never split the difference.
 - The lean startup.
 - Man's search for meaning
+    - Based on the true stories and events, this is one of the remarkable reads. You will develop a new outlook for life, suffering and hope. 
+    - Year of completion: 2022 
+- The Richest Man in Babylon
+    - Everyone should read this book. The necessary foundations on how to manage your expenses and how to deal with money. A good read. Hightly recommended.
+    - Year of completion: 2023 
 
 ## Current Readings
 
-- The Richest Man in Babylon
+- Influence 
 
 ## In queue
 
 - Thinking fast and slow
 - The courage to be disliked
-- Influence 
 - Steve Jobs
 
 ## I recommend
@@ -59,6 +66,7 @@ The list in the order of my completion.
 2. Never split the difference.
 3. How to win friends and influence people.
 4. The power of subconscious mind.
+5. The richest man in Babylon.
 
 ## For business
 
