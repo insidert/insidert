@@ -1,6 +1,3 @@
-The Business Mistakes
-
-Here are few mistakes and findings I made about business.
 ---
 title: "Business mistakes"
 description: "How we wrap our head around the unknown"
