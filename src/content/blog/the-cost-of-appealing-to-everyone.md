@@ -1,5 +1,5 @@
 ---
-title: "Speak free"
+title: "The cost of appealing to everyone"
 description: "How we wrap our head around the unknown"
 publishedDate: "Aug 14 2023"
 updatedDate: "Aug 14 2023"

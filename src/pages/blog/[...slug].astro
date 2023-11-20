@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import MasterLayout from "../../layouts/MasterLayout.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
 import DateFormatter from "../../components/DateFormatter.astro";
 
 export async function getStaticPaths() {
@@ -16,7 +16,7 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<MasterLayout {...post.data}>
+<AppLayout {...post.data}>
   <article>
     {
       post.data.heroImage.url && (
@@ -54,4 +54,4 @@ const { Content } = await post.render();
       {post.data.tags && post.data.tags.map((tag) => <div><a href={`/tags/${tag}`}>#{tag}</a></div>)}
     </div>
   </article>
-</MasterLayout>
+</AppLayout>
