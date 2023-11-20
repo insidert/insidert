@@ -1,3 +1,15 @@
+---
+title: "Business Mistakes"
+description: "How we wrap our head around the unknown"
+publishedDate: "Aug 14 2023"
+updatedDate: "Aug 14 2023"
+isFeatured: true
+tags: ['productivity', 'thoughts']
+heroImage:
+    url: ""
+    alt: ""
+---
+
 The Business Mistakes
 
 Here are few mistakes and findings I made about business.

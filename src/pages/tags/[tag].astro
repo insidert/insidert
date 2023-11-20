@@ -1,6 +1,6 @@
 ---
 import { CollectionEntry, getCollection } from "astro:content";
-import MasterLayout from "../../layouts/MasterLayout.astro";
+import AppLayout from "../../layouts/AppLayout.astro";
 import DateFormatter from "../../components/DateFormatter.astro";
 import PostHeader from '../../components/PostHeader.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
@@ -23,8 +23,8 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<MasterLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <h1>Posts tagged with {tag}</h1>
+<AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <h1>Posts tagged with #{tag}</h1>
 
   <div>
     {
@@ -34,4 +34,4 @@ const { posts } = Astro.props;
     }
   </div>
 
-</MasterLayout>
+</AppLayout>

@@ -1,5 +1,5 @@
 ---
-import MasterLayout from '../../layouts/MasterLayout.astro';
+import AppLayout from '../../layouts/AppLayout.astro';
 import PostHeader from '../../components/PostHeader.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
@@ -9,7 +9,7 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<MasterLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <h1>Blog</h1>
   <div>
     {
@@ -18,5 +18,5 @@ const posts = (await getCollection('blog')).sort(
       ))
     }
   </div>
-</MasterLayout>
+</AppLayout>
 

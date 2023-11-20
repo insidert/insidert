@@ -7,9 +7,7 @@ I have redesigned my blog with [Astro](https://astro.build) and deployed with [N
 ToDo:
 
 - Move color scheme to CSS varibles.
-- Add analytics.
 - Add article schema. 
-- Streamline <head> section
 - Add related posts below
-- Add tags to posts
-- Separate tags page
+- Add meta tags for each page.
+- Add analytics.
