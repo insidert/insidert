@@ -1,15 +1,14 @@
 ---
 title: "Business mistakes"
-description: "How we wrap our head around the unknown"
+description: "My observations and realisations about starting and staying the business."
 publishedDate: "Aug 14 2023"
 updatedDate: "Aug 14 2023"
 isFeatured: true
-tags: ['productivity', 'thoughts']
+tags: ['business', 'thoughts']
 heroImage:
     url: ""
     alt: ""
 ---
-
 
 - The idea may not generate money.
 - People does not straight away pay for the product. It takes a lot of mental struggle for them to pay something.

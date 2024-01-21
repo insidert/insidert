@@ -1,14 +1,15 @@
 ---
 title: "Build your first webpage. The foundations."
-description: "How we wrap our head around the unknown"
+description: "A theoretical  guide to start your first webpage."
 publishedDate: "Mar 9 2020"
 updatedDate: "Mar 9 2020"
 isFeatured: true
-tags: ['HTML', 'CSS','Begineer','Guides and Tutorials']
+tags: ['coding', 'Guides and Tutorials']
 heroImage:
     url: ""
     alt: ""
 ---
+
 Note: I have originally written this post on Coder Bootcamp for absolute beginners and is a part of the free full-stack curriculum. This post guides you on what to learn first to build your first webpage and expects a self-learning approach. It uses handpicked Mozilla documentation references more.
 
 About the project
@@ -42,28 +43,26 @@ Milestones
 These are the milestones you need to achieve for this foundations project.
 
 HTML
-1.Draw a layout. Spark your imagination and decide on how your website should look like and what to put inside a page like headings, text and images. Use a pencil/pen and paper to sketch some layouts. Read more.
+1.Draw a layout. Spark your imagination and decide on how your website should look like and what to put inside a page like headings, text and images. Use a pencil/pen and paper to sketch some layouts.
 
-2.Create a project folder. Always create a new folder for every project. I recommend you keep all your project folders, software installations in a drive other than the OS drive. Read more about the folder and file structure.
+2.Create a project folder. Always create a new folder for every project. I recommend you keep all your project folders, software installations in a drive other than the OS drive.
 
 3.Create HTML files. Open the project folder in VS Code or Sublime Text and create a new file called index.html. It is better to create the files from the editor itself. The HTML file is just like a text file. The text file has .txt as the extension and HTML file has .html as the file extension.
 
-4.Understand the structure of the HTML. HTML is treated by the browsers as a document and it is generally divided into two major sections. The head block and the body block. Both blocks are created using the head and body tags. We include the meta tags, document title, external, internal styles and scripts in the head block. The content goes into the body block. Read more about the structure and anatomy of tags
+4.Understand the structure of the HTML. HTML is treated by the browsers as a document and it is generally divided into two major sections. The head block and the body block. Both blocks are created using the head and body tags. We include the meta tags, document title, external, internal styles and scripts in the head block. The content goes into the body block. 
 
 5.Learn tags to render these elements. Headings, paragraph, lists, Image, Div, Section.
 
-6.Links HTML pages with the anchor tag. The heart of the web is to move from one page to the other page. The anchor tag takes us from one page to the other page. The href part takes care of the destination file. Read more
+6.Links HTML pages with the anchor tag. The heart of the web is to move from one page to the other page. The anchor tag takes us from one page to the other page. The href part takes care of the destination file.
 
 CSS
 1.Style the elements. We will make the HTML elements beautiful with the CSS. Read what CSS can do.
 
 2.Attach CSS. We can attach the styles to HTML elements in three different ways. 
-Internal — styling rules written inside the style tag with selectors, External — all the styling rules in a separate file and reference the file in the HTML — and Inline — rules written inside the opening tag of an element. Each has its precedence and advantages. Know how can you attach the CSS.
+Internal — styling rules written inside the style tag with selectors, External — all the styling rules in a separate file and reference the file in the HTML — and Inline — rules written inside the opening tag of an element. Each has its precedence and advantages.
 
-3.Select elements and apply styling rules. We need to select the element(s) first to apply the rules. Selecting is very important in CSS. Know how can you select the elements.
+3.Select elements and apply styling rules. We need to select the element(s) first to apply the rules. Selecting is very important in CSS. 
 
-4.ID and Class. Apply the styles by selecting the element specifically with an ID and apply common styles to many elements with a Class. Read how to select with ID and Class.
+4.ID and Class. Apply the styles by selecting the element specifically with an ID and apply common styles to many elements with a Class. 
 
 5.Practice the following rules and use them to style the webpages. Font color, Font size, Background color, Border, Border radius, Padding, Margin.
-
-Do share what can be improved and added.
