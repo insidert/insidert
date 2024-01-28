@@ -1,16 +1,16 @@
 ---
 title: "Build your first webpage. The foundations."
-description: "A theoretical  guide to start your first webpage."
+description: "A theoretical  guide to building your first webpage."
 publishedDate: "Mar 9 2020"
 updatedDate: "Mar 9 2020"
-isFeatured: true
-tags: ['coding', 'Guides and Tutorials']
+isFeatured: false
+tags: ['code', 'guides and tutorials']
 heroImage:
     url: ""
     alt: ""
 ---
 
-Note: I have originally written this post on Coder Bootcamp for absolute beginners and is a part of the free full-stack curriculum. This post guides you on what to learn first to build your first webpage and expects a self-learning approach. It uses handpicked Mozilla documentation references more.
+Note: I have originally written this post on Coder Bootcamp for absolute beginners and is a part of the free full-stack curriculum. This post guides you on what to learn first to build your first webpage and expects a self-learning approach. Please refer Mozilla documentation and W3Schools for structured approach.
 
 About the project
 The foundation project helps you get started with the front-end. You will know about browser technologies and how to build websites with HTML and CSS. It is better to work on a simple project like your resume or your family details. You can check some of the project ideas here.

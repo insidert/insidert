@@ -1,8 +1,8 @@
 ---
-title: "Business mistakes"
-description: "My observations and realisations about starting and staying the business."
+title: "Tidbits to first time Entrepreneurs from a first time Entrepreneuer."
+description: "My observations and realisations about starting and staying the business. Not in cronological order."
 publishedDate: "Aug 14 2023"
-updatedDate: "Aug 14 2023"
+updatedDate: "Jan 10 2024"
 isFeatured: true
 tags: ['business', 'thoughts']
 heroImage:
@@ -11,13 +11,13 @@ heroImage:
 ---
 
 - The idea may not generate money.
-- People does not straight away pay for the product. It takes a lot of mental struggle for them to pay something.
+- People does not straight away pay for the product. It takes a lot of mental struggle for them to pay for something. It is our job to convince them to buy through our marketing.
 - For higher margins, we need to build for rich people and make it a luxury. 
 - Luxury creates a benchmark for people to achieve.
-- People likes to show off no matter what they say. Not many likes to keep a low profile.
+- People likes to show off no matter what they say. Not many like to keep a low profile.
 - Great product with a great community will keep the business sustainable and profitable.
 - It is all about people.
-- Build for people. Not all people are same. We should know in specific to whom we are building for.
+- Build for people. Not all people are same. We should know whom we are building for.
 - The market size determines the upper limit a business can cater.
 - The core business should be lean and agile.
 - We should not add items to substitute the core business. It should be an another business.
@@ -37,6 +37,6 @@ heroImage:
 - Without a community, it is hard to build a business.
     - Community is people.
     - Business is for the people.
-- High margins should be added from the beginning. When there is a competition, we can add ore add ons cutting down the margin and become more appealing.
+- High margins should be added from the beginning. When there is a competition, we can add more add-ons instead of cutting down the margin and become more appealing.
 - Services does not make us rich.
 - Every hour we spend is costly. Spend wisely.

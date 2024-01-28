@@ -2,7 +2,7 @@
 title: "Books I read"
 description: "List of titles  I read and also my recommendations so far."
 publishedDate: "Apr 04 2021"
-updatedDate: "Aug 7 2023"
+updatedDate: "Jan 10 2024"
 isFeatured: true
 tags: ['productivity', 'books']
 heroImage:
@@ -12,42 +12,46 @@ heroImage:
 
 The list in the order of my completion.
 
-- Life is what you make it. 
-    - This is my first book. When I was searching through Flipkart, I got this book at a deal. I thought of not spending too much on a book as I was not an avid reader. It's a fictional writing about a girl who is diagnosed with bi-polar disease and how she overcomes the hurdles and made her own way of life. And hence the title. Life is what you make it. It was a good one and then I decided not to go fictional writings as I thought more fiction is going in my life at that point. 
-    - Year of completion: Probably 2013.
+- Life is what you make it.  
+    - Completed: Probably 2013.
 - Roots. 
-    - This is a real story with few imaginary fillings. An African person whose ancestors were traded from Africa as slaves to America attemted to find his origins and where he had come from. It's a long read which covers how the African tribes spends their day and how they got captured and traded across Atlantic ocean in the most inhumane way and how their lives took turns as slaves in America and how the won the freedom.
-    - Year of completion: Probably 2014.
+    - Completed: Probably 2014.
 - American Sniper.
-    - I watched Amerian Sniper movie and I liked it. At the end, it was mentioned that it's based on real story. I wanted to read the full story and I bought this book. It was a good read. Felt very bad that he got saved many times on the battle ground but got shot from whom he is trying to help after the retirement.
-    - Year of completion: Probably 2014.
+    - Completed: Probably 2014.
 - Rich dad, poor dad.
-    - One of the classic reads. This is a good start to understand how the rich thinks. Definitely worth reading and re-reading it. Simple theme: you need assets which bring in money rather than liabilities which take away money from you.
-    - Year of completion: Probably 2015.
+    - Completed: Probably 2015.
 - Hooked.
-    - This is about how to build habit forming products. Example Instagram, Facebook. They keep us so hooked we subconsciously take action to open the apps and check Author details about the psychology and behavioural changes these apps brought to us. I wanted to read this book while building MF7 (It was then Craypolar.)
-    - Year of completion: 2016
+    - Completed: 2016
 - The power of subconscious mind.
-    - The best books on how to train your mind for good things. Your mind is so powerful and you can tame it for good things you need. A definite read.
-    - Year of completion: 2017
+    - Completed: 2017
 - Think and grow rich.
+    - Completed: 2017
 - Zero to one.
+    - Completed: 2017
 - How to win friends and influence people.
+    - Completed: 2017
 - Rework.
+    - Completed: 2017
 - All marketers tell stories.
+    - Completed: 2017
 - The challenger sale.
+    - Completed: 2017
 - Homo Sapiens - A brief history of mankind.
+    - Completed: 2017
 - The tipping point.
+    - Completed: 2018
 - Blink.
+    - Completed: 2018
 - FAQs on marketing.
+    - Completed: 2018
 - Never split the difference.
+    - Completed: 2021
 - The lean startup.
-- Man's search for meaning
-    - Based on the true stories and events, this is one of the remarkable reads. You will develop a new outlook for life, suffering and hope. 
-    - Year of completion: 2022 
+    - Completed: 2022
+- Man's search for meaning 
+    - Completed: 2022 
 - The Richest Man in Babylon
-    - Everyone should read this book. The necessary foundations on how to manage your expenses and how to deal with money. A good read. Hightly recommended.
-    - Year of completion: 2023 
+    - Completed: 2023 
 
 ## Current Readings
 
