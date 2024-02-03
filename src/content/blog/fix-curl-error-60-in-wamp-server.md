@@ -3,7 +3,7 @@ title: "Fix cURL error 60 in Wamp Server"
 description: "How we wrap our head around the unknown"
 publishedDate: "Dec 3 2020"
 updatedDate: "Dec 3 2020"
-isFeatured: true
+isFeatured: false
 tags: ['PHP', 'Laravel','Curl']
 heroImage:
     url: ""

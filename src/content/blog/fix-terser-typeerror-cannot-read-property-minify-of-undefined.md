@@ -3,7 +3,7 @@ title: "Fix Terser TypeError: Cannot read property ‘minify’ of undefined"
 description: "How we wrap our head around the unknown"
 publishedDate: "Feb 10 2019"
 updatedDate: "Feb 10 2019"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel', 'Laravel Mix','NPM']
 heroImage:
     url: ""

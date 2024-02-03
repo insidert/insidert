@@ -3,7 +3,7 @@ title: "Send custom JSON error response in Laravel"
 description: "How we wrap our head around the unknown"
 publishedDate: "Aug 14 2023"
 updatedDate: "Mar 22 2019"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel']
 heroImage:
     url: ""

@@ -3,7 +3,7 @@ title: "Upgrading to Laravel Mix 4 in Laravel Projects"
 description: "How we wrap our head around the unknown"
 publishedDate: "Dec 19 2018"
 updatedDate: "Dec 19 2018"
-isFeatured: true
+isFeatured: false
 tags: ['javascript', 'Laravel','Vuejs','Laravel Mix']
 heroImage:
     url: ""

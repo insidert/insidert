@@ -3,7 +3,7 @@ title: "How to prepare for a webinar"
 description: "A simple checklist"
 publishedDate: "Aug 27 2023"
 updatedDate: "Aug 27 2023"
-isFeatured: true
+isFeatured: false
 tags: ['productivity', 'how-to']
 heroImage:
     url: ""

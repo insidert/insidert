@@ -3,7 +3,7 @@ title: "Flutter Target API 31"
 description: "How we wrap our head around the unknown"
 publishedDate: "Mar 8 2022"
 updatedDate: "Mar 8 2022"
-isFeatured: true
+isFeatured: false
 tags: ['Flutter', 'Android','Play Store']
 heroImage:
     url: ""

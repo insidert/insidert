@@ -3,7 +3,7 @@ title: "Fixing the glitches while setting up push notifications for your Flutter
 description: "How we wrap our head around the unknown"
 publishedDate: "Aug 8 2020"
 updatedDate: "Aug 8 2020"
-isFeatured: true
+isFeatured: false
 tags: ['Flutter', 'Flutter App Development','Firebased cloud messaging','Firebase']
 heroImage:
     url: ""

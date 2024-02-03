@@ -3,7 +3,7 @@ title: "Fix flutterfire is not recognized on macos"
 description: "How we wrap our head around the unknown"
 publishedDate: "Feb 18 2022"
 updatedDate: "Feb 18 2022"
-isFeatured: true
+isFeatured: false
 tags: ['Flutter', 'Firebase','Flutter App Development','Firebase cloud messaging']
 heroImage:
     url: ""

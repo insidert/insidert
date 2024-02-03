@@ -3,7 +3,7 @@ title: "Processing delivery report from MSG91 via Webhooks in Laravel"
 description: "How we wrap our head around the unknown"
 publishedDate: "Aug 2 2019"
 updatedDate: "Aug 2 2019"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel','SMS','sms gateway','Msg91','Webhooks']
 heroImage:
     url: ""

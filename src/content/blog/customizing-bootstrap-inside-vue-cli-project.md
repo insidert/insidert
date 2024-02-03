@@ -4,7 +4,7 @@ description: "A simple step-by-step tutorial to setup SASS and customize the fra
 publishedDate: "Dec 24 2018"
 updatedDate: "Dec 24 2018"
 isFeatured: false
-tags: ['Sass', 'Vuejs','Bootstrap']
+tags: ['sass', 'vuejs', 'bootstrap', 'code']
 heroImage:
     url: ""
     alt: ""

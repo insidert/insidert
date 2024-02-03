@@ -3,7 +3,7 @@ title: "Guide on authenticating Mobile Application with Laravel Sanctum"
 description: "How we wrap our head around the unknown"
 publishedDate: "Jun 7 2020"
 updatedDate: "Jun 7 2020"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel', 'Laravel Sanctum','Mobile App Development','Unauthenticated Issue']
 heroImage:
     url: ""

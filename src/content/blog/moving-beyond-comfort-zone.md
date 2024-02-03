@@ -3,8 +3,8 @@ title: "Moving beyond comfort zone"
 description: "How I had to move out of my introvert zone"
 publishedDate: "Aug 14 2023"
 updatedDate: "Aug 14 2023"
-isFeatured: true
-tags: ['productivity', 'thoughts']
+isFeatured: false
+tags: ['business', 'productivity']
 heroImage:
     url: ""
     alt: ""

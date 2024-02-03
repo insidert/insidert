@@ -3,7 +3,7 @@ title: "Copy large files from Ubuntu Server to your local Windows system with rs
 description: "The simplest way to download files from the server to your local system"
 publishedDate: "Dec 19 2021"
 updatedDate: "Dec 19 2021"
-isFeatured: true
+isFeatured: false
 tags: ['ubuntu', 'windows', 'rsync', 'tooling']
 heroImage:
     url: ""

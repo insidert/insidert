@@ -3,7 +3,7 @@ title: "Setting up a Laravel project on Windows with XAMPP / WAMP."
 description: "How we wrap our head around the unknown"
 publishedDate: "May 3 2017"
 updatedDate: "May 3 2017"
-isFeatured: true
+isFeatured: false
 tags: ['PHP', 'Laravel','Xampp']
 heroImage:
     url: ""

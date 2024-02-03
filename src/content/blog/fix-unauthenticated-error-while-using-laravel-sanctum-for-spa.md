@@ -3,7 +3,7 @@ title: "Fixing ‘unauthenticated error’ while using Laravel Sanctum for SPA."
 description: "How we wrap our head around the unknown"
 publishedDate: "Oct 29 2020"
 updatedDate: "Oct 29 2020"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel', ';Laravel Sanctum']
 heroImage:
     url: ""

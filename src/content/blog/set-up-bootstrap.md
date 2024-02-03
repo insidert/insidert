@@ -3,7 +3,7 @@ title: "Setting up Bootstrap, Vue SFC in Laravel 9+ using Vite"
 description: "How we wrap our head around the unknown"
 publishedDate: "Feb 13 2022"
 updatedDate: "Feb 13 2022"
-isFeatured: true
+isFeatured: false
 tags: ['Laravel', 'Vitejs','Bootstrap','Scss','Vuejs']
 heroImage:
     url: ""

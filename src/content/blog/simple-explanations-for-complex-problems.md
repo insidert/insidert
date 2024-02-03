@@ -3,8 +3,8 @@ title: "Simple explanations for complex problems"
 description: "How we wrap our head around the unknown"
 publishedDate: "Aug 14 2023"
 updatedDate: "Aug 14 2023"
-isFeatured: true
-tags: ['productivity', 'thoughts']
+isFeatured: false
+tags: ['opinions']
 heroImage:
     url: ""
     alt: ""

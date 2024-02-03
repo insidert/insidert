@@ -3,7 +3,7 @@ title: "Using Quill JS in Laravel. Also, fixing the ops.insert is a null issue w
 description: "How we wrap our head around the unknown"
 publishedDate: "May 12 2020"
 updatedDate: "May 12 2020"
-isFeatured: true
+isFeatured: false
 tags: ['Quill', 'Laravel','Vue','Javascript']
 heroImage:
     url: ""

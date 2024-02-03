@@ -3,7 +3,7 @@ title: "Fix pod install and update for Flutter on iOS, M1 mac."
 description: "How we wrap our head around the unknown"
 publishedDate: "May 27 2022"
 updatedDate: "May 27 2022"
-isFeatured: true
+isFeatured: false
 tags: ['IOS', 'Flutter']
 heroImage:
     url: ""
