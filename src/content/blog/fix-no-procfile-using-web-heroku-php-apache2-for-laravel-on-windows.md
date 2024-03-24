@@ -1,6 +1,6 @@
 ---
 title: "Fix no procfile using ‘web heroku-php-apache2’ for Laravel on Windows"
-description: "How we wrap our head around the unknown"
+description: "A simple fix."
 publishedDate: "Aug 14 2023"
 updatedDate: "Aug 8 2019"
 isFeatured: false

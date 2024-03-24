@@ -1,25 +1,18 @@
 ---
 title: "How to deploy Laravel application to a server"
-description: "Step-by-step guide about creating a virtual private server and the setup."
+description: "Step-by-step guide on deploying laravel application to a VPS."
 publishedDate: "Jun 2 2023"
-updatedDate: "Jun 2 2023"
+updatedDate: "Mar 1 2024"
 isFeatured: false
-tags: ['code', 'how-to']
+tags: ['code', 'how-to', 'laravel', 'server']
 heroImage:
     url: ""
     alt: ""
 ---
 
-This is a step-by-step guide to setup your Laravel application on Vultr or Digital Ocean. 
+This is a step-by-step guide to setup your Laravel application on Vultr or Digital Ocean or any other VPS with root access. 
 
-First you need to select a server in one of the service providers. I deploy all my servers on Vultr. I have been using this service since 2017. [Get 100$ as signup bonus on Vultr.](https://www.vultr.com/?ref=9367505-8H)
-
-Or you can use DigitalOcean. [Get 200$ as signup bonus on DigitalOcean.](https://m.do.co/c/84577e41997d)
-
-*Do note that the signup bonus expires after 2 months from signup.*
-
-This post is a collection of commands that helped me setup Laravel in a VPS. I have written this for myself to just copy and past the commands directly so that I don't have to go to individual resources. Most of the resources are from [serversforhackers.com](https://serversforhackers.com/) by [Chris Fidao.](https://twitter.com/fideloper)
-
+- [Selecting a server](#selecting-a-server)
 - [Creating a server](#creating-a-server)
 - [Login to your server](#login-to-your-server)
 - [Add a user](#add-a-user)
@@ -36,6 +29,16 @@ This post is a collection of commands that helped me setup Laravel in a VPS. I h
 - [Setup Cron for Scheduled jobs](#setup-cron-for-scheduled-jobs)
 - [SSL Certificate](#ssl-certificate)
 - [Storage Symlink](#storage-symlink)
+
+## Selecting a server
+
+First you need to select a server in one of the service providers. I deploy all my servers on Vultr. I have been using this service since 2017. [Get 100$ as signup bonus on Vultr.](https://www.vultr.com/?ref=9367505-8H)
+
+Or you can use DigitalOcean. [Get 200$ as signup bonus on DigitalOcean.](https://m.do.co/c/84577e41997d)
+
+*Important: The signup bonus expires after 2 months from signup. Be careful with the resources you create with them. If you are not careful you will charged accordingly after the bonus duration.*
+
+This post is a collection of commands that helped me setup Laravel in a VPS. I have written this for myself to just copy and past the commands directly so that I don't have to go to individual resources. Most of the resources are from [serversforhackers.com](https://serversforhackers.com/) by [Chris Fidao.](https://twitter.com/fideloper)
 
 ## Creating a server
 
@@ -73,6 +76,8 @@ sudo su raviteja
 
 ## Setup SSH for the new user
 
+On your local machine, you need to create public and private keys. Run the below command from your local terminal to create the keys. All the keys should be in *.ssh* folder
+
 ```bash
 cd ~/.ssh
 ssh-keygen -o -a 100 -t ed25519 -f id_some_identifier
@@ -84,7 +89,7 @@ Copy the public key
 cat id_some_identifier.pub
 ```
 
-On the server, add the public key.
+On the server, add the public key. First we need to create the directly and then paste the key in *authorized_keys* file.
 
 ```bash
 sudo su raviteja
@@ -106,9 +111,9 @@ sudo add-apt-repository -y ppa:ondrej/php
 
 sudo apt-get update
 
-sudo apt-get install -y php8.1-fpm php8.1-cli php8.1-mysql \
-  php8.1-mcrypt php8.1-gd php8.1-imap php8.1-curl \
-  php8.1-mbstring php8.1-xml php8.1-bcmath php8.1-zip
+sudo apt-get install -y php8.2-fpm php8.2-cli php8.2-mysql \
+  php8.2-mcrypt php8.2-gd php8.2-imap php8.2-curl \
+  php8.2-mbstring php8.2-xml php8.2-bcmath php8.2-zip
 ```
 
 You can replace the version number if you are installing more latest versions.
@@ -143,7 +148,7 @@ Change nginx config
 sudo nano /etc/nginx/sites-available/default
 ```
 
-We should add ssl_certificate details in the config only after installing ssl certificate with certbot.
+**Note:** We should add ssl_certificate details in the config only after installing ssl certificate with certbot. You can also refer laravel docs to get the config details.
 
 ```bash
 server {
@@ -182,7 +187,7 @@ server {
 }
 ```
 
-Test the configuration
+Test the configuration everytime you change the nginx configs.
 
 ```bash
 sudo nginx -t
@@ -193,6 +198,10 @@ sudo systemctl reload nginx
 - Nginx setup in [Laravel docs](https://laravel.com/docs/8.x/deployment#nginx)
 
 ## Setup Git
+
+It would be easy to push directly from your local machine. There are many other ways to push your code to the server. This will act as your starting point.
+
+On your server:
 
 ```bash
 cd /var

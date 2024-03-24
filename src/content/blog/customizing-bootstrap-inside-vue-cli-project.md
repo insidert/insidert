@@ -70,5 +70,5 @@ module.exports = {
 
 ```
 
-npm run serve.
+Do ```npm run serve```
 

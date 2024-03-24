@@ -3,8 +3,8 @@ title: "How I built this blog"
 description: "Evolution of the technologies behind this blog"
 publishedDate: "Jun 06 2019"
 updatedDate: "May 13 2023"
-isFeatured: false
-tags: ['technology', 'how-i-built']
+isFeatured: true
+tags: ['code', 'how-to']
 heroImage:
     url: ""
     alt: ""

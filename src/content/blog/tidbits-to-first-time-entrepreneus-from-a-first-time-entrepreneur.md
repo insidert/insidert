@@ -3,7 +3,7 @@ title: "Tidbits to first time Entrepreneurs from a first time Entrepreneuer."
 description: "My observations and realisations about starting and staying the business. Not in cronological order."
 publishedDate: "Aug 14 2023"
 updatedDate: "Jan 10 2024"
-isFeatured: false
+isFeatured: true
 tags: ['business']
 heroImage:
     url: ""

@@ -28,4 +28,20 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
       {featuredPosts.map((post) => <PostHeader post={post} />)}
     </div>
   </div>
+
+  <div>
+    <h4>Featured Topics</h4>
+    <div>
+      <a href="/tags/opinions">Opinions</a>
+    </div>
+    <div>
+      <a href="/tags/business">Business</a>
+    </div>
+    <div>
+      <a href="/tags/productivity">Productivity</a>
+    </div>
+    <div>
+      <a href="/tags/code">Code</a>
+    </div>
+  </div>
 </AppLayout>

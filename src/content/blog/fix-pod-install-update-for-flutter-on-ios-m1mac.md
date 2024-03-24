@@ -1,6 +1,6 @@
 ---
 title: "Fix pod install and update for Flutter on iOS, M1 mac."
-description: "How we wrap our head around the unknown"
+description: "Install pod dependencies"
 publishedDate: "May 27 2022"
 updatedDate: "May 27 2022"
 isFeatured: false
@@ -9,6 +9,11 @@ heroImage:
     url: ""
     alt: ""
 ---
-```arch -x86_64 pod install ```
 
-Use the above command to install and update pod dependencies in your Flutter project if you are on M1
+Use the below command to install pod dependencies if you are on Mac M1 chips.
+
+Inside your flutter project, ```cd ios```
+
+And run
+
+```arch -x86_64 pod install ```

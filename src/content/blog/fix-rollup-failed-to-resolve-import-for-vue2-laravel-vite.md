@@ -1,8 +1,8 @@
 ---
 title: "Fix Rollup failed to resolve import for Vue2, Laravel and Vite"
-description: "How we wrap our head around the unknown"
-publishedDate: "Aug 14 2023"
-updatedDate: "Aug 14 2023"
+description: "Upgrade to vite using vue2"
+publishedDate: "Jan 30 2024"
+updatedDate: "Jan 30 2024"
 isFeatured: false
 tags: ['code', 'laravel']
 heroImage:
@@ -38,5 +38,9 @@ export default defineConfig({
 });
 ```
 
-The difference we must notice in the config file is **transformAssetUrlsOptions**. For vue 3 projects, it will be *transformAssetUrls.* If you do not change this option, images inside the vue components will throw **Rollup failed to resolve import "/img/imgname.png"** error while running npm run build.
+The difference we must notice in the config file is **transformAssetUrlsOptions**. 
+
+For vue 3 projects, it will be *transformAssetUrls.* 
+
+If you do not change this option, images inside the vue components will throw **Rollup failed to resolve import "/img/imgname.png"** error while running npm run build.
 

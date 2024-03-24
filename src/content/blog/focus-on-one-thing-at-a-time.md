@@ -22,4 +22,4 @@ Here are a few tips for focusing on one thing at a time:
 - Set aside time for each task/sub-task. 
 - Don't try to multitask.
 - Eliminate distractions. Especially meetings. Move all your meeting to the end of the day (If that's possible).
-- Take breaks. Get up and move around every 25-30 minutes.
+- Take breaks. Get up and move around every 25-30 minutes. This will also help your eyes.

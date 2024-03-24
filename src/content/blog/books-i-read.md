@@ -63,13 +63,14 @@ The list in the order of my completion.
 - The courage to be disliked
 - Steve Jobs
 
-## I recommend
+## My recommendations for all readers
 
 1. Home Sapiens.
 2. Never split the difference.
 3. How to win friends and influence people.
 4. The power of subconscious mind.
-5. The richest man in Babylon.
+5. Rich Dad, Poor Dad.
+6. The richest man in Babylon.
 
 ## For business
 

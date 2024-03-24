@@ -1,8 +1,8 @@
 ---
 title: "Update Laravel Mix to Vite with Vue 2"
-description: "How we wrap our head around the unknown"
-publishedDate: "Aug 14 2023"
-updatedDate: "Aug 14 2023"
+description: "Step by step upgrade guide."
+publishedDate: "Feb 13 2024"
+updatedDate: "Feb 13 2024"
 isFeatured: false
 tags: ['code', 'laravel']
 heroImage:
@@ -15,7 +15,7 @@ Vite is the new asset bundler in Laravel. Upgrading to vite from mix is easy tas
 ## Upgrade steps
 
 - Follow the upgrade guide and install the dependencies. [Upgrade guide](https://github.com/laravel/vite-plugin/blob/main/UPGRADE.md#migrating-from-laravel-mix-to-vite)
-- Update npm scripts
+- Update npm scripts. ```npm update```
 - Add vite.config.js file. I have the following setup.
 
 ```js
