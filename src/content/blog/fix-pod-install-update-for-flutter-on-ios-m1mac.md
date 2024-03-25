@@ -4,7 +4,7 @@ description: "Install pod dependencies"
 publishedDate: "May 27 2022"
 updatedDate: "May 27 2022"
 isFeatured: false
-tags: ['IOS', 'Flutter']
+tags: ['ios', 'flutter']
 heroImage:
     url: ""
     alt: ""

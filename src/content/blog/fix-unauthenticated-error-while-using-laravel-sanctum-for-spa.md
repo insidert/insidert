@@ -4,7 +4,7 @@ description: "Step-by-step guide on fixing the issue."
 publishedDate: "Oct 29 2020"
 updatedDate: "Oct 29 2020"
 isFeatured: false
-tags: ['Laravel', ';Laravel Sanctum']
+tags: ['laravel', 'laravel sanctum', 'code']
 heroImage:
     url: ""
     alt: ""

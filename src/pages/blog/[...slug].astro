@@ -32,6 +32,7 @@ const { Content } = await post.render();
       <h1 class="mb-0 text-white" style="margin-top: 4rem;">
         {post.data.title}
       </h1>
+      <small>{post.data.description}</small>
 
       <hr>
 
@@ -52,7 +53,6 @@ const { Content } = await post.render();
 
     <hr />
 
-    <p>Post Tags:</p>
     <div>
       {post.data.tags && post.data.tags.map((tag) => <div><a href={`/tags/${tag}`}>#{tag}</a></div>)}
     </div>

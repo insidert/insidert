@@ -4,7 +4,7 @@ description: "Comes handy when dealing with ajax requests."
 publishedDate: "Aug 14 2023"
 updatedDate: "Mar 22 2019"
 isFeatured: false
-tags: ['Laravel']
+tags: ['laravel', 'code']
 heroImage:
     url: ""
     alt: ""

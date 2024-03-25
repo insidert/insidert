@@ -12,7 +12,7 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
   <h1>Tags</h1>
   <div>
     {
-      tags.map((tag) => (
+      tags.sort().map((tag) => (
         <p class="tag">
           <a href={`/tags/${tag}`}>#{tag}</a>
         </p>

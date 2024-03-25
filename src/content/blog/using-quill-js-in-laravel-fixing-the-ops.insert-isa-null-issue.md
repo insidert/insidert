@@ -4,7 +4,7 @@ description: "Fix it easily"
 publishedDate: "May 12 2020"
 updatedDate: "May 12 2020"
 isFeatured: false
-tags: ['quilljs', 'laravel', 'vue', 'js', 'code']
+tags: ['quilljs', 'laravel', 'vuejs', 'js', 'code']
 heroImage:
     url: ""
     alt: ""

@@ -4,7 +4,7 @@ description: "Step-by-step guide to fix"
 publishedDate: "Feb 18 2022"
 updatedDate: "Feb 18 2022"
 isFeatured: false
-tags: ['Flutter', 'Firebase','Flutter App Development','Firebase cloud messaging']
+tags: ['code', 'flutter', 'firebase', 'firebase cloud messaging']
 heroImage:
     url: ""
     alt: ""

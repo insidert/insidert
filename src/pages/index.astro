@@ -12,14 +12,10 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
 ---
 
 <AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <small>Hi,</small>
+  <small>inside</small>
   <h1 class="mt-0">Ravi Teja</h1>
-  <p>
-    Entrepreneur with a passion for full-stack and app development. Co-founded <a
-      href="https://prasanta.business"
-      target="_blank">Prasanta Communications</a
-    > along with my brother. I share about my projects, thoughts, productivity and
-    important updates.
+  <p class="mb-0">
+    Hi, I am an entrepreneur and co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> with my brother. I love to code and build full-stack and mobile applications. I share my opinions, observations, code snippets and more on this blog.  
   </p>
 
   <div>
@@ -32,6 +28,9 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
   <div>
     <h4>Featured Topics</h4>
     <div>
+      <a href="/tags/code">Code</a>
+    </div>
+    <div>
       <a href="/tags/opinions">Opinions</a>
     </div>
     <div>
@@ -40,8 +39,24 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
     <div>
       <a href="/tags/productivity">Productivity</a>
     </div>
+  </div>
+
+  <div>
+    <h4>Find Me</h4>
     <div>
-      <a href="/tags/code">Code</a>
+      <a target="_blank" href="https://www.instagram.com/insidert_">Instagram</a>
+    </div>
+    <div>
+      <a target="_blank" href="https://www.youtube.com/@insidert">YouTube</a>
+    </div>
+    <div>
+      <a target="_blank" href="https://www.linkedin.com/in/ravitejaveligatla/">LinkedIn</a>
+    </div>
+    <div>
+      <a target="_blank" href="https://twitter.com/insidert_">Twitter</a>
+    </div>
+    <div>
+      <a target="_blank" href="https://medium.com/@insidert">Medium</a>
     </div>
   </div>
 </AppLayout>

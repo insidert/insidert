@@ -4,7 +4,7 @@ description: "A step-by-step guide to setup bootstrap framework as your front-en
 publishedDate: "Feb 13 2022"
 updatedDate: "Feb 13 2022"
 isFeatured: false
-tags: ['laravel', 'vite', 'bootstrap', 'scss', 'vuejs']
+tags: ['laravel', 'vite', 'bootstrap', 'scss', 'vuejs', 'code']
 heroImage:
     url: ""
     alt: ""

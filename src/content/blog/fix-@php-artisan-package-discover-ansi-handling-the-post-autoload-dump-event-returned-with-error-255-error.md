@@ -4,7 +4,7 @@ description: "Upgrading to Laravel 7"
 publishedDate: "Mar 16 2020"
 updatedDate: "Mar 16 2020"
 isFeatured: false
-tags: ['Laravel', 'Composer']
+tags: ['laravel', 'composer']
 heroImage:
     url: ""
     alt: ""

@@ -4,7 +4,7 @@ description: "A comprehensive guide on setting up notifications"
 publishedDate: "Aug 8 2020"
 updatedDate: "Aug 8 2020"
 isFeatured: false
-tags: ['flutter', 'firebased cloud messaging', 'firebase', 'code']
+tags: ['flutter', 'firebase cloud messaging', 'firebase', 'code']
 heroImage:
     url: ""
     alt: ""

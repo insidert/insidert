@@ -4,7 +4,7 @@ description: "Simple fix."
 publishedDate: "Feb 10 2019"
 updatedDate: "Feb 10 2019"
 isFeatured: false
-tags: ['laravel', 'npm']
+tags: ['laravel', 'npm', 'code']
 heroImage:
     url: ""
     alt: ""

@@ -4,7 +4,7 @@ description: "A simple fix for your flutter app while building ios."
 publishedDate: "Dec 25 2021"
 updatedDate: "Dec 25 2021"
 isFeatured: false
-tags: ['Flutter','IOS']
+tags: ['flutter','ios']
 heroImage:
     url: ""
     alt: ""

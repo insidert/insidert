@@ -4,7 +4,7 @@ description: "A simple guide for upgrading."
 publishedDate: "Dec 19 2018"
 updatedDate: "Dec 19 2018"
 isFeatured: false
-tags: ['javascript', 'laravel', 'Vuejs', 'code']
+tags: ['javascript', 'laravel', 'vuejs', 'code']
 heroImage:
     url: ""
     alt: ""
