@@ -2,4 +2,4 @@
 // You can import this data from anywhere in your site by using the `import` keyword.
 
 export const SITE_TITLE = 'Insidert';
-export const SITE_DESCRIPTION = 'Website and blog of Ravi Teja.';
+export const SITE_DESCRIPTION = 'Personal Blog of Ravi Teja Veligatla. Entrepreneur and co-founded Prasanta Communications. Loves to code.';

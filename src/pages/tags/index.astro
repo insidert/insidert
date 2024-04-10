@@ -8,7 +8,7 @@ const posts = await getCollection("blog");
 const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 ---
 
-<AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<AppLayout title="Explore Blog by Tags | Insidert" description="Find the perfect blog post on Insidert! Explore the list of tags to discover content by category and interest.">
   <h1>Tags</h1>
   <div>
     {

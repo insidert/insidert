@@ -23,9 +23,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const title = `${tag} on Insidert`;
+const description = `Dive into ${tag} written by Ravi Teja.`
 ---
 
-<AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<AppLayout title={title} description={description}>
   <h1>Posts tagged with #{tag}</h1>
 
   <div>
