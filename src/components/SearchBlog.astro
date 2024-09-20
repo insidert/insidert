@@ -1,17 +1,19 @@
 ---
     import { getCollection } from "astro:content";
     const posts = (await getCollection("blog"));
-    const filteredPosts = posts.map((p) => p.data);
+    const filteredPosts = posts.map((p) => ({
+      slug: p.slug,
+      title: p.data.title,
+      description: p.data.description,
+      tags: p.data.tags,
+  }));
 ---
 
 <search-blog data-posts={JSON.stringify(filteredPosts)}>
   <div class="mb-5">
-    <div class="d-flex align-items-center mb-2">
-      <img src="/img/search.png" height="16" width="16" class="me-2" alt="search bolty store">
       <p class="mb-0">Search</p>
-    </div>
     <div>
-      <input type="search" autocomplete="false" id="search" class="form-control" placeholder="Enter Product Code / Name">
+      <input type="search" autocomplete="off" id="search" style="padding: 0.5rem; border-radius: 0.25rem;" placeholder="Enter Keyword">
     </div>
     <ul class="list-group mt-3" id="results">
     </ul>
@@ -64,11 +66,10 @@
 
           results.forEach((r: any) => {
             resultItems = resultItems + `
-              <li class="list-group-item d-flex flex-wrap align-items-center">
-                <img src=${r.item.heroImage.url} alt=${r.item.heroImage.alt} width="128" class="me-3">
+              <li class="">
                 <div>
-                  <p>${r.item.title}</p>
-                  <small>${r.item.description}</p>
+                  <a href="/blog/${r.item.slug}/">${r.item.title}</a>
+                  <p class="mt-0">${r.item.description}</p>
                 </div>
               </li>
             `;
