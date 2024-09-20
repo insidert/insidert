@@ -1,6 +1,7 @@
 ---
 import AppLayout from "../layouts/AppLayout.astro";
 import PostHeader from "../components/PostHeader.astro";
+import SearchBlog from "../components/SearchBlog.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 
@@ -17,6 +18,8 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
   <p class="mb-0">
     Hi, I am an entrepreneur and co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> with my brother. I love to code and build full-stack and mobile applications. I share my opinions, observations, code snippets and more on this blog.  
   </p>
+
+  <SearchBlog />
 
   <div>
     <h4>Featured articles</h4>

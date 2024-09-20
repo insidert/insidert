@@ -14,7 +14,12 @@ I wanted to use headless chrome for generating pdfs from Laravel apps. Open sour
 
 ```bash
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+```
 
+Then install it
 
+```
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
+
+Sometimes the chrome will be terminated and may not work as expected. In that case, reinstalling will clear the issue.
