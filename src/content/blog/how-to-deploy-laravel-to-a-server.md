@@ -3,7 +3,7 @@ title: "How to deploy Laravel application to a server"
 description: "Step-by-step guide on deploying laravel application to a VPS."
 publishedDate: "Jun 2 2023"
 updatedDate: "Mar 1 2024"
-isFeatured: false
+isFeatured: true
 tags: ['code', 'how-to', 'laravel', 'server']
 heroImage:
     url: ""

@@ -1,0 +1,84 @@
+---
+    import { getCollection } from "astro:content";
+    const posts = (await getCollection("blog"));
+    const filteredPosts = posts.map((p) => ({
+      slug: p.slug,
+      title: p.data.title,
+      description: p.data.description,
+      tags: p.data.tags,
+  }));
+---
+
+<search-blog data-posts={JSON.stringify(filteredPosts)}>
+  <div class="mb-5">
+      <p class="mb-0">Search</p>
+    <div>
+      <input type="search" autocomplete="off" id="search" style="padding: 0.5rem; border-radius: 0.25rem;" placeholder="Enter Keyword">
+    </div>
+    <ul class="list-group mt-3" id="results">
+    </ul>
+  </div>
+</search-blog>
+
+<script>
+    import Fuse from 'fuse.js';
+
+    class SearchStore extends HTMLElement {
+      constructor() {
+        super();
+        
+        const storeData = JSON.parse(this.dataset.posts);
+        console.log(storeData);
+
+        const searchInput = document.getElementById('search');
+
+        const fuseOptions = {
+          threshold: 0.2,
+          minMatchCharLength: 2,
+          keys: [
+            "title",
+            "description",
+            "content",
+            "tags"
+          ]
+        };
+
+        const fuse = new Fuse(storeData, fuseOptions);
+
+        searchInput?.addEventListener('input', () => {
+          const resultsBlock = document.getElementById('results');
+
+          if (searchInput.value == "") {
+            resultsBlock!.innerHTML = "";
+            return;
+          }
+
+          const results = fuse.search(searchInput.value)
+
+          console.log(results);
+
+          if (results.length == 0) {
+            resultsBlock!.innerHTML = `<li>No results</li>`;
+            return;
+          }
+
+          let resultItems: string = "";
+
+          results.forEach((r: any) => {
+            resultItems = resultItems + `
+              <li class="">
+                <div>
+                  <a href="/blog/${r.item.slug}/">${r.item.title}</a>
+                  <p class="mt-0">${r.item.description}</p>
+                </div>
+              </li>
+            `;
+          })
+
+          resultsBlock!.innerHTML = resultItems;
+        });
+      }
+    }
+
+  customElements.define('search-blog', SearchStore);
+</script>
