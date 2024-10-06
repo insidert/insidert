@@ -4,7 +4,7 @@ import DateFormatter from '../components/DateFormatter.astro';
 const { post } = Astro.props;
 ---
 
-<article class="bg-light post-tile">
+<article class="post-tile">
   <small>
     <DateFormatter date={post.data.updatedDate}></DateFormatter>
   </small>
