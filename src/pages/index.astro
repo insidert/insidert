@@ -16,50 +16,61 @@ const featuredPosts = posts.filter(post => post.data.isFeatured)
   <small>inside</small>
   <h1 class="mt-0">Ravi Teja</h1>
   <p class="mb-0">
-    Hi, I am an entrepreneur and co-founded <a href="https://prasanta.business" target="_blank">Prasanta Communications</a> with my brother. I love to code and build full-stack and mobile applications. I share my opinions, observations, code snippets and more on this blog.  
+    Hi, I am an entrepreneur and co-founded Prasanta Communications with my brother. I love to code and build full-stack and mobile applications. I share my opinions, observations, code snippets and more on this blog.  
   </p>
 
-  <SearchBlog />
+  <p>Check out <a href="https://prasanta.business" target="_blank">the projects we built</a> on our business website.</p>
+
+  <div class="mt-4">
+    <h4>Featured Topics</h4>
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+      <div>
+        <a href="/tags/code">Code</a>
+      </div>
+      <div>
+        <a href="/tags/opinions">Opinions</a>
+      </div>
+      <div>
+        <a href="/tags/business">Business</a>
+      </div>
+      <div>
+        <a href="/tags/productivity">Productivity</a>
+      </div>
+      <div>
+        <a href="/tags/">All topics</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h4>Find Me</h4>
+    <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+      <div>
+        <a target="_blank" href="https://www.instagram.com/insidert_">Instagram</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://www.youtube.com/@insidert">YouTube</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://www.linkedin.com/in/ravitejaveligatla/">LinkedIn</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://twitter.com/insidert_">Twitter</a>
+      </div>
+      <div>
+        <a target="_blank" href="https://medium.com/@insidert">Medium</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-light post-tile" style="margin: 3rem 0rem;">
+    <SearchBlog />
+  </div>
 
   <div>
     <h4>Featured articles</h4>
     <div>
       {featuredPosts.map((post) => <PostHeader post={post} />)}
-    </div>
-  </div>
-
-  <div>
-    <h4>Featured Topics</h4>
-    <div>
-      <a href="/tags/code">Code</a>
-    </div>
-    <div>
-      <a href="/tags/opinions">Opinions</a>
-    </div>
-    <div>
-      <a href="/tags/business">Business</a>
-    </div>
-    <div>
-      <a href="/tags/productivity">Productivity</a>
-    </div>
-  </div>
-
-  <div>
-    <h4>Find Me</h4>
-    <div>
-      <a target="_blank" href="https://www.instagram.com/insidert_">Instagram</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://www.youtube.com/@insidert">YouTube</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://www.linkedin.com/in/ravitejaveligatla/">LinkedIn</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://twitter.com/insidert_">Twitter</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://medium.com/@insidert">Medium</a>
     </div>
   </div>
 </AppLayout>

@@ -1,4 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue&display=swap');
+/* @import url('/fonts/Epilogue-VariableFont_wght.ttf'); */
+
+@font-face {
+  font-family: 'Epilogue';
+  src: url('/fonts/Epilogue-VariableFont_wght.ttf') format('truetype');
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* 606C38
 283618
@@ -7,16 +16,16 @@ DDA15E
 BC6C25 */
 
 body {
-	font-family: 'Epilogue', sans-serif;
-  	font-size: x-large;
-	margin: auto;
-	padding: 20px;
-	max-width: 70ch;
-	text-align: left;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
-	line-height: 1.5;
-	color: #444;
+  font-family: 'Epilogue', sans-serif;
+  font-size: 1.25rem;
+  margin: auto;
+  padding: 20px;
+  max-width: 70ch;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
+  color: #444;
 }
 
 h1,
@@ -27,57 +36,92 @@ h5,
 h6,
 strong,
 b {
-	color: #283618;
+  color: #283618;
 }
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+h5 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+small {
+  font-size: 1rem;
+}
+
 a {
-	color: #BC6C25;
+  color: #BC6C25;
 }
 
 nav a {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 textarea {
-	width: 100%;
-	font-size: 16px;
+  width: 100%;
+  font-size: 16px;
 }
 
 input {
-	font-size: 16px;
+  font-size: 16px;
 }
 
 content {
-	line-height: 1.6;
+  line-height: 1.6;
 }
 
 table {
-	width: 100%;
+  width: 100%;
 }
 
 img {
-	max-width: 100%;
-	height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 code {
-	padding: 2px 5px;
-	background-color: #00e700;
+  padding: 2px 5px;
+  background-color: #00e700;
 }
 
 pre {
-	padding: 1rem;
+  padding: 1rem;
 }
 
-pre > code {
-	all: unset;
+pre>code {
+  all: unset;
 }
 
 blockquote {
-	border: 1px solid #999;
-	color: #222;
-	padding: 2px 0px 2px 20px;
-	margin: 0px;
-	font-style: italic;
+  border: 1px solid #999;
+  color: #222;
+  padding: 2px 0px 2px 20px;
+  margin: 0px;
+  font-style: italic;
 }
 
 .mb-0 {
@@ -86,6 +130,18 @@ blockquote {
 
 .mt-0 {
   margin-top: 0rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-3 {
+  margin-top: 3rem;
+}
+
+.mt-4 {
+  margin-top: 4rem;
 }
 
 .bg-light {
@@ -102,9 +158,9 @@ hr {
 }
 
 .post-tile {
-  padding: 2rem 4rem;
-  border-radius: 0.3rem;
-  box-shadow: 0px 8px 8px 0px #dda15e;
+  padding: 2rem 0rem;
+  /* border-radius: 0.3rem; */
+  /* box-shadow: 0px 2px 2px 0px #dda15e; */
   margin-bottom: 2rem;
 }
 
@@ -114,6 +170,10 @@ hr {
 
 .text-white {
   color: white;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* ul {

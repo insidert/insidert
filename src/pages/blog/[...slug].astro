@@ -31,15 +31,15 @@ const description = `${post.data.description} | Written by Ravi Teja Veligatla.`
       )
     }
 
-    <div class="bg-primary text-white post-tile">
-      <h1 class="mb-0 text-white" style="margin-top: 4rem;">
+    <div class="post-tile">
+      <h1 class="mb-0" style="margin-top: 4rem;">
         {post.data.title}
       </h1>
       <small>{post.data.description}</small>
 
       <hr>
 
-      <p class="mb-0 mt-0 text-white">
+      <p class="mb-0 mt-0">
         <DateFormatter date={post.data.updatedDate} />
       </p>
       {
