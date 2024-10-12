@@ -2,7 +2,7 @@
 title: "How I built this blog"
 description: "Evolution of the technologies behind this blog"
 publishedDate: "Jun 06 2019"
-updatedDate: "May 13 2023"
+updatedDate: "Oct 13 2024"
 isFeatured: true
 tags: ['code', 'how-to']
 heroImage:
@@ -26,15 +26,15 @@ Navigate for tl;dr
 
 ## Looking back
 
-Blogging is not new to me. I hosted my first blog on blogger.com almost 13 years ago. It was amusing setting up a page on the internet. I maintained a technical blog during my engineering which has internet tips and tricks, links to ebooks and syllabus. I also used MediaFire to host those ebooks. Next, I opened a personal blog - insidert (still functional)- and a magazine - skatespace (deleted a year later) - on wordpress.com.
+Blogging is not new to me. I hosted my first blog on blogger.com in 2006. It was amusing to setup a page on the internet. I maintained a technical blog during my engineering which has internet tips and tricks, links to ebooks and syllabus. I also used MediaFire to host the ebooks. Next, I opened a personal blog - insidert (still functional) - and a magazine called skatespace (deleted a year later) - on wordpress.com.
 
 ## Fast forward
 
-When I started coding I did not concentrate on building my blog with my own hands. I used WordPress for a long time and then tried a few different services. I was not happy with them so I decided to build one.
+When I started coding I did not concentrate on building my blog with my own hands. I used WordPress for a long time and then tried a few different services. I was not happy with them so I decided to build one. Why? I love to code. And I want to code something for myself.
 
 ## The beginning with HTML
 
-For the start, I wanted to build a single-page website just like a one-page resume. At first, there are a lot of options to host static sites. GitHub, GitLab pages are a good start. We can deploy plain HTML files and add a custom domain. But watching the extension '.html' in the address bar was a huge upset for me. REST architecture is awesome.
+For the start, I wanted to build a single-page website just like a one-page resume. At first, there are a lot of options to host static sites. GitHub, GitLab pages are a good start. We can deploy plain HTML files and add a custom domain. But watching the extension '.html' in the address bar was a huge upset for me. REST architecture is awesome and I liked it.
 
 And then I tried static site generators like Hugo, Jekyll. A lot of people use them but I could not get my head over them in the short time I have.
 
