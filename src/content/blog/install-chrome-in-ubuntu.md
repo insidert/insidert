@@ -22,4 +22,6 @@ Then install it
 sudo apt install ./google-chrome-stable_current_amd64.deb
 ```
 
-Sometimes the chrome will be terminated and may not work as expected. In that case, reinstalling will clear the issue.
+Check the chrome processes ```pgrep chrome```
+
+Kill all chrome proceses  ```sudo pkill chrome```
