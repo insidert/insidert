@@ -114,3 +114,16 @@ There are no major changes for compiling SCSS. My app.scss file looks like
     @vite('resources/js/app.js')
 </body>
 ```
+
+## Building for production
+
+When building for production using ```npm run build``` you need to change the Vue import.
+
+```js
+import vue from 'vue/dist/vue.common.js';
+window.Vue = vue;
+
+# other contents
+```
+
+You should use vue.common.js instead of vue.js.
