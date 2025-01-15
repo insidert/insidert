@@ -8,7 +8,8 @@ const { post } = Astro.props;
   <small>
     <DateFormatter date={post.data.updatedDate}></DateFormatter>
   </small>
-  <h3 class="mb-0 mt-0">{post.data.title}</h3>
-  <small>{post.data.description}</small> <br>
-  <a href={`/blog/${post.slug}/`}>Read Post</a>  
+  <h3 class="mb-0 mt-0">
+    <a href={`/blog/${post.slug}/`} class="text-primary" style="text-decoration: none;">{post.data.title}</a>
+  </h3>
+  <p class="mt-0">{post.data.description}</p> 
 </article>

@@ -31,26 +31,26 @@ const description = `${post.data.description} | Written by Ravi Teja Veligatla.`
       )
     }
 
-    <div class="post-tile">
-      <h1 class="mb-0" style="margin-top: 4rem;">
+    <div class="post-tile text-center">
+      <h1 class="mb-0" style="line-height: normal;">
         {post.data.title}
       </h1>
-      <small>{post.data.description}</small>
-
-      <hr>
-
-      <p class="mb-0 mt-0">
+      <small>{post.data.description}</small> <br>
+      <small>
         <DateFormatter date={post.data.updatedDate} />
-      </p>
-      {
-        post.data.publishedDate.toString() !=
-          post.data.updatedDate.toString() && (
-          <small>
-            First published on <DateFormatter date={post.data.publishedDate} />
-          </small>
-        )
-      }
+        {
+          post.data.publishedDate.toString() !=
+            post.data.updatedDate.toString() && (
+            <small> - </small>
+            <small>
+              First published on <DateFormatter date={post.data.publishedDate} />
+            </small>
+          )
+        }
+      </small>
     </div>
+
+    <hr>
 
     <Content />
 
