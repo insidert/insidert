@@ -12,7 +12,7 @@ heroImage:
 
 If you want to serve multiple projects from the same VPS (Vultr, Digital Ocean and others), this is the way to do.
 
-Here are simple steps. (If you are working with laravel, I have written a blog post on how to deploy to VPS.)
+Here are simple steps. (If you are working with laravel, Refer [Deploy laravel to VPS post](/blog/how-to-deploy-laravel-to-a-server/))
 
 - Deploy you project files like you normally do. Put them inside */var/www/* folder.
 - Go to /etc/nginx/sites-available and create separate config files for each project. 
