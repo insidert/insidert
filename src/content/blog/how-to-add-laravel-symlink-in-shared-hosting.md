@@ -10,7 +10,20 @@ heroImage:
     alt: ""
 ---
 
-Before adding the symlink, get familiar with your folder structure in shared hosting. If your laravel app is inside a folder. like /root/laravel_app
+Before adding the symlink, get familiar with your folder structure in shared hosting. 
+
+I keep the laravel app in a separate folder and the public contents inside public_html folder.
+
+Assume the laravel app folde is my-project. The folders will look like this.
+
+/root/my-project
+/root/public_html
+
+To add the symlink, the easiest way is to create a new file call symlink.php and keep it inside public_html folder.
+
+First find what's the document root. You can do that by echoing ```$_SERVER['DOCUMENT_ROOT']```
+
+Once you find the document root, add target folder and link folder like in the code below.
 
 ```php
 <?php

@@ -262,6 +262,7 @@ ps aux | grep php
 cd /var/www/thelaravelappfolder
 
 sudo chown -R www-data:raviteja storage bootstrap
+sudo chmod -R g+w storage bootstrap
 ```
 
 ## Setup MySQL
@@ -275,6 +276,10 @@ create user databaseclient@'localhost' identified by 'a-password';
 
 grant all privileges on yourdatabase.* to databaseclient@'localhost';
 ```
+
+## Setup SQLite
+
+If you are using SQLite, create database.sqlite folder inside storage folder. 
 
 ## Import/Export database
 
@@ -312,7 +317,7 @@ autostart=true
 autorestart=true
 stopasgroup=true
 killasgroup=true
-user=raviteja
+user=www-data
 numprocs=8
 redirect_stderr=true
 stdout_logfile=/home/raviteja/thelaravelfolder/worker.log
@@ -372,4 +377,12 @@ More instructions on the [official website.](https://certbot.eff.org/)
 
 ```
 php artisan storage:link
+```
+
+## Check memory and storage
+
+```bash
+df -h
+
+free -m
 ```
