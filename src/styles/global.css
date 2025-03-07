@@ -75,6 +75,11 @@ small {
 
 a {
   color: #BC6C25;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 nav a {
@@ -179,22 +184,3 @@ hr {
 .text-center {
   text-align: center;
 }
-
-/* ul {
-  list-style-type: none;
-  padding: unset;
-}
-
-ul li {
-  display: flex;
-}
-
-ul li time {
-  flex: 0 0 130px;
-  font-style: italic;
-  color: #595959;
-}
-
-ul li a:visited {
-  color: #8e32dc;
-} */

@@ -9,7 +9,7 @@ const { post } = Astro.props;
     <DateFormatter date={post.data.updatedDate}></DateFormatter>
   </small>
   <h3 class="mb-0 mt-0">
-    <a href={`/blog/${post.slug}/`} class="text-primary" style="text-decoration: none;">{post.data.title}</a>
+    <a href={`/blog/${post.slug}/`} class="text-primary">{post.data.title}</a>
   </h3>
   <p class="mt-0">{post.data.description}</p> 
 </article>
