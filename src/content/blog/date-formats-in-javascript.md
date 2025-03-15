@@ -45,4 +45,4 @@ formatDate(date) {
 
     return `${day}-${month}-${year}`;
 }
-    ```
+```
