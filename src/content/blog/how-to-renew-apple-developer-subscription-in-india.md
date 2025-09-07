@@ -3,7 +3,7 @@ title: "How to renew apple developer subscription in India"
 description: "Use Google Pay"
 publishedDate: "Dec 02 2024"
 updatedDate: "Dec 02 2024"
-isFeatured: true
+isFeatured: false
 tags: ['ios', 'how-to']
 heroImage:
     url: ""
