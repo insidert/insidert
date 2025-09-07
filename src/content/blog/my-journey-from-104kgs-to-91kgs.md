@@ -3,7 +3,7 @@ title: "My journey from 104kgs to 91kgs"
 description: "Why did I gain weight and how I addressed it."
 publishedDate: "Jan 21 2025"
 updatedDate: "Jan 21 2025"
-isFeatured: true
+isFeatured: false
 tags: ['health',]
 heroImage:
     url: ""
