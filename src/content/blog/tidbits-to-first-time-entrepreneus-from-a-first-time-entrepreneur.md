@@ -16,9 +16,19 @@ heroImage:
 
 - Ideas are cheap. Do not be secretive of your ideas. Execution is hard. Many fail at it.
 
-- You will generate 100 ideas a day for your business or startup. Do not jump to execute them. Write it in a book and refer later. 
+- You will generate 100 ideas a day for your business or startup. Do not jump to execute them. Write it in a book and refer later.
 
 - Learn the difference between business and a startup. Each need different mindsets and approaches.
+
+- Before starting the product or service you should try to understand the current state of the market and the industry. Building without research is like going without a map into an unknown jungle.
+
+- Do not get fooled by a big volume of an industry. Your idea may be just a water bottle in a big ocean.
+
+- The entrepreneurship journey is like taking offroad from highway and going into an unknown forest and building a tribe and small camp and laying a road back to highway for people to come to your camp. Easy to tell as a story but difficult to execute.
+
+- You should figure out whether you fit into entrepreneurship journey or not. Both yes and no are valid. Nothing wrong in anything.
+
+- Market analysis is counting the number of people who are willing to try and pay for your product among the desired population.
 
 - If your only income stream is your new business or startup, keep a backup for atleast three years. If you do not have a backup, you neither can build the startup nor take care of your family. If you are single, that's a different story.
 
