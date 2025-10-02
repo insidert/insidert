@@ -2,7 +2,7 @@
 title: "Books I read"
 description: "List of titles  I read and also my recommendations so far."
 publishedDate: "Apr 04 2021"
-updatedDate: "Jan 10 2024"
+updatedDate: "Sep 29 2025"
 isFeatured: true
 tags: ['productivity', 'books']
 heroImage:
@@ -52,15 +52,16 @@ The list in the order of my completion.
     - Completed: 2022 
 - The Richest Man in Babylon
     - Completed: 2023 
+- Influence
+    - Completed: 2025
 
 ## Current Readings
 
-- Influence 
+- The courage to be disliked
 
 ## In queue
 
 - Thinking fast and slow
-- The courage to be disliked
 - Steve Jobs
 
 ## My recommendations for all readers
