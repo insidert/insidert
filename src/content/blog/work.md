@@ -29,4 +29,9 @@ heroImage:
 - Expected revenue: 0 INR.
 
 
+#### November 2025
+
+- Deploy Bolty App and test with 50 users.
+- Start working on Notifications for Bolty app.
+
 *CF: Carry forwarded.*
