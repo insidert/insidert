@@ -31,7 +31,13 @@ heroImage:
 
 #### November 2025
 
-- Deploy Bolty App and test with 50 users.
+- Deploy Bolty App for Android.
+- Deploy Bolty App for iOS.
+- Test with 50 users for Bolty.
+- Add deals on Bolty App.
+
+#### December 2025
+
 - Start working on Notifications for Bolty app.
 
 *CF: Carry forwarded.*
