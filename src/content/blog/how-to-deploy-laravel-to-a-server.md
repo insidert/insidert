@@ -111,9 +111,9 @@ sudo add-apt-repository -y ppa:ondrej/php
 
 sudo apt-get update
 
-sudo apt-get install -y php8.2-fpm php8.2-cli php8.2-mysql \
-  php8.2-mcrypt php8.2-gd php8.2-imap php8.2-curl \
-  php8.2-mbstring php8.2-xml php8.2-bcmath php8.2-zip
+sudo apt-get install -y php8.4-fpm php8.4-cli php8.4-mysql \
+  php8.4-mcrypt php8.4-gd php8.4-imap php8.4-curl \
+  php8.4-mbstring php8.4-xml php8.4-bcmath php8.4-zip php8.4-intl
 ```
 
 You can replace the version number if you are installing more latest versions.
