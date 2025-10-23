@@ -1,8 +1,8 @@
 ---
 title: "Work"
 description: "The list of to-dos"
-publishedDate: "Sep 09 2925"
-updatedDate: "Sep 09 2925"
+publishedDate: "Sep 09 2025"
+updatedDate: "Sep 09 2025"
 isFeatured: true
 tags: ['business']
 heroImage:
