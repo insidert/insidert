@@ -20,3 +20,6 @@ heroImage:
 Possibilities
 
 - [ ] Chat feature at service enquiry.
+
+[ ] Chat feature at service enquiry.
+[x] Chat feature at service enquiry.
