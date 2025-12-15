@@ -36,8 +36,43 @@ heroImage:
 - Test with 50 users for Bolty.
 - Add deals on Bolty App.
 
+Completed
+
+- Build MVP for tolethub.
+
 #### December 2025
 
 - Start working on Notifications for Bolty app.
+- Deploy Bolty App for Android. (CF)
+- Deploy Bolty App for iOS. (CF)
+- Test with 50 users for Bolty. (CF)
+- Add deals on Bolty App. (CF)
+
+Completed
+
+- Purchase domain. Publish the site.
+
+#### Task Pool
+
+Bolty
+
+- Integrate OTP via SMS - Bolty, Roomr.
+- Integrate OTP via WhatsApp.
+- Add Buttons for cutomer to either schedule the pickup or reject the service or give the ability to talk to Bolty.
+- Set SR expiration date. 3 months from the date of creation. Send App notifications and also WA triggers.
+- Auto change the delivery status.
+- Check the Service Provider flow for the SR. Crosscheck with mobile app.
+
+Roomr
+
+- Start ads for Roomr.
+
+MF7
+
+- Fix Cloudinary images issue for MF7.
+
+WorkbaseHQ
+
+---
 
 *CF: Carry forwarded.*
