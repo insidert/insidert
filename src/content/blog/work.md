@@ -43,7 +43,6 @@ Completed
 #### December 2025
 
 - Start working on Notifications for Bolty app.
-- Deploy Bolty App for Android. (CF)
 - Deploy Bolty App for iOS. (CF)
 - Test with 50 users for Bolty. (CF)
 - Add deals on Bolty App. (CF)
@@ -51,17 +50,36 @@ Completed
 Completed
 
 - Purchase domain. Publish the site.
+- Deploy Bolty App for Android.
+
+#### January 2026
+
+- Start working on Notifications for Bolty app. (CF)
+- Market about bolty app for android.
+    - YouTube and IG videos.
+    - How to guides.
+    - Push to existing customers for feedback.
+- Deploy Bolty App for iOS. (CFx2)
+- Roomr videos
+    - Situation of housing in RJY.
+    - Talk to influencer in RJY.
+- Close two MF7 sales.
+
+Completed
+
+
 
 #### Task Pool
 
 Bolty
 
-- Integrate OTP via SMS - Bolty, Roomr.
+- Integrate OTP via SMS for Roomr.
 - Integrate OTP via WhatsApp.
 - Add Buttons for cutomer to either schedule the pickup or reject the service or give the ability to talk to Bolty.
 - Set SR expiration date. 3 months from the date of creation. Send App notifications and also WA triggers.
 - Auto change the delivery status.
 - Check the Service Provider flow for the SR. Crosscheck with mobile app.
+- Add deals on Bolty App. (CFx2|MTP)
 
 Roomr
 
@@ -76,3 +94,5 @@ WorkbaseHQ
 ---
 
 *CF: Carry forwarded.*
+
+*MTP: Moved to Pool*
