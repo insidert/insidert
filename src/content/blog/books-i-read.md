@@ -54,6 +54,8 @@ The list in the order of my completion.
     - Completed: 2023 
 - Influence
     - Completed: 2025
+- Britain's Gulag
+    - Completed: 2025
 
 ## Current Readings
 
