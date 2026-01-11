@@ -1,5 +1,5 @@
 ---
-title: "Project T is not ROOMR"
+title: "Project T is now ROOMR"
 description: "A new beginning"
 publishedDate: "Dec 07 2025"
 updatedDate: "Dec 07 2025"
