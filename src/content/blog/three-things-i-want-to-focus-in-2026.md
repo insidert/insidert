@@ -2,7 +2,7 @@
 title: "Three things I want to focus in 2026"
 description: "Major rework needed"
 publishedDate: "Jan 04 2026"
-updatedDate: "Jan 04 2026"
+updatedDate: "Mar 04 2026"
 isFeatured: true
 tags: ['productivity']
 heroImage:
@@ -12,8 +12,8 @@ heroImage:
 
 Exercise or workout for 180 days
 
-- Jan:
-- Feb:
+- Jan: 0
+- Feb: 0
 - Mar:
 - Apr:
 - May:
@@ -27,8 +27,8 @@ Exercise or workout for 180 days
 
 Produce videos for all products. Build noticeable digital footprint 
 
-- Jan:
-- Feb:
+- Jan: 0
+- Feb: 0
 - Mar:
 - Apr:
 - May:
@@ -42,8 +42,8 @@ Produce videos for all products. Build noticeable digital footprint
 
 Drastically improve sales
 
-- Jan:
-- Feb:
+- Jan: 0
+- Feb: 0
 - Mar:
 - Apr:
 - May:
