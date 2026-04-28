@@ -1,14 +1,11 @@
 ---
-import { CollectionEntry, getCollection } from "astro:content";
 import AppLayout from "../../layouts/AppLayout.astro";
-import DateFormatter from "../../components/DateFormatter.astro";
-import PostHeader from '../../components/PostHeader.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import PostHeader from "../../components/PostHeader.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
-  );
+  const posts = await getCollection("blog");
 
   const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
 
@@ -28,7 +25,7 @@ const title = `${tag} on Insidert`;
 const description = `Dive into ${tag} written by Ravi Teja.`
 ---
 
-<AppLayout title={title} description={description}>
+<AppLayout title="{title}" description={description}>
   <h1>Posts tagged with #{tag}</h1>
 
   <div>

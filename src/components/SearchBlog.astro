@@ -1,23 +1,23 @@
 ---
-    import { getCollection } from "astro:content";
-    const posts = (await getCollection("blog"));
-    const filteredPosts = posts.map((p) => ({
-      slug: p.slug,
-      title: p.data.title,
-      description: p.data.description,
-      tags: p.data.tags,
-  }));
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog");
+const filteredPosts = posts.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+}));
 ---
 
 <search-blog data-posts={JSON.stringify(filteredPosts)}>
   <div class="mb-5">
       <div class="text-center">
-        <p class="mb-0">Search My Writings</p>
         <div>
-          <input type="search" autocomplete="off" id="search" style="padding: 0.5rem; border-radius: 0.25rem; width: 50%;" placeholder="Enter Keyword">
+          <input type="search" autocomplete="off" id="search" style="padding: 0.8rem; border-radius: 0.3rem; width: 100%;" placeholder="Enter Keyword">
         </div>
       </div>
-    <ul class="mt-3" id="results" style="background-color: antiquewhite;">
+    <ul class="mt-3" id="results" style="background-color: rgb(238, 238, 238);">
     </ul>
   </div>
 </search-blog>
@@ -29,8 +29,7 @@
       constructor() {
         super();
         
-        const storeData = JSON.parse(this.dataset.posts);
-        console.log(storeData);
+        const storeData = JSON.parse(this.dataset.posts ?? "[]");
 
         const searchInput = document.getElementById('search');
 
@@ -57,8 +56,6 @@
 
           const results = fuse.search(searchInput.value)
 
-          console.log(results);
-
           if (results.length == 0) {
             resultsBlock!.innerHTML = `<li style="padding: 1rem 0rem;">No results</li>`;
             return;
@@ -70,7 +67,7 @@
             resultItems = resultItems + `
               <li class="" style="padding: 1rem 0rem;">
                 <div>
-                  <a href="/blog/${r.item.slug}/">${r.item.title}</a>
+                  <a href="/blog/${r.item.id}/">${r.item.title}</a>
                   <p class="mt-0">${r.item.description}</p>
                 </div>
               </li>

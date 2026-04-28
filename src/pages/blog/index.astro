@@ -1,10 +1,16 @@
 ---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 import AppLayout from '../../layouts/AppLayout.astro';
 import PostHeader from '../../components/PostHeader.astro';
-import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf()
+	(a, b) => b.data.updatedDate.valueOf() - a.data.updatedDate.valueOf(),
 );
 ---
 
@@ -18,4 +24,3 @@ const posts = (await getCollection('blog')).sort(
     }
   </div>
 </AppLayout>
-
