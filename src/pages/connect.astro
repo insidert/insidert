@@ -1,24 +1,119 @@
 ---
-import AppLayout from "../layouts/AppLayout.astro";
+import AppLayout from '../layouts/AppLayout.astro';
+import { SITE, SOCIAL } from '../consts';
+import FadeIn from '../components/react/FadeIn';
 ---
 
-<AppLayout title="Connect with Ravi Teja" description="Connect with Ravi Teja Veligatla">
-  <h1 class="mt-0">Connect</h1>
-  <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-    <div>
-      <a target="_blank" href="https://www.instagram.com/insidert_">Instagram</a>
+<AppLayout
+  title="Connect"
+  description="Connect with Ravi Teja Veligatla — founder, builder, and writer."
+  fullWidth
+>
+  <section class="section">
+    <div class="container container--narrow">
+      <FadeIn client:visible>
+        <div class="connect-header">
+          <span class="section-label">Get in Touch</span>
+          <h1 class="connect-title">Let's connect.</h1>
+          <p class="connect-desc">
+            {SITE.author.bio}
+          </p>
+        </div>
+      </FadeIn>
+
+      <FadeIn client:visible>
+        <div class="connect-grid">
+          <a href={SOCIAL.twitter} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">Twitter / X</span>
+            <span class="connect-card__handle">@insidert_</span>
+          </a>
+          <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">LinkedIn</span>
+            <span class="connect-card__handle">ravitejaveligatla</span>
+          </a>
+          <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">GitHub</span>
+            <span class="connect-card__handle">ravitejaveligatla</span>
+          </a>
+          <a href={SOCIAL.youtube} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">YouTube</span>
+            <span class="connect-card__handle">@insidert</span>
+          </a>
+          <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">Instagram</span>
+            <span class="connect-card__handle">@insidert_</span>
+          </a>
+          <a href={SOCIAL.medium} target="_blank" rel="noopener noreferrer" class="connect-card">
+            <span class="connect-card__name">Medium</span>
+            <span class="connect-card__handle">@insidert</span>
+          </a>
+        </div>
+      </FadeIn>
     </div>
-    <div>
-      <a target="_blank" href="https://www.youtube.com/@insidert">YouTube</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://www.linkedin.com/in/ravitejaveligatla/">LinkedIn</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://twitter.com/insidert_">Twitter</a>
-    </div>
-    <div>
-      <a target="_blank" href="https://medium.com/@insidert">Medium</a>
-    </div>
-  </div>
+  </section>
 </AppLayout>
+
+<style>
+  .connect-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .connect-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .connect-desc {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .connect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .connect-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .connect-card:hover {
+    border-color: var(--color-border-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+    text-decoration: none;
+  }
+
+  .connect-card__name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .connect-card__handle {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .connect-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,17 +1,18 @@
 ---
 interface Props {
-	date: Date;
+  date: Date;
+  uppercase?: boolean;
 }
 
-const { date } = Astro.props;
+const { date, uppercase = false } = Astro.props;
+
+const formatted = date.toLocaleDateString('en-us', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
 ---
 
 <time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
+  {uppercase ? formatted.toUpperCase() : formatted}
 </time>

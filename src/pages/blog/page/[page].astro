@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import AppLayout from '../../../layouts/AppLayout.astro';
+import BlogListPage from '../../../components/blog/BlogListPage.astro';
+import { BLOG_PAGE_SIZE } from '../../../consts';
+import { sortPostsByDate, getAllTags } from '../../../lib/posts';
+
+export const getStaticPaths = (async () => {
+  const allPosts = sortPostsByDate(await getCollection('blog'));
+  const lastPage = Math.ceil(allPosts.length / BLOG_PAGE_SIZE);
+
+  return Array.from({ length: lastPage - 1 }, (_, i) => {
+    const page = i + 2;
+    const start = (page - 1) * BLOG_PAGE_SIZE;
+    return {
+      params: { page: String(page) },
+      props: {
+        posts: allPosts.slice(start, start + BLOG_PAGE_SIZE),
+        currentPage: page,
+        lastPage,
+        tags: getAllTags(allPosts),
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { posts, currentPage, lastPage, tags } = Astro.props;
+---
+
+<AppLayout
+  title={`Blog — Page ${currentPage}`}
+  description="Posts on startups, software, entrepreneurship, and building products."
+  fullWidth
+>
+  <BlogListPage posts={posts} currentPage={currentPage} lastPage={lastPage} tags={tags} />
+</AppLayout>

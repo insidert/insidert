@@ -1,21 +1,58 @@
 ---
-import AppLayout from "../../layouts/AppLayout.astro";
+import AppLayout from '../../layouts/AppLayout.astro';
 import { getCollection } from 'astro:content';
+import { getAllTags } from '../../lib/posts';
+import FadeIn from '../../components/react/FadeIn';
 
-const posts = await getCollection("blog");
-
-const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+const posts = await getCollection('blog');
+const tags = getAllTags(posts);
 ---
 
-<AppLayout title="Explore Blog by Tags | Insidert" description="Find the perfect blog post on Insidert! Explore the list of tags to discover content by category and interest.">
-  <h1>Tags</h1>
-  <div>
-    {
-      tags.sort().map((tag) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>#{tag}</a>
-        </p>
-      ))
-    }
-  </div>
+<AppLayout title="Topics" description="Browse posts by topic on Insidert." fullWidth>
+  <section class="section">
+    <div class="container">
+      <FadeIn client:visible>
+        <div class="section-header section-header--center">
+          <span class="section-label">Browse</span>
+          <h1 class="section-title">Topics</h1>
+          <p class="section-subtitle">Explore posts organized by topic.</p>
+        </div>
+      </FadeIn>
+
+      <FadeIn client:visible>
+        <div class="tags-grid">
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}`} class="topic-pill topic-pill--large">
+              #{tag}
+            </a>
+          ))}
+        </div>
+      </FadeIn>
+    </div>
+  </section>
 </AppLayout>
+
+<style>
+  .section-header--center {
+    text-align: center;
+  }
+
+  .section-header--center .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tags-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+
+  .topic-pill--large {
+    padding: var(--space-3) var(--space-6);
+    font-size: var(--text-base);
+  }
+</style>

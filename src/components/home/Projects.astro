@@ -1,0 +1,125 @@
+---
+import { PROJECTS } from '../../consts';
+import FadeIn from '../react/FadeIn';
+---
+
+<section class="section section--projects" id="projects">
+  <div class="container">
+    <FadeIn client:visible>
+      <div class="section-header">
+        <span class="section-label">What I'm Building</span>
+        <h2 class="section-title">Projects</h2>
+        <p class="section-subtitle">
+          Products and ventures I'm building — from fitness to workforce management.
+        </p>
+      </div>
+    </FadeIn>
+
+    <div class="projects-grid">
+      {PROJECTS.map((project, i) => (
+        <FadeIn delay={i * 0.08} client:visible>
+          <a
+            href={project.url}
+            class="project-card"
+            target={project.url.startsWith('http') ? '_blank' : undefined}
+            rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            <div class="project-card__logo" aria-hidden="true">
+              {project.name.charAt(0)}
+            </div>
+            <div class="project-card__content">
+              <div class="project-card__header">
+                <h3 class="project-card__name">{project.name}</h3>
+                <span class:list={['badge', project.status === 'Active' ? 'badge--active' : 'badge--building']}>
+                  {project.status}
+                </span>
+              </div>
+              <p class="project-card__desc">{project.description}</p>
+              <span class="project-card__link">Visit project →</span>
+            </div>
+          </a>
+        </FadeIn>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section--projects {
+    background: var(--gradient-surface);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-5);
+  }
+
+  .project-card {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--duration-slow) var(--ease-out),
+      border-color var(--duration-slow) var(--ease-out),
+      box-shadow var(--duration-slow) var(--ease-out);
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-glow);
+    text-decoration: none;
+  }
+
+  .project-card__logo {
+    flex-shrink: 0;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: white;
+    background: var(--gradient-hero);
+    border-radius: var(--radius-lg);
+  }
+
+  .project-card__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .project-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+
+  .project-card__name {
+    font-size: var(--text-lg);
+    font-weight: 600;
+  }
+
+  .project-card__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
+  }
+
+  .project-card__link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-accent-hover);
+  }
+</style>

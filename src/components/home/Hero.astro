@@ -1,0 +1,79 @@
+---
+import HeroGradient from '../react/HeroGradient';
+import MagneticButton from '../react/MagneticButton';
+---
+
+<section class="hero">
+  <HeroGradient client:load />
+  <div class="hero__content container">
+    <p class="hero__eyebrow">Building products, businesses and ideas.</p>
+    <h1 class="hero__headline">
+      Hi, I'm <span class="gradient-text">Ravi Teja</span>.
+    </h1>
+    <p class="hero__subheadline">
+      I write about startups, software, entrepreneurship, technology and the lessons learned while building products.
+    </p>
+    <div class="hero__actions">
+      <MagneticButton href="/blog" className="btn btn--primary" client:visible>
+        Read Posts
+      </MagneticButton>
+      <MagneticButton href="/projects" className="btn btn--secondary" client:visible>
+        Explore Projects
+      </MagneticButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: var(--space-20) 0 var(--space-10);
+    overflow: hidden;
+  }
+
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    max-width: 48rem;
+  }
+
+  .hero__eyebrow {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-accent-hover);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__headline {
+    font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__subheadline {
+    font-size: clamp(var(--text-lg), 2.5vw, var(--text-xl));
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 38rem;
+    margin-bottom: var(--space-8);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-12) 0 var(--space-8);
+    }
+  }
+</style>

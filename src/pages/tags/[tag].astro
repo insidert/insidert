@@ -1,39 +1,61 @@
 ---
-import AppLayout from "../../layouts/AppLayout.astro";
-import PostHeader from "../../components/PostHeader.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../../consts";
+import AppLayout from '../../layouts/AppLayout.astro';
+import PostFeed from '../../components/editorial/PostFeed.astro';
+import FadeIn from '../../components/react/FadeIn';
 import { getCollection } from 'astro:content';
+import { sortPostsByDate } from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection('blog');
+  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
 
-  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
-
-  return uniqueTags.map((tag) => {
-    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
-    return {
-      params: { tag },
-      props: { posts: filteredPosts },
-    };
-  });
+  return uniqueTags.map((tag) => ({
+    params: { tag },
+    props: {
+      posts: sortPostsByDate(posts.filter((post) => post.data.tags.includes(tag))),
+    },
+  }));
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-
-const title = `${tag} on Insidert`;
-const description = `Dive into ${tag} written by Ravi Teja.`
 ---
 
-<AppLayout title="{title}" description={description}>
-  <h1>Posts tagged with #{tag}</h1>
+<AppLayout
+  title={`#${tag}`}
+  description={`Posts tagged with ${tag} on Insidert.`}
+  fullWidth
+>
+  <section class="section">
+    <div class="container container--wide">
+      <FadeIn client:visible>
+        <div class="tag-header">
+          <span class="section-label">Topic</span>
+          <h1 class="tag-title">#{tag}</h1>
+          <p class="tag-count">{posts.length} post{posts.length === 1 ? '' : 's'}</p>
+        </div>
+      </FadeIn>
 
-  <div>
-    {
-      posts.map((post) => (
-        <PostHeader post={post} />
-      ))
-    }
-  </div>
-
+      <FadeIn client:visible>
+        <PostFeed posts={posts} />
+      </FadeIn>
+    </div>
+  </section>
 </AppLayout>
+
+<style>
+  .tag-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .tag-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin: var(--space-3) 0 var(--space-2);
+  }
+
+  .tag-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+  }
+</style>

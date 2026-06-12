@@ -1,0 +1,124 @@
+---
+import AppLayout from '../../layouts/AppLayout.astro';
+import { PROJECTS } from '../../consts';
+import FadeIn from '../../components/react/FadeIn';
+---
+
+<AppLayout
+  title="Projects"
+  description="Products and ventures built by Ravi Teja — from fitness to workforce management."
+  fullWidth
+>
+  <section class="section">
+    <div class="container">
+      <FadeIn client:visible>
+        <div class="section-header">
+          <span class="section-label">Portfolio</span>
+          <h1 class="section-title">Projects</h1>
+          <p class="section-subtitle">
+            Products and ventures I'm building — solving real problems for real people.
+          </p>
+        </div>
+      </FadeIn>
+
+      <div class="projects-page-grid">
+        {PROJECTS.map((project, i) => (
+          <FadeIn delay={i * 0.08} client:visible>
+            <a
+              href={project.url}
+              class="project-page-card"
+              target={project.url.startsWith('http') ? '_blank' : undefined}
+              rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              <div class="project-page-card__logo" aria-hidden="true">
+                {project.name.charAt(0)}
+              </div>
+              <div class="project-page-card__body">
+                <div class="project-page-card__header">
+                  <h2 class="project-page-card__name">{project.name}</h2>
+                  <span class:list={['badge', project.status === 'Active' ? 'badge--active' : 'badge--building']}>
+                    {project.status}
+                  </span>
+                </div>
+                <p class="project-page-card__desc">{project.description}</p>
+                <span class="project-page-card__cta">Visit project →</span>
+              </div>
+            </a>
+          </FadeIn>
+        ))}
+      </div>
+    </div>
+  </section>
+</AppLayout>
+
+<style>
+  .projects-page-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .project-page-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    padding: var(--space-8);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    text-decoration: none;
+    color: inherit;
+    transition:
+      transform var(--duration-slow) var(--ease-out),
+      border-color var(--duration-slow) var(--ease-out),
+      box-shadow var(--duration-slow) var(--ease-out);
+  }
+
+  .project-page-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-glow);
+    text-decoration: none;
+  }
+
+  .project-page-card__logo {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    color: white;
+    background: var(--gradient-hero);
+    border-radius: var(--radius-xl);
+  }
+
+  .project-page-card__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .project-page-card__name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+  }
+
+  .project-page-card__desc {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
+    flex: 1;
+  }
+
+  .project-page-card__cta {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-accent-hover);
+  }
+</style>

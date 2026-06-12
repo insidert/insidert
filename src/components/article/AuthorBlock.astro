@@ -1,0 +1,57 @@
+---
+import { SITE } from '../../consts';
+---
+
+<aside class="author-block">
+  <img
+    src={SITE.author.avatar}
+    alt={SITE.author.name}
+    class="author-block__avatar"
+    width="56"
+    height="56"
+  />
+  <div class="author-block__info">
+    <p class="author-block__name">{SITE.author.name}</p>
+    <p class="author-block__bio">{SITE.author.bio}</p>
+    <a href="/connect" class="author-block__link link-underline">Connect with me</a>
+  </div>
+</aside>
+
+<style>
+  .author-block {
+    display: flex;
+    gap: var(--space-5);
+    padding: var(--space-8);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    margin-top: var(--space-12);
+  }
+
+  .author-block__avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: var(--radius-full);
+    object-fit: cover;
+    border: 2px solid var(--color-border);
+  }
+
+  .author-block__name {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-2);
+  }
+
+  .author-block__bio {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-3);
+  }
+
+  .author-block__link {
+    font-size: var(--text-sm);
+  }
+</style>

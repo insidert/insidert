@@ -1,26 +1,89 @@
 ---
 import HeaderLink from './HeaderLink.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { SITE, NAV_LINKS } from '../consts';
 ---
 
-<header class="text-center">
-
-  <h3>Ravi Teja</h3>
-	<nav>
-		<HeaderLink href="/">Home</HeaderLink>
-		<HeaderLink href="/blog">Blog</HeaderLink>  
-		<HeaderLink href="/tags">Tags</HeaderLink>
-		<HeaderLink href="/search">Search</HeaderLink>
-		<HeaderLink href="/connect">Connect</HeaderLink>
-		<!-- <HeaderLink href="/about">Projects</HeaderLink> -->
-		<!-- <HeaderLink href="https://twitter.com/astrodotbuild" target="_blank">Twitter</HeaderLink>
-		<HeaderLink href="https://github.com/withastro/astro" target="_blank">GitHub</HeaderLink> -->
-	</nav>
+<header class="header">
+  <div class="header__inner container">
+    <a href="/" class="header__brand" aria-label={`${SITE.title} — Home`}>
+      <span class="header__logo">{SITE.title}</span>
+      <span class="header__tagline">{SITE.tagline}</span>
+    </a>
+    <div class="header__actions">
+      <nav class="header__nav" aria-label="Main navigation">
+        {NAV_LINKS.map((link) => (
+          <HeaderLink href={link.href}>{link.label}</HeaderLink>
+        ))}
+      </nav>
+      <ThemeToggle />
+    </div>
+  </div>
 </header>
+
 <style>
-	header {
-		margin: 0em 0 2em;
-	}
-	h2 {
-		margin: 0.5em 0;
-	}
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: var(--z-header);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    background: var(--color-surface-overlay);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .header__brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    text-decoration: none;
+  }
+
+  .header__brand:hover {
+    text-decoration: none;
+  }
+
+  .header__logo {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  .header__tagline {
+    font-family: var(--font-accent);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .header__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  @media (max-width: 640px) {
+    .header__tagline {
+      display: none;
+    }
+  }
 </style>

@@ -1,0 +1,62 @@
+---
+interface Props {
+  tags: string[];
+  activeTag?: string;
+}
+
+const { tags, activeTag } = Astro.props;
+---
+
+<div class="blog-filters">
+  <a
+    href="/blog"
+    class:list={['blog-filters__pill', { 'blog-filters__pill--active': !activeTag }]}
+  >
+    All
+  </a>
+  {tags.map((tag) => (
+    <a
+      href={`/tags/${tag}`}
+      class:list={['blog-filters__pill', { 'blog-filters__pill--active': activeTag === tag }]}
+    >
+      {tag}
+    </a>
+  ))}
+</div>
+
+<style>
+  .blog-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-bottom: var(--space-8);
+  }
+
+  .blog-filters__pill {
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    transition:
+      color var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      background var(--duration-normal) var(--ease-out);
+  }
+
+  .blog-filters__pill:hover {
+    color: var(--color-text);
+    border-color: var(--color-border-hover);
+    text-decoration: none;
+  }
+
+  .blog-filters__pill--active {
+    color: var(--color-text);
+    background: var(--color-accent-muted);
+    border-color: var(--color-accent);
+  }
+</style>

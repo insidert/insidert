@@ -1,27 +1,26 @@
 ---
 import AppLayout from '../layouts/AppLayout.astro';
-import { getCollection } from "astro:content";
-import PostHeader from '../components/PostHeader.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../consts';
+import { getFeaturedPosts } from '../lib/posts';
+import Hero from '../components/home/Hero.astro';
+import FeaturedPosts from '../components/home/FeaturedPosts.astro';
+import Projects from '../components/home/Projects.astro';
+import Topics from '../components/home/Topics.astro';
+import Newsletter from '../components/home/Newsletter.astro';
 
-const featuredPosts = (await getCollection("blog"))
-  .sort(
-    (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf(),
-  )
-  .filter((post) => post.data.isFeatured === true);
+const posts = await getCollection('blog');
+const featuredPosts = getFeaturedPosts(posts);
 ---
 
-<AppLayout title="Inside Ravi Teja" description="The personal blog of Ravi Teja Veligatla">
-  <p class="mb-0 text-center">
-    Hi, I am the co-founder of Prasanta Communications. I love to code and solve problems with technology. I share my opinions, observations, code snippets and more on this blog.  
-  </p>
-
-  <p class="text-center">Check out <a href="https://prasanta.business" target="_blank">the projects we built</a> on our business website. Explore <a href="/tags/code">Code</a>, <a href="/tags/opinions">Opinions</a>, <a href="/tags/business">Business</a>, <a href="/tags/productivity">Productivity</a> topics.</p>
-
-
-  <div>
-    <h6 class="text-center">Featured articles</h6>
-    <div>
-      {featuredPosts.map((post) => <PostHeader post={post} />)}
-    </div>
-  </div>
+<AppLayout
+  title={`${SITE.author.shortName} — ${SITE.tagline}`}
+  description={SITE.description}
+  fullWidth
+>
+  <Hero />
+  {featuredPosts.length > 0 && <FeaturedPosts posts={featuredPosts} />}
+  <Projects />
+  <Topics />
+  <Newsletter />
 </AppLayout>

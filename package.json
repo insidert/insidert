@@ -13,10 +13,14 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",
+    "@astrojs/react": "^5.0.7",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.2",
     "astro": "^6.1.5",
+    "framer-motion": "^12.40.0",
     "fuse.js": "^7.3.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "sharp": "^0.34.3"
   }
 }

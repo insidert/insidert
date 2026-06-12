@@ -1,0 +1,71 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostFeed from '../editorial/PostFeed.astro';
+import SearchBlog from '../SearchBlog.astro';
+import BlogFilters from './BlogFilters.astro';
+import Pagination from './Pagination.astro';
+import FadeIn from '../react/FadeIn';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  currentPage: number;
+  lastPage: number;
+  tags: string[];
+}
+
+const { posts, currentPage, lastPage, tags } = Astro.props;
+---
+
+<section class="blog-hero section">
+  <div class="container container--wide">
+    <FadeIn client:visible>
+      <div class="blog-hero__header">
+        <span class="section-label">Writing</span>
+        <h1 class="blog-hero__title">Blog</h1>
+        <p class="blog-hero__desc">
+          Thoughts on startups, software, entrepreneurship, and lessons from building products.
+        </p>
+      </div>
+    </FadeIn>
+
+    <SearchBlog />
+    <BlogFilters tags={tags.slice(0, 8)} />
+  </div>
+</section>
+
+<section class="section blog-content">
+  <div class="container container--wide">
+    <FadeIn client:visible>
+      <PostFeed posts={posts} />
+    </FadeIn>
+
+    <Pagination currentPage={currentPage} lastPage={lastPage} />
+  </div>
+</section>
+
+<style>
+  .blog-hero {
+    padding-bottom: 0;
+  }
+
+  .blog-hero__header {
+    margin-bottom: var(--space-8);
+    max-width: 36rem;
+  }
+
+  .blog-hero__title {
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-5xl));
+    font-weight: 700;
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .blog-hero__desc {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  .blog-content {
+    padding-top: var(--space-2);
+  }
+</style>

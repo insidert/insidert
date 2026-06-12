@@ -1,10 +1,37 @@
 ---
-import AppLayout from "../layouts/AppLayout.astro";
-import SearchBlog from "../components/SearchBlog.astro";
+import AppLayout from '../layouts/AppLayout.astro';
+import SearchBlog from '../components/SearchBlog.astro';
+import FadeIn from '../components/react/FadeIn';
 ---
 
-<AppLayout title="Search the blog" description="Quickly find articles on Insidert">
-  <h1 class="mt-0">Search</h1>
-  <SearchBlog />
-
+<AppLayout title="Search" description="Search posts on Insidert" fullWidth>
+  <section class="section">
+    <div class="container container--wide">
+      <FadeIn client:visible>
+        <div class="search-header">
+          <span class="section-label">Find</span>
+          <h1 class="search-title">Search</h1>
+          <p class="search-desc">Find posts by title, description, or tag.</p>
+        </div>
+        <SearchBlog />
+      </FadeIn>
+    </div>
+  </section>
 </AppLayout>
+
+<style>
+  .search-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .search-title {
+    font-size: var(--text-4xl);
+    font-weight: 700;
+    margin: var(--space-3) 0 var(--space-4);
+  }
+
+  .search-desc {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+  }
+</style>

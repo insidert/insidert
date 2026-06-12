@@ -1,0 +1,45 @@
+---
+import { TOPICS } from '../../consts';
+import FadeIn from '../react/FadeIn';
+---
+
+<section class="section" id="topics">
+  <div class="container">
+    <FadeIn client:visible>
+      <div class="section-header section-header--center">
+        <span class="section-label">Explore</span>
+        <h2 class="section-title">Topics I Write About</h2>
+      </div>
+    </FadeIn>
+
+    <FadeIn client:visible>
+      <div class="topics-grid">
+        {TOPICS.map((topic) => (
+          <a href={`/tags/${topic.slug}`} class="topic-pill">
+            {topic.label}
+          </a>
+        ))}
+      </div>
+    </FadeIn>
+  </div>
+</section>
+
+<style>
+  .section-header--center {
+    text-align: center;
+  }
+
+  .section-header--center .section-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .topics-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+    max-width: 48rem;
+    margin: 0 auto;
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  prev: CollectionEntry<'blog'> | null;
+  next: CollectionEntry<'blog'> | null;
+}
+
+const { prev, next } = Astro.props;
+---
+
+{(prev || next) && (
+  <nav class="post-nav" aria-label="Post navigation">
+    {prev ? (
+      <a href={`/blog/${prev.id}/`} class="post-nav__link post-nav__link--prev">
+        <span class="post-nav__label">← Previous</span>
+        <span class="post-nav__title">{prev.data.title}</span>
+      </a>
+    ) : (
+      <div />
+    )}
+    {next ? (
+      <a href={`/blog/${next.id}/`} class="post-nav__link post-nav__link--next">
+        <span class="post-nav__label">Next →</span>
+        <span class="post-nav__title">{next.data.title}</span>
+      </a>
+    ) : (
+      <div />
+    )}
+  </nav>
+)}
+
+<style>
+  .post-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-12);
+    padding-top: var(--space-8);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .post-nav__link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    text-decoration: none;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .post-nav__link:hover {
+    text-decoration: none;
+    transform: translateX(3px);
+  }
+
+  .post-nav__link--next {
+    text-align: right;
+  }
+
+  .post-nav__link--next:hover {
+    transform: translateX(-3px);
+  }
+
+  .post-nav__label {
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-muted);
+  }
+
+  .post-nav__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: var(--leading-snug);
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .post-nav__link:hover .post-nav__title {
+    color: var(--color-accent);
+  }
+
+  @media (max-width: 640px) {
+    .post-nav {
+      grid-template-columns: 1fr;
+    }
+
+    .post-nav__link--next {
+      text-align: left;
+    }
+
+    .post-nav__link--next:hover {
+      transform: translateX(3px);
+    }
+  }
+</style>

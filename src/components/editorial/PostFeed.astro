@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostItem from './PostItem.astro';
+import { sortPostsByDate } from '../../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+const sorted = sortPostsByDate(posts);
+---
+
+<div class="post-feed">
+  <div class="post-feed__list">
+    {sorted.map((post) => (
+      <PostItem post={post} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .post-feed__list {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

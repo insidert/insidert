@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostItem from '../editorial/PostItem.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section class="related" aria-labelledby="related-heading">
+  <h2 id="related-heading" class="related__title">Continue reading</h2>
+  <div class="related__list">
+    {posts.map((post) => (
+      <PostItem post={post} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .related {
+    padding-top: var(--space-12);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related__title {
+    font-family: var(--font-accent);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 var(--space-6);
+  }
+
+  .related__list {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
