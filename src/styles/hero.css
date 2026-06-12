@@ -1,0 +1,322 @@
+/**
+ * Hero — mind map & inside Ravi Teja
+ */
+
+.hero-inside {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-8) 0 var(--space-16);
+  background: var(--color-bg-peach);
+}
+
+.hero-inside__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Micro status strip */
+.hero-inside__micro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--space-6);
+}
+
+.hero-inside__micro-item {
+  padding: var(--space-2) var(--space-4);
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
+  border: 1px dashed color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+  border-radius: var(--radius-full);
+  line-height: var(--leading-normal);
+}
+
+.hero-inside__micro-item strong {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+/* Mind map */
+.mind-map {
+  position: relative;
+  width: 100%;
+  max-width: 42rem;
+  aspect-ratio: 1;
+  margin: 0 auto var(--space-10);
+}
+
+.mind-map__lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-accent);
+  pointer-events: none;
+}
+
+.mind-map__center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  max-width: 16rem;
+  z-index: 2;
+}
+
+.mind-map__brand {
+  font-family: var(--font-accent);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.mind-map__title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: 700;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-3);
+}
+
+.mind-map__dek {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+}
+
+.mind-map__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-3) var(--space-4);
+  min-width: 5rem;
+  text-decoration: none;
+  color: inherit;
+  background: var(--color-bg);
+  border: 1.5px solid var(--node-border, var(--color-border));
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  z-index: 3;
+  transform: translate(var(--tx, -50%), var(--ty, -50%));
+  transition:
+    box-shadow var(--duration-normal) var(--ease-out),
+    border-color var(--duration-normal) var(--ease-out);
+}
+
+.mind-map__node--float {
+  animation: node-float 4s ease-in-out infinite;
+  animation-delay: calc(var(--node-i, 0) * 0.35s);
+}
+
+@keyframes node-float {
+  0%, 100% { margin-top: 0; }
+  50% { margin-top: -6px; }
+}
+
+.mind-map__node:hover {
+  text-decoration: none;
+  scale: 1.08;
+  box-shadow: var(--shadow-md);
+  border-color: var(--node-color, var(--color-accent));
+}
+
+.mind-map__node--coral {
+  --node-color: var(--topic-entrepreneurship);
+  --node-border: color-mix(in srgb, var(--topic-entrepreneurship) 30%, transparent);
+}
+
+.mind-map__node--purple {
+  --node-color: var(--topic-technology);
+  --node-border: color-mix(in srgb, var(--topic-technology) 30%, transparent);
+}
+
+.mind-map__node--green {
+  --node-color: var(--topic-fitness);
+  --node-border: color-mix(in srgb, var(--topic-fitness) 30%, transparent);
+}
+
+.mind-map__node--pink {
+  --node-color: var(--topic-marketing);
+  --node-border: color-mix(in srgb, var(--topic-marketing) 30%, transparent);
+}
+
+.mind-map__node--orange {
+  --node-color: var(--topic-product);
+  --node-border: color-mix(in srgb, var(--topic-product) 30%, transparent);
+}
+
+.mind-map__node--teal {
+  --node-color: var(--topic-life);
+  --node-border: color-mix(in srgb, var(--topic-life) 30%, transparent);
+}
+
+.mind-map__node-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.mind-map__node-label {
+  font-family: var(--font-accent);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--node-color, var(--color-text));
+  white-space: nowrap;
+}
+
+.mind-map__words {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.mind-map__word {
+  position: absolute;
+  font-family: var(--font-accent);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.35;
+  animation: word-drift 12s ease-in-out infinite;
+  animation-delay: calc(var(--word-i, 0) * -1.5s);
+}
+
+.mind-map__word:nth-child(1) { top: 28%; left: 32%; }
+.mind-map__word:nth-child(2) { top: 22%; left: 58%; }
+.mind-map__word:nth-child(3) { top: 38%; left: 72%; }
+.mind-map__word:nth-child(4) { top: 62%; left: 68%; }
+.mind-map__word:nth-child(5) { top: 72%; left: 42%; }
+.mind-map__word:nth-child(6) { top: 58%; left: 22%; }
+.mind-map__word:nth-child(7) { top: 42%; left: 18%; }
+.mind-map__word:nth-child(8) { top: 32%; left: 48%; }
+
+@keyframes word-drift {
+  0%, 100% { opacity: 0.2; transform: translateY(0); }
+  50% { opacity: 0.45; transform: translateY(-4px); }
+}
+
+/* Living dashboard cards below mind map */
+.hero-inside__desk {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+.hero-inside__card {
+  padding: var(--space-5);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    box-shadow var(--duration-slow) var(--ease-out);
+}
+
+.hero-inside__card:hover {
+  text-decoration: none;
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-inside__card-label {
+  font-family: var(--font-accent);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.hero-inside__card-value {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+
+.hero-inside__card-value--accent {
+  color: var(--color-accent);
+}
+
+.hero-inside__card-desc {
+  margin-top: var(--space-2);
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hero-inside__card--tilt {
+  transform: rotate(0.8deg);
+}
+
+.hero-inside__card--tilt:hover {
+  transform: translateY(-3px) rotate(0deg);
+}
+
+@media (max-width: 900px) {
+  .hero-inside__desk {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .mind-map {
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-inside {
+    padding: var(--space-6) 0 var(--space-12);
+  }
+
+  .hero-inside__desk {
+    grid-template-columns: 1fr;
+  }
+
+  .mind-map__node {
+    min-width: 4rem;
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .mind-map__node-label {
+    font-size: 0.5625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mind-map__word {
+    animation: none;
+    opacity: 0.25;
+  }
+
+  .mind-map__node--float {
+    animation: none;
+  }
+}

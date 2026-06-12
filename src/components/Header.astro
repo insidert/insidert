@@ -4,24 +4,60 @@ import ThemeToggle from './ThemeToggle.astro';
 import { SITE, NAV_LINKS } from '../consts';
 ---
 
-<header class="header">
+<header class="header" id="site-header">
   <div class="header__inner container">
-    <a href="/" class="header__brand" aria-label={`${SITE.title} — Home`}>
-      <span class="header__logo">{SITE.title}</span>
-      <span class="header__tagline">{SITE.tagline}</span>
+    <a href="/" class="header__brand" aria-label={`${SITE.title} — Inside Ravi Teja`}>
+      <span class="header__logo">Insidert</span>
+      <span class="header__tagline">Inside Ravi Teja</span>
     </a>
+
     <div class="header__actions">
       <nav class="header__nav" aria-label="Main navigation">
-        {NAV_LINKS.map((link) => (
-          <HeaderLink href={link.href}>{link.label}</HeaderLink>
+        {NAV_LINKS.map((link, i) => (
+          <>
+            {i > 0 && <span class="header__sep" aria-hidden="true">·</span>}
+            <HeaderLink
+              href={link.href}
+              class:list={[{ 'nav-link--compact-hide': 'compactHide' in link && link.compactHide }]}
+            >
+              {link.label}
+            </HeaderLink>
+          </>
         ))}
       </nav>
-      <ThemeToggle />
+
+      <div class="header__tools">
+        <a href="/search" class="header__search" aria-label="Search the archive">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/>
+            <path d="m21 21-4.3-4.3"/>
+          </svg>
+        </a>
+        <ThemeToggle />
+      </div>
     </div>
   </div>
 </header>
 
-<style>
+<script>
+  function initHeader() {
+    const header = document.getElementById('site-header');
+    if (!header || header.dataset.bound) return;
+    header.dataset.bound = 'true';
+
+    const onScroll = () => {
+      header.classList.toggle('header--scrolled', window.scrollY > 20);
+    };
+
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  initHeader();
+  document.addEventListener('astro:page-load', initHeader);
+</script>
+
+<style is:global>
   .header {
     position: sticky;
     top: 0;
@@ -29,9 +65,24 @@ import { SITE, NAV_LINKS } from '../consts';
     height: var(--header-height);
     display: flex;
     align-items: center;
-    background: var(--color-surface-overlay);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition:
+      background var(--duration-slow) var(--ease-out),
+      border-color var(--duration-slow) var(--ease-out),
+      box-shadow var(--duration-slow) var(--ease-out),
+      backdrop-filter var(--duration-slow) var(--ease-out);
+  }
+
+  .header--scrolled {
+    background: color-mix(in srgb, var(--color-bg-peach) 85%, transparent);
+    backdrop-filter: blur(16px);
+    border-bottom-color: color-mix(in srgb, var(--color-accent) 12%, var(--color-border));
+    box-shadow: 0 4px 24px rgba(28, 25, 23, 0.06);
+  }
+
+  [data-theme='dark'] .header--scrolled {
+    background: color-mix(in srgb, var(--color-surface) 90%, transparent);
   }
 
   .header__inner {
@@ -39,25 +90,31 @@ import { SITE, NAV_LINKS } from '../consts';
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    gap: var(--space-4);
   }
 
   .header__brand {
     display: flex;
     flex-direction: column;
-    gap: 1px;
+    gap: 0;
     text-decoration: none;
+    flex-shrink: 0;
+    transition: transform var(--duration-normal) var(--ease-out);
   }
 
   .header__brand:hover {
     text-decoration: none;
+    transform: translateY(-1px);
   }
 
   .header__logo {
     font-family: var(--font-display);
     font-size: var(--text-lg);
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
-    letter-spacing: var(--tracking-tight);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.2;
   }
 
   .header__tagline {
@@ -65,24 +122,130 @@ import { SITE, NAV_LINKS } from '../consts';
     font-size: 0.625rem;
     font-weight: 500;
     letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
     color: var(--color-text-muted);
+    font-style: italic;
   }
 
   .header__actions {
     display: flex;
     align-items: center;
-    gap: var(--space-3);
+    gap: var(--space-4);
+    min-width: 0;
   }
 
   .header__nav {
     display: flex;
     align-items: center;
-    gap: var(--space-1);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0;
+  }
+
+  .header__sep {
+    color: var(--color-text-muted);
+    opacity: 0.35;
+    font-size: var(--text-sm);
+    padding: 0 var(--space-1);
+    user-select: none;
+  }
+
+  .header__tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .header__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition:
+      color var(--duration-normal) var(--ease-out),
+      background var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-out);
+  }
+
+  .header__search:hover {
+    color: var(--color-accent);
+    background: var(--color-accent-muted);
+    border-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+    transform: scale(1.05);
+    text-decoration: none;
+  }
+
+  /* Nav links — notebook tab feel */
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: var(--space-3);
+    right: var(--space-3);
+    height: 2px;
+    background: var(--gradient-warm);
+    border-radius: 1px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .nav-link:hover::after,
+  .nav-link--active::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link--active {
+    color: var(--color-text);
+    background: color-mix(in srgb, var(--color-accent) 8%, transparent);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  @media (max-width: 900px) {
+    .header__sep {
+      display: none;
+    }
+
+    .header__nav {
+      gap: var(--space-1);
+    }
+
+    .nav-link {
+      padding: var(--space-2);
+      font-size: var(--text-xs);
+    }
   }
 
   @media (max-width: 640px) {
     .header__tagline {
+      display: none;
+    }
+
+    .header__nav .nav-link--compact-hide {
       display: none;
     }
   }

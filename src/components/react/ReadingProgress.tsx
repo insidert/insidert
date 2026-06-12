@@ -1,4 +1,13 @@
-import { motion, useScroll, useSpring, useReducedMotion } from 'framer-motion';
+import { useState } from 'react';
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useMotionValueEvent,
+  useReducedMotion,
+} from 'framer-motion';
+
+const MILESTONES = [0.25, 0.5, 0.75];
 
 export default function ReadingProgress() {
   const prefersReducedMotion = useReducedMotion();
@@ -8,23 +17,30 @@ export default function ReadingProgress() {
     damping: 30,
     restDelta: 0.001,
   });
+  const [passed, setPassed] = useState([false, false, false]);
+
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    setPassed(MILESTONES.map((m) => v >= m));
+  });
 
   if (prefersReducedMotion) return null;
 
   return (
-    <motion.div
-      aria-hidden="true"
-      style={{
-        scaleX,
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: 2,
-        transformOrigin: '0%',
-        background: 'linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4)',
-        zIndex: 110,
-      }}
-    />
+    <div className="reading-progress" aria-hidden="true">
+      <div className="reading-progress__track" />
+      <motion.div
+        className="reading-progress__bar"
+        style={{ scaleX, transformOrigin: '0%' }}
+      />
+      <div className="reading-progress__milestones">
+        {MILESTONES.map((pct, i) => (
+          <span
+            key={pct}
+            className={`reading-progress__dot${passed[i] ? ' reading-progress__dot--passed' : ''}`}
+            style={{ left: `${pct * 100}%` }}
+          />
+        ))}
+      </div>
+    </div>
   );
 }

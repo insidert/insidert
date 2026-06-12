@@ -1,208 +1,477 @@
 ---
-import { SITE, FOOTER_LINKS, SOCIAL } from '../consts';
+import { getCollection } from 'astro:content';
+import { SITE, PROJECTS, SOCIAL } from '../consts';
+import { FOOTER_EXPLORE, CURRENT_STATUS, FOOTER_QUOTES } from '../lib/home';
+import MagneticButton from './react/MagneticButton';
 
 const year = new Date().getFullYear();
+const posts = await getCollection('blog');
+const postIds = posts.map((p) => p.id);
+const quoteIndex = Math.floor(Math.random() * FOOTER_QUOTES.length);
+const dailyQuote = FOOTER_QUOTES[quoteIndex];
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isSearchPage = path === '/search';
 ---
 
-<footer class="footer">
-  <div class="footer__bar" aria-hidden="true"></div>
-  <div class="footer__glow" aria-hidden="true"></div>
-  <div class="footer__inner container">
-    <div class="footer__brand">
-      <a href="/" class="footer__logo">{SITE.title}</a>
-      <p class="footer__tagline">{SITE.tagline}</p>
+<footer class="footer-workshop" data-compact={isSearchPage || undefined}>
+  <div class="footer-workshop__wave" aria-hidden="true">
+    <svg viewBox="0 0 1440 48" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,24 C360,48 720,0 1080,24 C1260,36 1380,32 1440,28 L1440,0 L0,0 Z" fill="var(--color-bg-cream)" />
+    </svg>
+  </div>
+
+  <div class="footer-workshop__glow" aria-hidden="true" />
+
+  <div class="footer-workshop__inner container">
+    {!isSearchPage && (
+      <section class="footer-workshop__signoff">
+        <h2 class="footer-workshop__signoff-title">Still here?</h2>
+        <p class="footer-workshop__signoff-text">
+          Thanks for spending time exploring my corner of the internet.
+        </p>
+        <blockquote class="footer-workshop__quote">
+          <p id="footer-quote">"{dailyQuote}"</p>
+        </blockquote>
+        <div class="footer-workshop__eggs">
+          <button type="button" class="footer-workshop__surprise" id="surprise-me" data-posts={JSON.stringify(postIds)}>
+            ✦ Surprise me
+          </button>
+          <a href="/search" class="footer-workshop__surprise footer-workshop__surprise--link">Explore the archive</a>
+        </div>
+      </section>
+    )}
+
+    <div class="footer-workshop__bento">
+      <section class="footer-workshop__bento-cell footer-workshop__bento-cell--projects">
+        <h3 class="footer-workshop__heading">What I'm Building</h3>
+        <div class="footer-workshop__project-strip">
+          {PROJECTS.map((project) => (
+            <a
+              href={project.url}
+              class="footer-workshop__project"
+              target={project.url.startsWith('http') ? '_blank' : undefined}
+              rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+            >
+              <span class="footer-workshop__project-name">{project.name}</span>
+              <span class="footer-workshop__project-status">{project.status}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section class="footer-workshop__bento-cell footer-workshop__bento-cell--explore">
+        <h3 class="footer-workshop__heading">Explore</h3>
+        <nav class="footer-workshop__nav" aria-label="Footer navigation">
+          {FOOTER_EXPLORE.map((link) => (
+            <a href={link.href} class="footer-workshop__link">{link.label}</a>
+          ))}
+        </nav>
+      </section>
+
+      <section class="footer-workshop__bento-cell footer-workshop__bento-cell--status">
+        <h3 class="footer-workshop__heading">Currently</h3>
+        <ul class="footer-workshop__status">
+          {CURRENT_STATUS.map((item) => (
+            <li><span aria-hidden="true">{item.icon}</span> {item.text}</li>
+          ))}
+        </ul>
+      </section>
+
+      {!isSearchPage && (
+        <section class="footer-workshop__bento-cell footer-workshop__bento-cell--newsletter">
+          <h3 class="footer-workshop__newsletter-title">Join a few curious people</h3>
+          <p class="footer-workshop__newsletter-desc">
+            Follow my journey of building products, businesses, and ideas.
+          </p>
+          <form class="footer-workshop__newsletter-form" action="#" method="post">
+            <label for="footer-email" class="sr-only">Email</label>
+            <input type="email" id="footer-email" name="email" class="input footer-workshop__input" placeholder="you@example.com" required />
+            <MagneticButton type="submit" className="btn btn--primary footer-workshop__btn" client:visible>Subscribe</MagneticButton>
+          </form>
+        </section>
+      )}
     </div>
 
-    <nav class="footer__nav" aria-label="Footer navigation">
-      {FOOTER_LINKS.map((link) => (
-        <a href={link.href} class="footer__link">{link.label}</a>
-      ))}
-    </nav>
-
-    <div class="footer__social">
-      <a href={SOCIAL.twitter} target="_blank" rel="noopener noreferrer" class="footer__link">Twitter/X</a>
-      <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" class="footer__link">LinkedIn</a>
-      <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" class="footer__link">GitHub</a>
+    <div class="footer-workshop__bottom">
+      <a href="/" class="footer-workshop__logo">{SITE.title}</a>
+      <span class="footer-workshop__tagline">{SITE.tagline}</span>
+      <div class="footer-workshop__social">
+        <a href={SOCIAL.twitter} target="_blank" rel="noopener noreferrer">Twitter/X</a>
+        <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+      <p class="footer-workshop__copy">&copy; {year} {SITE.author.name}</p>
     </div>
-
-    <p class="footer__copy">&copy; {year} {SITE.author.name}</p>
   </div>
 </footer>
 
+<script>
+  const btn = document.getElementById('surprise-me');
+  btn?.addEventListener('click', () => {
+    const ids: string[] = JSON.parse(btn.dataset.posts ?? '[]');
+    if (ids.length === 0) return;
+    window.location.href = `/blog/${ids[Math.floor(Math.random() * ids.length)]}/`;
+  });
+
+  const quoteEl = document.getElementById('footer-quote');
+  if (quoteEl) {
+    const quotes = [
+      'Ship early, learn fast.',
+      'Focus on one thing at a time.',
+      'Simple beats clever every time.',
+      'The best marketing is a great product.',
+      'Comfort zones are where dreams go to sleep.',
+    ];
+    let idx = quotes.indexOf(quoteEl.textContent?.replace(/^"|"$/g, '') ?? '');
+    if (idx === -1) idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % quotes.length;
+      quoteEl.textContent = `"${quotes[idx]}"`;
+    }, 8000);
+  }
+</script>
+
 <style is:global>
-  .footer {
+  .footer-workshop {
     position: relative;
-    margin-top: var(--space-12);
-    padding: var(--space-16) 0 var(--space-10);
-    background-color: #f8fafc;
-    background-image: linear-gradient(
-      160deg,
-      #f8fafc 0%,
-      #f1f5f9 35%,
-      #eef2ff 70%,
-      #ecfeff 100%
-    );
-    color: var(--color-text);
+    margin-top: var(--space-16);
+    padding: 0 0 var(--space-8);
+    background: linear-gradient(165deg, #2a1819 0%, #1a1210 40%, #221525 100%);
+    color: #fafaf9;
     overflow: hidden;
-    border-top: 1px solid var(--color-border);
   }
 
-  .footer__bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-image: linear-gradient(
-      90deg,
-      rgba(99, 102, 241, 0.35) 0%,
-      rgba(139, 92, 246, 0.25) 50%,
-      rgba(6, 182, 212, 0.35) 100%
-    );
+  .footer-workshop[data-compact] {
+    margin-top: var(--space-8);
   }
 
-  .footer__glow {
+  .footer-workshop[data-compact] .footer-workshop__bento {
+    padding-top: var(--space-8);
+  }
+
+  .footer-workshop__wave {
+    line-height: 0;
+    margin-bottom: -1px;
+  }
+
+  .footer-workshop__wave svg {
+    display: block;
+    width: 100%;
+    height: 2rem;
+  }
+
+  .footer-workshop__glow {
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(
-      ellipse 60% 70% at 80% 0%,
-      rgba(99, 102, 241, 0.08),
-      transparent 65%
-    );
+    background:
+      radial-gradient(ellipse 50% 40% at 10% 30%, rgba(255, 107, 107, 0.12), transparent 55%),
+      radial-gradient(ellipse 40% 35% at 90% 70%, rgba(168, 85, 247, 0.1), transparent 50%);
     pointer-events: none;
   }
 
-  .footer__inner {
+  .footer-workshop__inner {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    grid-template-rows: auto auto;
-    gap: var(--space-8) var(--space-12);
-    align-items: start;
   }
 
-  .footer__brand {
-    grid-row: span 2;
+  /* Sign-off — centered hero moment */
+  .footer-workshop__signoff {
+    text-align: center;
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: var(--space-12) 0 var(--space-10);
   }
 
-  .footer__logo {
+  .footer-workshop__signoff-title {
     font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: color var(--duration-normal) var(--ease-out);
+    font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+    background: linear-gradient(135deg, #ff8585 0%, #ffc470 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
-  .footer__logo:hover {
-    color: var(--color-accent);
-    text-decoration: none;
+  .footer-workshop__signoff-text {
+    font-size: var(--text-base);
+    color: rgba(250, 250, 249, 0.7);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-6);
   }
 
-  .footer__tagline {
-    margin-top: var(--space-2);
+  .footer-workshop__quote {
+    margin: 0 0 var(--space-6);
+    padding: 0;
+    border: none;
     font-family: var(--font-accent);
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: rgba(250, 250, 249, 0.5);
+  }
+
+  .footer-workshop__eggs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .footer-workshop__surprise {
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
     font-weight: 500;
+    color: #fafaf9;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+  }
+
+  .footer-workshop__surprise:hover {
+    background: rgba(255, 107, 107, 0.18);
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: #fafaf9;
+  }
+
+  /* Bento grid — asymmetric, distinct from search */
+  .footer-workshop__bento {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-4);
+    padding: var(--space-4) 0 var(--space-10);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-workshop__signoff + .footer-workshop__bento {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .footer-workshop__bento-cell {
+    padding: var(--space-6);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+  }
+
+  .footer-workshop__bento-cell--projects {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+
+  .footer-workshop__bento-cell--explore {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .footer-workshop__bento-cell--status {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .footer-workshop__bento-cell--newsletter {
+    grid-column: 2 / span 2;
+    grid-row: 2;
+    background: rgba(255, 107, 107, 0.08);
+    border-color: rgba(255, 107, 107, 0.15);
+  }
+
+  .footer-workshop__heading {
+    font-family: var(--font-accent);
+    font-size: 0.625rem;
+    font-weight: 700;
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
-    color: var(--color-text-muted);
+    color: rgba(250, 250, 249, 0.4);
+    margin-bottom: var(--space-4);
   }
 
-  .footer__nav,
-  .footer__social {
+  /* Horizontal project strip — not chip grid */
+  .footer-workshop__project-strip {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
   }
 
-  .footer__link {
+  .footer-workshop__project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) var(--space-4);
+    text-decoration: none;
+    color: #fafaf9;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    transition: background var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
+  }
+
+  .footer-workshop__project:hover {
+    background: rgba(255, 107, 107, 0.12);
+    transform: translateX(4px);
+    text-decoration: none;
+    color: #fafaf9;
+  }
+
+  .footer-workshop__project-name {
+    font-weight: 600;
+    font-size: var(--text-sm);
+  }
+
+  .footer-workshop__project-status {
+    font-family: var(--font-accent);
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: rgba(250, 250, 249, 0.45);
+  }
+
+  .footer-workshop__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .footer-workshop__link {
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--color-text-secondary);
+    color: rgba(250, 250, 249, 0.7);
     text-decoration: none;
     transition: color var(--duration-normal) var(--ease-out);
   }
 
-  .footer__link:hover {
-    color: var(--color-accent);
+  .footer-workshop__link:hover {
+    color: #ffb347;
     text-decoration: none;
   }
 
-  .footer__copy {
-    grid-column: 1 / -1;
+  .footer-workshop__status {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
     font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    padding-top: var(--space-8);
-    border-top: 1px solid var(--color-border);
+    color: rgba(250, 250, 249, 0.7);
   }
 
-  /* Dark theme — richer contrast footer */
-  [data-theme='dark'] .footer {
-    background-color: #060a14;
-    background-image: linear-gradient(145deg, #060a14 0%, #1e1b4b 38%, #0e4f6e 100%);
-    color: #f8fafc;
-    border-top-color: rgba(255, 255, 255, 0.06);
+  .footer-workshop__newsletter-title {
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
   }
 
-  [data-theme='dark'] .footer__bar {
-    height: 3px;
-    background-image: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+  .footer-workshop__newsletter-desc {
+    font-size: var(--text-sm);
+    color: rgba(250, 250, 249, 0.6);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-4);
   }
 
-  [data-theme='dark'] .footer__glow {
-    background-image: radial-gradient(
-      ellipse 65% 75% at 90% 10%,
-      rgba(139, 92, 246, 0.28),
-      transparent 55%
-    );
+  .footer-workshop__newsletter-form {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
   }
 
-  [data-theme='dark'] .footer__logo {
-    color: #f8fafc;
+  .footer-workshop__input {
+    flex: 1;
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #fafaf9 !important;
   }
 
-  [data-theme='dark'] .footer__logo:hover {
-    color: #67e8f9;
+  .footer-workshop__input::placeholder {
+    color: rgba(250, 250, 249, 0.35);
   }
 
-  [data-theme='dark'] .footer__tagline {
-    color: rgba(248, 250, 252, 0.5);
+  .footer-workshop__btn {
+    flex-shrink: 0;
   }
 
-  [data-theme='dark'] .footer__link {
-    color: rgba(248, 250, 252, 0.72);
+  /* Bottom bar */
+  .footer-workshop__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3) var(--space-6);
+    padding-top: var(--space-6);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  [data-theme='dark'] .footer__link:hover {
-    color: #67e8f9;
+  .footer-workshop__logo {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: #fafaf9;
+    text-decoration: none;
   }
 
-  [data-theme='dark'] .footer__copy {
-    color: rgba(248, 250, 252, 0.5);
-    border-top-color: rgba(255, 255, 255, 0.1);
+  .footer-workshop__logo:hover {
+    color: #ff8585;
+    text-decoration: none;
   }
 
-  @media (max-width: 640px) {
-    .footer {
-      padding: var(--space-12) 0 var(--space-8);
-    }
+  .footer-workshop__tagline {
+    font-family: var(--font-accent);
+    font-size: 0.625rem;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: rgba(250, 250, 249, 0.35);
+  }
 
-    .footer__inner {
+  .footer-workshop__social {
+    display: flex;
+    gap: var(--space-4);
+    margin-left: auto;
+  }
+
+  .footer-workshop__social a {
+    font-size: var(--text-xs);
+    color: rgba(250, 250, 249, 0.45);
+    text-decoration: none;
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .footer-workshop__social a:hover {
+    color: #ff8585;
+    text-decoration: none;
+  }
+
+  .footer-workshop__copy {
+    width: 100%;
+    font-size: 0.625rem;
+    color: rgba(250, 250, 249, 0.3);
+    margin: var(--space-2) 0 0;
+  }
+
+  @media (max-width: 900px) {
+    .footer-workshop__bento {
       grid-template-columns: 1fr;
-      gap: var(--space-6);
+      grid-template-rows: auto;
     }
 
-    .footer__brand {
+    .footer-workshop__bento-cell--projects,
+    .footer-workshop__bento-cell--explore,
+    .footer-workshop__bento-cell--status,
+    .footer-workshop__bento-cell--newsletter {
+      grid-column: 1;
       grid-row: auto;
     }
 
-    .footer__nav,
-    .footer__social {
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: var(--space-4) var(--space-6);
+    .footer-workshop__social {
+      margin-left: 0;
     }
   }
 </style>

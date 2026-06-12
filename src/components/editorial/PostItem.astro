@@ -1,16 +1,24 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostMeta from './PostMeta.astro';
+import { getTagTheme } from '../../lib/topics';
 
 interface Props {
   post: CollectionEntry<'blog'>;
 }
 
 const { post } = Astro.props;
+const tag = post.data.tags[0];
+const theme = getTagTheme(tag);
+const isFeatured = post.data.isFeatured;
 ---
 
-<article class="post-item">
-  <a href={`/blog/${post.id}/`} class="post-item__link">
+<article class:list={['post-item', { 'post-item--featured': isFeatured }]}>
+  <a
+    href={`/blog/${post.id}/`}
+    class="post-item__link"
+    style={`--item-accent: ${theme.color}`}
+  >
     <PostMeta post={post} />
     <h3 class="post-item__title">{post.data.title}</h3>
     {post.data.description && (
@@ -23,6 +31,24 @@ const { post } = Astro.props;
   .post-item {
     position: relative;
     border-bottom: 1px solid var(--color-border);
+  }
+
+  .post-item--featured .post-item__link {
+    padding-left: var(--space-5);
+    margin: var(--space-2) 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--item-accent, var(--color-accent)) 6%, transparent),
+      color-mix(in srgb, var(--color-highlight) 4%, transparent)
+    );
+  }
+
+  .post-item--featured .post-item__link::before {
+    top: var(--space-4);
+    bottom: var(--space-4);
+    width: 3px;
+    background: var(--gradient-warm);
   }
 
   .post-item__link {
@@ -41,7 +67,7 @@ const { post } = Astro.props;
     top: var(--space-6);
     bottom: var(--space-6);
     width: 2px;
-    background: var(--color-accent);
+    background: var(--item-accent, var(--color-accent));
     border-radius: 1px;
     transform: scaleY(0);
     transform-origin: center top;
@@ -73,7 +99,7 @@ const { post } = Astro.props;
   }
 
   .post-item__link:hover .post-item__title {
-    color: var(--color-accent);
+    color: var(--item-accent, var(--color-accent));
   }
 
   .post-item__excerpt {

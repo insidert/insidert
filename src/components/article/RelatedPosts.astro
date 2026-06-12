@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import PostItem from '../editorial/PostItem.astro';
+import PostMasonry from '../editorial/PostMasonry.astro';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -10,32 +10,24 @@ const { posts } = Astro.props;
 ---
 
 <section class="related" aria-labelledby="related-heading">
-  <h2 id="related-heading" class="related__title">Continue reading</h2>
-  <div class="related__list">
-    {posts.map((post) => (
-      <PostItem post={post} />
-    ))}
+  <div class="related__header">
+    <span class="scribble-label">Curated for you</span>
+    <h2 id="related-heading" class="zone-title">Continue Reading</h2>
+    <p class="related__desc">More notes from the notebook — mixed shapes, same workshop energy.</p>
   </div>
+  <PostMasonry posts={posts} heroFirst />
 </section>
 
 <style>
-  .related {
-    padding-top: var(--space-12);
-    border-top: 1px solid var(--color-border);
+  .related__header {
+    margin-bottom: var(--space-10);
+    max-width: 28rem;
   }
 
-  .related__title {
-    font-family: var(--font-accent);
-    font-size: 0.6875rem;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin: 0 0 var(--space-6);
-  }
-
-  .related__list {
-    display: flex;
-    flex-direction: column;
+  .related__desc {
+    margin-top: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
   }
 </style>

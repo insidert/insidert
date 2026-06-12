@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import NoteCard from './NoteCard.astro';
+import { sortPostsByDate, getNoteVariant } from '../../lib/posts';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  heroFirst?: boolean;
+}
+
+const { posts, heroFirst = false } = Astro.props;
+const sorted = sortPostsByDate(posts);
+---
+
+<div class="notes-masonry">
+  {sorted.map((post, i) => {
+    const variant = getNoteVariant(post, i, heroFirst);
+    return (
+      <div class:list={['notes-masonry__item', `notes-masonry__item--${variant}`]}>
+        <NoteCard post={post} variant={variant} index={i} />
+      </div>
+    );
+  })}
+</div>

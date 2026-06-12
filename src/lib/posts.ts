@@ -1,6 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 
 export type BlogPost = CollectionEntry<'blog'>;
+export type NoteVariant = 'hero' | 'note' | 'snippet' | 'quote' | 'timeline';
 
 export function sortPostsByDate(posts: BlogPost[]): BlogPost[] {
   return [...posts].sort(
@@ -10,6 +11,21 @@ export function sortPostsByDate(posts: BlogPost[]): BlogPost[] {
 
 export function getFeaturedPosts(posts: BlogPost[]): BlogPost[] {
   return sortPostsByDate(posts).filter((p) => p.data.isFeatured);
+}
+
+export function getRecentNotes(posts: BlogPost[], count = 6): BlogPost[] {
+  const featured = getFeaturedPosts(posts);
+  if (featured.length >= count) return featured.slice(0, count);
+  const sorted = sortPostsByDate(posts);
+  const featuredIds = new Set(featured.map((p) => p.id));
+  const rest = sorted.filter((p) => !featuredIds.has(p.id));
+  return [...featured, ...rest].slice(0, count);
+}
+
+export function getNoteVariant(post: BlogPost, index: number, heroFirst = false): NoteVariant {
+  if (index === 0 && (post.data.isFeatured || heroFirst)) return 'hero';
+  const cycle: NoteVariant[] = ['note', 'snippet', 'quote', 'timeline'];
+  return cycle[index % cycle.length];
 }
 
 export function getCategory(post: BlogPost): string {
@@ -57,6 +73,11 @@ export function getRelatedPosts(
 
 export function getAllTags(posts: BlogPost[]): string[] {
   return [...new Set(posts.flatMap((p) => p.data.tags))].sort();
+}
+
+export function getRandomPosts(posts: BlogPost[], count = 5): BlogPost[] {
+  const shuffled = [...posts].sort(() => Math.random() - 0.5);
+  return shuffled.slice(0, count);
 }
 
 export function getPlaceholderImage(index: number): string {

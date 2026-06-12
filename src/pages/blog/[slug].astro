@@ -1,11 +1,14 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import AppLayout from '../../layouts/AppLayout.astro';
-import FormattedDate from '../../components/FormattedDate.astro';
+import ArticleHeader from '../../components/article/ArticleHeader.astro';
 import PostNav from '../../components/article/PostNav.astro';
 import RelatedPosts from '../../components/article/RelatedPosts.astro';
 import ReadingProgress from '../../components/react/ReadingProgress';
 import { getCategory, getAdjacentPosts, getRelatedPosts } from '../../lib/posts';
+import { getTagTheme } from '../../lib/topics';
+import { getReadingTime } from '../../lib/reading';
+import '../../styles/article.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -22,9 +25,11 @@ const allPosts = await getCollection('blog');
 const { Content } = await render(post);
 
 const category = getCategory(post);
+const categoryTheme = getTagTheme(post.data.tags[0]);
 const { prev, next } = getAdjacentPosts(allPosts, post.id);
 const related = getRelatedPosts(allPosts, post, 3);
 const heroImage = post.data.heroImage?.url?.trim();
+const { label: readingTime } = getReadingTime(post.body ?? '');
 ---
 
 <AppLayout
@@ -36,225 +41,65 @@ const heroImage = post.data.heroImage?.url?.trim();
 >
   <ReadingProgress client:load />
 
-  <article class="post-page">
-    <div class="container post-page__container">
-      <div class="post-page__body">
-        <header class="post-page__header">
-          <div class="post-page__meta">
-            <span class="post-page__category">{category}</span>
-            <span class="post-page__sep" aria-hidden="true">·</span>
-            <FormattedDate date={post.data.updatedDate} uppercase />
-          </div>
+  <article class="article-page">
+    <ArticleHeader
+      category={category}
+      theme={categoryTheme}
+      title={post.data.title}
+      description={post.data.description}
+      readingTime={readingTime}
+      updatedDate={post.data.updatedDate}
+      publishedDate={post.data.publishedDate}
+    />
 
-          <h1 class="post-page__title">{post.data.title}</h1>
-
-          {post.data.description && (
-            <p class="post-page__description">{post.data.description}</p>
-          )}
-
-          {post.data.publishedDate.toString() !== post.data.updatedDate.toString() && (
-            <p class="post-page__updated">
-              First published <FormattedDate date={post.data.publishedDate} />
-            </p>
-          )}
-        </header>
-
-        {heroImage && (
-          <figure class="post-page__figure">
-            <img
-              src={heroImage}
-              alt={post.data.heroImage?.alt ?? post.data.title}
-              class="post-page__hero-image"
-              loading="eager"
-            />
-          </figure>
+    {heroImage && (
+      <figure class="article-page__hero">
+        <img
+          src={heroImage}
+          alt={post.data.heroImage?.alt ?? post.data.title}
+          class="article-page__hero-image"
+          loading="eager"
+        />
+        {post.data.heroImage?.alt && (
+          <figcaption class="article-page__hero-caption">{post.data.heroImage.alt}</figcaption>
         )}
+      </figure>
+    )}
 
+    <div class="article-page__canvas">
+      <div
+        class="article-page__prose-wrap"
+        style={`--article-accent: ${categoryTheme.color}; --article-accent-muted: ${categoryTheme.muted}`}
+      >
         <div class="prose">
           <Content />
         </div>
+      </div>
 
+      <footer class="article-page__footer">
         {post.data.tags.length > 0 && (
-          <div class="post-page__tags">
+          <div class="article-page__tags">
             {post.data.tags.map((tag) => (
-              <a href={`/tags/${tag}`} class="post-page__tag">#{tag}</a>
+              <a href={`/tags/${tag}`} class="article-page__tag">#{tag}</a>
             ))}
           </div>
         )}
 
         <PostNav prev={prev} next={next} />
-      </div>
-
-      {related.length > 0 && (
-        <div class="post-page__related">
-          <RelatedPosts posts={related} />
-        </div>
-      )}
+      </footer>
     </div>
+
+    {related.length > 0 && (
+      <div class="article-page__related container">
+        <RelatedPosts posts={related} />
+      </div>
+    )}
   </article>
 </AppLayout>
 
-<style>
-  .post-page {
-    padding: var(--space-12) 0 var(--space-20);
-  }
-
-  .post-page__container {
-    width: 100%;
-  }
-
-  .post-page__body {
-    width: 100%;
-  }
-
-  .post-page__related {
-    width: 100%;
-    margin-top: var(--space-16);
-  }
-
-  .post-page__header {
-    margin-bottom: var(--space-10);
-  }
-
-  .post-page__meta {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: var(--space-2);
-    font-family: var(--font-accent);
-    font-size: var(--text-xs);
-    font-weight: 500;
-    color: var(--color-text-muted);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    margin-bottom: var(--space-5);
-  }
-
-  .post-page__category {
-    color: var(--color-accent);
-  }
-
-  .post-page__sep {
-    opacity: 0.5;
-  }
-
-  .post-page__title {
-    font-family: var(--font-display);
-    font-size: clamp(2rem, 4.5vw, 2.75rem);
-    font-weight: 700;
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-text);
-    margin-bottom: var(--space-5);
-  }
-
-  .post-page__description {
-    font-size: var(--text-xl);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
-    margin: 0;
-  }
-
-  .post-page__updated {
-    margin-top: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-  }
-
-  .post-page__figure {
-    margin: 0 0 var(--space-12);
-  }
-
-  .post-page__hero-image {
-    width: 100%;
-    border-radius: var(--radius-xl);
-    border: 1px solid var(--color-border);
-  }
-
-  .post-page__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    margin-top: var(--space-12);
-    padding-top: var(--space-8);
-    border-top: 1px solid var(--color-border);
-  }
-
-  .post-page__tag {
-    font-family: var(--font-accent);
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    padding: var(--space-1) var(--space-3);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    transition:
-      color var(--duration-normal) var(--ease-out),
-      border-color var(--duration-normal) var(--ease-out);
-  }
-
-  .post-page__tag:hover {
-    color: var(--color-accent);
-    border-color: var(--color-border-hover);
-    text-decoration: none;
-  }
-
-  @media (max-width: 640px) {
-    .post-page {
-      padding: var(--space-8) 0 var(--space-16);
-    }
-  }
-</style>
-
 <script>
-  function enhancePost() {
-    const prose = document.querySelector('.prose');
-    if (!prose) return;
+  import { enhanceArticle } from '../../scripts/enhance-article.ts';
 
-    prose.querySelectorAll('pre').forEach((pre) => {
-      if (pre.parentElement?.classList.contains('code-block-wrapper')) return;
-
-      const wrapper = document.createElement('div');
-      wrapper.className = 'code-block-wrapper';
-      pre.parentNode?.insertBefore(wrapper, pre);
-      wrapper.appendChild(pre);
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'code-copy-btn';
-      btn.textContent = 'Copy';
-      btn.addEventListener('click', async () => {
-        const code = pre.querySelector('code')?.textContent ?? pre.textContent ?? '';
-        try {
-          await navigator.clipboard.writeText(code);
-          btn.textContent = 'Copied!';
-          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-        } catch { /* noop */ }
-      });
-      wrapper.appendChild(btn);
-    });
-
-    let lightbox: HTMLButtonElement | null = null;
-
-    prose.querySelectorAll('img').forEach((img) => {
-      img.addEventListener('click', () => {
-        if (!lightbox) {
-          lightbox = document.createElement('button');
-          lightbox.className = 'image-lightbox';
-          lightbox.setAttribute('aria-label', 'Close image');
-          lightbox.hidden = true;
-          lightbox.addEventListener('click', () => { lightbox!.hidden = true; });
-          document.body.appendChild(lightbox);
-        }
-        lightbox.innerHTML = '';
-        const clone = img.cloneNode(true) as HTMLImageElement;
-        clone.style.cursor = 'default';
-        lightbox.appendChild(clone);
-        lightbox.hidden = false;
-      });
-    });
-  }
-
-  enhancePost();
-  document.addEventListener('astro:page-load', enhancePost);
+  enhanceArticle();
+  document.addEventListener('astro:page-load', enhanceArticle);
 </script>

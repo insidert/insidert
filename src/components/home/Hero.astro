@@ -1,79 +1,71 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import HeroGradient from '../react/HeroGradient';
-import MagneticButton from '../react/MagneticButton';
+import HeroMindMap from '../react/HeroMindMap';
+import { PROJECTS } from '../../consts';
+import { HERO_MIND_NODES, HERO_FLOATING_WORDS, HERO_MICROCOPY } from '../../lib/home';
+import '../../styles/hero.css';
+
+interface Props {
+  latestPost?: CollectionEntry<'blog'> | null;
+}
+
+const { latestPost } = Astro.props;
+const primaryProject = PROJECTS[0];
 ---
 
-<section class="hero">
+<section class="hero-inside">
   <HeroGradient client:load />
-  <div class="hero__content container">
-    <p class="hero__eyebrow">Building products, businesses and ideas.</p>
-    <h1 class="hero__headline">
-      Hi, I'm <span class="gradient-text">Ravi Teja</span>.
-    </h1>
-    <p class="hero__subheadline">
-      I write about startups, software, entrepreneurship, technology and the lessons learned while building products.
-    </p>
-    <div class="hero__actions">
-      <MagneticButton href="/blog" className="btn btn--primary" client:visible>
-        Read Posts
-      </MagneticButton>
-      <MagneticButton href="/projects" className="btn btn--secondary" client:visible>
-        Explore Projects
-      </MagneticButton>
+
+  <div class="hero-inside__inner">
+    <div class="hero-inside__micro container">
+      <span class="hero-inside__micro-item">
+        <strong>Status:</strong> {HERO_MICROCOPY.status}
+      </span>
+      <span class="hero-inside__micro-item">
+        <strong>Mood:</strong> {HERO_MICROCOPY.mood}
+      </span>
+      <span class="hero-inside__micro-item">
+        <strong>Experiment:</strong> {HERO_MICROCOPY.experiment}
+      </span>
+    </div>
+
+    <HeroMindMap
+      nodes={HERO_MIND_NODES}
+      words={HERO_FLOATING_WORDS}
+      client:load
+    />
+
+    <div class="hero-inside__desk">
+      <a
+        href={primaryProject.url}
+        class="hero-inside__card"
+        target={primaryProject.url.startsWith('http') ? '_blank' : undefined}
+        rel={primaryProject.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
+        <span class="hero-inside__card-label">Currently Building</span>
+        <span class="hero-inside__card-value hero-inside__card-value--accent">{primaryProject.name}</span>
+        <p class="hero-inside__card-desc">{primaryProject.description}</p>
+      </a>
+
+      <a href="/tags/ai" class="hero-inside__card hero-inside__card--tilt">
+        <span class="hero-inside__card-label">Currently Exploring</span>
+        <span class="hero-inside__card-value">AI Workflows</span>
+        <p class="hero-inside__card-desc">How AI changes the builder's daily rhythm.</p>
+      </a>
+
+      {latestPost && (
+        <a href={`/blog/${latestPost.id}/`} class="hero-inside__card">
+          <span class="hero-inside__card-label">Recently Published</span>
+          <span class="hero-inside__card-value">{latestPost.data.title}</span>
+        </a>
+      )}
+
+      <a href="/tags/opinions" class="hero-inside__card hero-inside__card--tilt">
+        <span class="hero-inside__card-label">Current Obsession</span>
+        <span class="hero-inside__card-value">Growth Systems</span>
+        <p class="hero-inside__card-desc">Building things that compound over time.</p>
+      </a>
     </div>
   </div>
 </section>
-
-<style>
-  .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    padding: var(--space-20) 0 var(--space-10);
-    overflow: hidden;
-  }
-
-  .hero__content {
-    position: relative;
-    z-index: 1;
-    max-width: 48rem;
-  }
-
-  .hero__eyebrow {
-    font-family: var(--font-accent);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--color-accent-hover);
-    margin-bottom: var(--space-6);
-  }
-
-  .hero__headline {
-    font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
-    font-weight: 700;
-    line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
-    margin-bottom: var(--space-6);
-  }
-
-  .hero__subheadline {
-    font-size: clamp(var(--text-lg), 2.5vw, var(--text-xl));
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
-    max-width: 38rem;
-    margin-bottom: var(--space-8);
-  }
-
-  .hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-  }
-
-  @media (max-width: 640px) {
-    .hero {
-      padding: var(--space-12) 0 var(--space-8);
-    }
-  }
-</style>

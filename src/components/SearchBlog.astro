@@ -21,7 +21,7 @@ const filteredPosts = posts.map((p) => ({
       type="search"
       id="blog-search"
       class="input search-blog__input"
-      placeholder="Search posts..."
+      placeholder="Search thoughts, experiments, and lessons..."
       autocomplete="off"
     />
   </div>
@@ -140,7 +140,7 @@ const filteredPosts = posts.map((p) => ({
 
         if (matches.length === 0) {
           results.hidden = false;
-          results.innerHTML = '<li><p>No results found</p></li>';
+          results.innerHTML = '<li><p class="search-blog__empty">Nothing matched — try a different keyword.</p></li>';
           return;
         }
 

@@ -1,0 +1,32 @@
+---
+/**
+ * Callout component for MDX — also usable via blockquote syntax in markdown:
+ *
+ * > **💡 Lesson Learned**
+ * > Your insight here.
+ */
+interface Props {
+  type?: 'lesson' | 'tip' | 'note' | 'warning' | 'takeaway' | 'experiment' | 'observation';
+  title?: string;
+}
+
+const { type = 'note', title } = Astro.props;
+
+const LABELS: Record<string, { icon: string; label: string }> = {
+  lesson: { icon: '💡', label: 'Lesson Learned' },
+  tip: { icon: '✦', label: 'Tip' },
+  note: { icon: '📝', label: 'Note' },
+  warning: { icon: '⚠', label: 'Warning' },
+  takeaway: { icon: '→', label: 'Key Takeaway' },
+  experiment: { icon: '🧪', label: 'Experiment' },
+  observation: { icon: '👁', label: 'Observation' },
+};
+
+const meta = LABELS[type] ?? LABELS.note;
+const heading = title ?? meta.label;
+---
+
+<blockquote class={`callout callout--${type}`}>
+  <p class="callout__label">{meta.icon} {heading}</p>
+  <slot />
+</blockquote>

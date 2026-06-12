@@ -43,34 +43,34 @@ export default function HeroGradient() {
           pointer-events: none;
         }
         .hero-gradient--static {
-          background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99, 102, 241, 0.08), transparent 70%);
+          background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255, 107, 107, 0.1), transparent 70%);
         }
         .hero-gradient__orb {
           position: absolute;
           border-radius: 50%;
           filter: blur(var(--hero-orb-blur, 100px));
-          opacity: var(--hero-orb-opacity, 0.18);
+          opacity: var(--hero-orb-opacity, 0.2);
         }
         .hero-gradient__orb--1 {
           width: 600px;
           height: 600px;
           top: -200px;
           left: 10%;
-          background: #6366f1;
+          background: #ff6b6b;
         }
         .hero-gradient__orb--2 {
           width: 500px;
           height: 500px;
           top: -100px;
           right: 5%;
-          background: #8b5cf6;
+          background: #ffb347;
         }
         .hero-gradient__orb--3 {
           width: 400px;
           height: 400px;
           top: 50px;
           left: 40%;
-          background: #06b6d4;
+          background: #f472b6;
           opacity: 0.35;
         }
       `}</style>

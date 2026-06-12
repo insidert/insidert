@@ -8,7 +8,15 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://insidert.com',
-	integrations: [mdx(), react(), sitemap()],
+  integrations: [
+    mdx({
+      components: {
+        Callout: './src/components/article/Callout.astro',
+      },
+    }),
+    react(),
+    sitemap(),
+  ],
 	markdown: {
 		shikiConfig: {
 			theme: 'github-dark-dimmed',

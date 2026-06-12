@@ -1,6 +1,6 @@
 ---
 import AppLayout from '../../layouts/AppLayout.astro';
-import PostFeed from '../../components/editorial/PostFeed.astro';
+import PostMasonry from '../../components/editorial/PostMasonry.astro';
 import FadeIn from '../../components/react/FadeIn';
 import { getCollection } from 'astro:content';
 import { sortPostsByDate } from '../../lib/posts';
@@ -26,18 +26,18 @@ const { posts } = Astro.props;
   description={`Posts tagged with ${tag} on Insidert.`}
   fullWidth
 >
-  <section class="section">
+  <section class="section section--lavender">
     <div class="container container--wide">
       <FadeIn client:visible>
         <div class="tag-header">
-          <span class="section-label">Topic</span>
-          <h1 class="tag-title">#{tag}</h1>
-          <p class="tag-count">{posts.length} post{posts.length === 1 ? '' : 's'}</p>
+          <span class="scribble-label">Topic</span>
+          <h1 class="zone-title">#{tag}</h1>
+          <p class="tag-count">{posts.length} note{posts.length === 1 ? '' : 's'}</p>
         </div>
       </FadeIn>
 
       <FadeIn client:visible>
-        <PostFeed posts={posts} />
+        <PostMasonry posts={posts} heroFirst />
       </FadeIn>
     </div>
   </section>
@@ -48,13 +48,8 @@ const { posts } = Astro.props;
     margin-bottom: var(--space-10);
   }
 
-  .tag-title {
-    font-size: var(--text-4xl);
-    font-weight: 700;
-    margin: var(--space-3) 0 var(--space-2);
-  }
-
   .tag-count {
+    margin-top: var(--space-3);
     font-size: var(--text-sm);
     color: var(--color-text-muted);
   }

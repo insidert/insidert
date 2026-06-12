@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import PostFeed from '../editorial/PostFeed.astro';
+import PostMasonry from '../editorial/PostMasonry.astro';
 import SearchBlog from '../SearchBlog.astro';
 import BlogFilters from './BlogFilters.astro';
 import Pagination from './Pagination.astro';
@@ -16,14 +16,14 @@ interface Props {
 const { posts, currentPage, lastPage, tags } = Astro.props;
 ---
 
-<section class="blog-hero section">
+<section class="blog-hero section section--peach">
   <div class="container container--wide">
     <FadeIn client:visible>
       <div class="blog-hero__header">
-        <span class="section-label">Writing</span>
-        <h1 class="blog-hero__title">Blog</h1>
+        <span class="scribble-label">The Notebook</span>
+        <h1 class="blog-hero__title">All Notes</h1>
         <p class="blog-hero__desc">
-          Thoughts on startups, software, entrepreneurship, and lessons from building products.
+          A growing collection of experiments, guides, and lessons — browse by topic or search.
         </p>
       </div>
     </FadeIn>
@@ -33,10 +33,10 @@ const { posts, currentPage, lastPage, tags } = Astro.props;
   </div>
 </section>
 
-<section class="section blog-content">
+<section class="section blog-content section--cream">
   <div class="container container--wide">
     <FadeIn client:visible>
-      <PostFeed posts={posts} />
+      <PostMasonry posts={posts} />
     </FadeIn>
 
     <Pagination currentPage={currentPage} lastPage={lastPage} />

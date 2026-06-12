@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&family=Outfit:wght@300..700&family=Space+Grotesk:wght@300..700&display=swap');
 @import './tokens.css';
+@import './workshop.css';
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -176,7 +177,7 @@ p {
 }
 
 .btn--primary:hover {
-  box-shadow: 0 0 60px rgba(99, 102, 241, 0.35);
+  box-shadow: 0 0 60px rgba(255, 107, 107, 0.35);
   color: white;
   text-decoration: none;
 }
@@ -212,8 +213,25 @@ p {
 }
 
 .badge--building {
-  background: var(--color-accent-muted);
-  color: var(--color-accent-hover);
+  background: var(--color-secondary-muted);
+  color: var(--color-secondary);
+}
+
+/* Section backgrounds */
+.section--cream {
+  background: var(--color-bg-cream);
+}
+
+.section--rose {
+  background: var(--color-bg-rose);
+}
+
+.section--lavender {
+  background: var(--color-bg-lavender);
+}
+
+.section--peach {
+  background: var(--color-bg-peach);
 }
 
 /* Topic pills */
@@ -224,24 +242,68 @@ p {
   font-family: var(--font-accent);
   font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--color-text-secondary);
+  color: var(--topic-color, var(--color-text-secondary));
   text-decoration: none;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  background: var(--topic-bg, var(--color-surface));
+  border: 1px solid var(--topic-border, var(--color-border));
   border-radius: var(--radius-full);
   transition:
     border-color var(--duration-normal) var(--ease-out),
     color var(--duration-normal) var(--ease-out),
     transform var(--duration-normal) var(--ease-out),
-    box-shadow var(--duration-normal) var(--ease-out);
+    box-shadow var(--duration-normal) var(--ease-out),
+    background var(--duration-normal) var(--ease-out);
 }
 
 .topic-pill:hover {
-  color: var(--color-text);
-  border-color: var(--color-border-hover);
+  color: var(--topic-color, var(--color-text));
+  border-color: var(--topic-color, var(--color-border-hover));
+  background: var(--topic-bg-hover, var(--color-surface-raised));
   transform: translateY(-2px);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--topic-color, var(--color-accent)) 20%, transparent);
   text-decoration: none;
+}
+
+.topic-pill--technology {
+  --topic-color: var(--topic-technology);
+  --topic-bg: var(--topic-technology-muted);
+  --topic-border: color-mix(in srgb, var(--topic-technology) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-technology) 18%, transparent);
+}
+
+.topic-pill--entrepreneurship {
+  --topic-color: var(--topic-entrepreneurship);
+  --topic-bg: var(--topic-entrepreneurship-muted);
+  --topic-border: color-mix(in srgb, var(--topic-entrepreneurship) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-entrepreneurship) 18%, transparent);
+}
+
+.topic-pill--product {
+  --topic-color: var(--topic-product);
+  --topic-bg: var(--topic-product-muted);
+  --topic-border: color-mix(in srgb, var(--topic-product) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-product) 18%, transparent);
+}
+
+.topic-pill--marketing {
+  --topic-color: var(--topic-marketing);
+  --topic-bg: var(--topic-marketing-muted);
+  --topic-border: color-mix(in srgb, var(--topic-marketing) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-marketing) 18%, transparent);
+}
+
+.topic-pill--life {
+  --topic-color: var(--topic-life);
+  --topic-bg: var(--topic-life-muted);
+  --topic-border: color-mix(in srgb, var(--topic-life) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-life) 18%, transparent);
+}
+
+.topic-pill--fitness {
+  --topic-color: var(--topic-fitness);
+  --topic-bg: var(--topic-fitness-muted);
+  --topic-border: color-mix(in srgb, var(--topic-fitness) 25%, transparent);
+  --topic-bg-hover: color-mix(in srgb, var(--topic-fitness) 18%, transparent);
 }
 
 /* Form inputs */

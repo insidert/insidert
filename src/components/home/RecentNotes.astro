@@ -1,0 +1,79 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FadeIn from '../react/FadeIn';
+import PostMasonry from '../editorial/PostMasonry.astro';
+import SectionWave from '../ui/SectionWave.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section class="recent-notes section--rose" id="notes">
+  <div class="container container--wide">
+    <FadeIn client:visible>
+      <div class="recent-notes__header">
+        <div>
+          <span class="scribble-label">From the Notebook</span>
+          <h2 class="zone-title">Recent Notes</h2>
+        </div>
+        <p class="recent-notes__desc">
+          Journal entries, experiments, and half-formed ideas — not every note looks the same.
+        </p>
+      </div>
+    </FadeIn>
+
+    <FadeIn client:visible>
+      <PostMasonry posts={posts} heroFirst />
+    </FadeIn>
+
+    <FadeIn client:visible>
+      <div class="recent-notes__cta">
+        <a href="/blog" class="link-underline">Browse the full notebook →</a>
+      </div>
+    </FadeIn>
+  </div>
+</section>
+
+<SectionWave fill="var(--color-bg-lavender)" />
+
+<style>
+  .recent-notes {
+    padding: var(--space-16) var(--space-6) var(--space-12);
+  }
+
+  .recent-notes__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-6);
+    margin-bottom: var(--space-10);
+  }
+
+  .recent-notes__desc {
+    max-width: 22rem;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    text-align: right;
+  }
+
+  .recent-notes__cta {
+    margin-top: var(--space-10);
+    text-align: center;
+  }
+
+  @media (max-width: 640px) {
+    .recent-notes {
+      padding: var(--space-12) var(--space-4) var(--space-10);
+    }
+
+    .recent-notes__desc {
+      text-align: left;
+      max-width: none;
+    }
+  }
+</style>

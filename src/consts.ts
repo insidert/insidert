@@ -22,16 +22,18 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: '/blog', label: 'Blog' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/connect', label: 'Contact' },
+  { href: '/tags/business', label: 'Ideas' },
+  { href: '/tags/code', label: 'Experiments' },
+  { href: '/projects', label: 'Building' },
+  { href: '/blog', label: 'Notes' },
+  { href: '/search', label: 'Archive', compactHide: true },
 ] as const;
 
 export const FOOTER_LINKS = [
-  { href: '/connect', label: 'About' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/projects', label: 'Projects' },
-  { href: '/connect', label: 'Contact' },
+  { href: '/connect', label: 'Say hello' },
+  { href: '/blog', label: 'Notes' },
+  { href: '/projects', label: 'Building' },
+  { href: '/search', label: 'Archive' },
 ] as const;
 
 export const TOPICS = [
