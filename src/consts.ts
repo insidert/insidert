@@ -22,11 +22,10 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: '/tags/business', label: 'Ideas' },
-  { href: '/tags/code', label: 'Experiments' },
-  { href: '/projects', label: 'Building' },
-  { href: '/blog', label: 'Notes' },
-  { href: '/search', label: 'Archive', compactHide: true },
+  { href: '/blog', label: 'Notes', variant: 'notes' as const },
+  { href: '/tags', label: 'Tags', variant: 'tags' as const },
+  { href: '/search', label: 'Search', variant: 'search' as const },
+  { href: '/connect', label: 'Contact', variant: 'contact' as const },
 ] as const;
 
 export const FOOTER_LINKS = [

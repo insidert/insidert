@@ -1,7 +1,9 @@
 ---
-export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {}
+export interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
+  variant?: 'notes' | 'tags' | 'search' | 'contact';
+}
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, variant, ...props } = Astro.props;
 const { pathname } = Astro.url;
 const normalizedPath = pathname.replace(/\/$/, '') || '/';
 const normalizedHref = (href as string).replace(/\/$/, '') || '/';
@@ -10,6 +12,15 @@ const isActive =
   (normalizedHref !== '/' && normalizedPath.startsWith(normalizedHref));
 ---
 
-<a href={href} class:list={['nav-link', className, { 'nav-link--active': isActive }]} {...props}>
+<a
+  href={href}
+  class:list={[
+    'nav-link',
+    variant && `nav-link--${variant}`,
+    className,
+    { 'nav-link--active': isActive },
+  ]}
+  {...props}
+>
   <slot />
 </a>

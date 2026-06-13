@@ -1,9 +1,16 @@
 ---
 import AppLayout from '../layouts/AppLayout.astro';
-import { SITE, PROJECTS, SOCIAL } from '../consts';
-import { OBSESSIONS, RAVI_NOTES } from '../lib/home';
+import { SITE, SOCIAL } from '../consts';
 import FadeIn from '../components/react/FadeIn';
 import ContactForm from '../components/react/ContactForm';
+
+const SOCIAL_LINKS = [
+  { href: SOCIAL.instagram, label: 'Instagram', variant: 'marker' },
+  { href: SOCIAL.youtube, label: 'YouTube', variant: 'underline' },
+  { href: SOCIAL.linkedin, label: 'LinkedIn', variant: 'warm-line' },
+  { href: SOCIAL.twitter, label: 'Twitter', variant: 'lift' },
+  { href: SOCIAL.medium, label: 'Medium', variant: 'scribble' },
+] as const;
 ---
 
 <AppLayout
@@ -12,209 +19,189 @@ import ContactForm from '../components/react/ContactForm';
   fullWidth
 >
   <section class="connect-page section--peach">
-    <div class="container">
-      <div class="connect-page__grid">
-        <FadeIn client:visible>
-          <div class="connect-page__intro">
-            <span class="scribble-label">Say hello</span>
-            <h1 class="zone-title">What's on your mind?</h1>
-            <p class="connect-page__lead">
-              Whether you're building a startup, exploring an idea, or just want to say hello — I'd love to hear from you.
-            </p>
-
-            <span class="scribble-divider" aria-hidden="true" />
-
-            <div class="connect-page__panel">
-              <h2 class="connect-page__panel-title">Currently thinking about</h2>
-              <ul class="connect-page__list">
-                {OBSESSIONS.map((item) => (
-                  <li><a href={`/tags/${item.slug}`} class="connect-page__chip">{item.label}</a></li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="connect-page__panel">
-              <h2 class="connect-page__panel-title">Currently building</h2>
-              <ul class="connect-page__list">
-                {PROJECTS.slice(0, 4).map((p) => (
-                  <li><span class="connect-page__chip connect-page__chip--muted">{p.name}</span></li>
-                ))}
-              </ul>
-            </div>
-
-            <div class="connect-page__panel connect-page__panel--note">
-              <p class="connect-page__note">
-                <span aria-hidden="true">✎</span>
-                {RAVI_NOTES[0]}
-              </p>
-            </div>
-
-            <div class="connect-page__social">
-              <p class="connect-page__social-label">Or find me elsewhere</p>
-              <div class="connect-page__social-links">
-                <a href={SOCIAL.twitter} target="_blank" rel="noopener noreferrer">Twitter/X</a>
-                <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer">GitHub</a>
-              </div>
-            </div>
+    <div class="container connect-page__container">
+      <FadeIn client:visible>
+        <header class="connect-page__hero">
+          <span class="scribble-label">Say hello</span>
+          <h1 class="zone-title connect-page__title">You Found The Contact Page</h1>
+          <p class="connect-page__subhead">Which means one of three things:</p>
+          <div class="connect-page__paths" role="list">
+            <span class="connect-path connect-path--idea" role="listitem">
+              <span class="connect-path__arrow" aria-hidden="true">→</span>
+              You have an idea.
+            </span>
+            <span class="connect-path connect-path--question" role="listitem">
+              <span class="connect-path__arrow" aria-hidden="true">→</span>
+              You have a question.
+            </span>
+            <span class="connect-path connect-path--lost" role="listitem">
+              <span class="connect-path__arrow" aria-hidden="true">→</span>
+              You're wonderfully lost.
+            </span>
           </div>
-        </FadeIn>
+          <p class="connect-page__closing">Either way, I'd love to hear from you.</p>
+        </header>
+      </FadeIn>
 
-        <FadeIn delay={0.1} client:visible>
-          <div class="connect-page__form-wrap">
-            <div class="connect-page__form-card">
-              <div class="connect-page__form-tape" aria-hidden="true" />
-              <h2 class="connect-page__form-title">Send me a note</h2>
-              <p class="connect-page__form-desc">No corporate inbox. Just a direct line to {SITE.author.shortName}.</p>
-              <ContactForm client:load />
-            </div>
-          </div>
-        </FadeIn>
-      </div>
+      <FadeIn delay={0.08} client:visible>
+        <div class="connect-page__form-card">
+          <div class="connect-page__form-tape" aria-hidden="true" />
+          <h2 class="connect-page__form-title">Send me a note</h2>
+          <p class="connect-page__form-desc">No corporate inbox. Just a direct line to {SITE.author.shortName}.</p>
+          <ContactForm client:load />
+        </div>
+      </FadeIn>
+
+      <FadeIn delay={0.14} client:visible>
+        <section class="connect-page__traces" aria-labelledby="connect-traces-heading">
+          <h2 class="connect-page__traces-heading" id="connect-traces-heading">
+            Other places where I occasionally leave traces of my existence
+          </h2>
+          <nav class="connect-page__social" aria-label="Social links">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                href={link.href}
+                class:list={['connect-link', `connect-link--${link.variant}`]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </section>
+      </FadeIn>
     </div>
   </section>
 </AppLayout>
 
-<style>
+<style is:global>
   .connect-page {
     padding: var(--space-16) 0 var(--space-20);
   }
 
-  .connect-page__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-12) var(--space-16);
-    align-items: start;
-  }
-
-  .connect-page__lead {
-    margin-top: var(--space-4);
-    font-size: var(--text-lg);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
+  .connect-page__container {
     max-width: 28rem;
-  }
-
-  .connect-page__panel {
-    margin-top: var(--space-8);
-  }
-
-  .connect-page__panel-title {
-    font-family: var(--font-accent);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: var(--tracking-wider);
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-3);
-  }
-
-  .connect-page__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
+    flex-direction: column;
+    gap: var(--space-12);
   }
 
-  .connect-page__chip {
-    display: inline-block;
-    padding: var(--space-1) var(--space-3);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    color: var(--color-accent);
-    background: var(--color-accent-muted);
-    border-radius: var(--radius-full);
-    text-decoration: none;
-    transition: transform var(--duration-normal) var(--ease-out);
+  .connect-page__hero {
+    text-align: center;
   }
 
-  a.connect-page__chip:hover {
-    transform: translateY(-1px);
-    text-decoration: none;
+  .connect-page__title {
+    margin-top: var(--space-2);
+    margin-bottom: var(--space-6);
+    font-size: clamp(var(--text-2xl), 5vw, var(--text-3xl));
   }
 
-  .connect-page__chip--muted {
+  .connect-page__subhead {
+    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    background: var(--color-surface-raised);
-  }
-
-  .connect-page__panel--note {
-    margin-top: var(--space-6);
-  }
-
-  .connect-page__note {
-    padding: var(--space-4) var(--space-5);
-    font-family: var(--font-accent);
-    font-size: var(--text-sm);
-    font-style: italic;
-    color: var(--color-text-secondary);
-    background: linear-gradient(160deg, #fffbeb 0%, #fef9c3 100%);
-    border: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
-    border-radius: var(--radius-sm);
-    transform: rotate(-1deg);
     line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-5);
   }
 
-  .connect-page__social {
-    margin-top: var(--space-10);
-  }
-
-  .connect-page__social-label {
-    font-size: var(--text-sm);
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-3);
-  }
-
-  .connect-page__social-links {
+  .connect-page__paths {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+    margin: 0 auto var(--space-6);
+    max-width: 16rem;
   }
 
-  .connect-page__social-links a {
+  .connect-path {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-accent);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: left;
+    background: var(--color-bg);
+    border: 1px solid color-mix(in srgb, var(--path-accent, var(--color-accent)) 22%, var(--color-border));
+    border-radius: var(--radius-md);
+    box-shadow: 2px 3px 0 color-mix(in srgb, var(--path-accent, var(--color-accent)) 12%, transparent);
+    transition:
+      transform var(--duration-normal) var(--ease-spring),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .connect-path--idea {
+    --path-accent: var(--color-secondary);
+    transform: rotate(-1.8deg) translateX(-4px);
+  }
+
+  .connect-path--question {
+    --path-accent: var(--topic-technology);
+    transform: rotate(1.2deg) translateX(6px);
+  }
+
+  .connect-path--lost {
+    --path-accent: var(--color-highlight);
+    transform: rotate(-0.6deg) translateX(-2px);
+  }
+
+  .connect-path:hover {
+    transform: rotate(0deg) translateY(-2px);
+    box-shadow: 3px 5px 12px color-mix(in srgb, var(--path-accent) 18%, transparent);
+  }
+
+  .connect-path__arrow {
+    flex-shrink: 0;
+    font-size: var(--text-lg);
+    color: var(--path-accent, var(--color-accent));
+    line-height: 1;
+    transition: transform var(--duration-normal) var(--ease-spring);
+  }
+
+  .connect-path:hover .connect-path__arrow {
+    transform: translateX(3px);
+  }
+
+  .connect-page__closing {
+    font-size: var(--text-base);
     color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color var(--duration-normal) var(--ease-out);
-  }
-
-  .connect-page__social-links a:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .connect-page__form-wrap {
-    position: sticky;
-    top: calc(var(--header-height) + var(--space-6));
+    line-height: var(--leading-relaxed);
   }
 
   .connect-page__form-card {
     position: relative;
-    padding: var(--space-10) var(--space-8);
+    padding: var(--space-8) var(--space-6);
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-md);
-    transform: rotate(0.5deg);
+    transform: rotate(0.4deg);
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .connect-page__form-card:hover {
+    transform: rotate(0deg) translateY(-2px);
   }
 
   .connect-page__form-tape {
     position: absolute;
     top: -10px;
-    right: var(--space-8);
-    width: 64px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-1deg);
+    width: 72px;
     height: 20px;
-    background: color-mix(in srgb, var(--color-highlight) 30%, transparent);
+    background: color-mix(in srgb, var(--color-secondary) 35%, transparent);
     border-radius: 1px;
-    transform: rotate(2deg);
-    opacity: 0.7;
+    opacity: 0.65;
   }
 
   .connect-page__form-title {
-    font-size: var(--text-2xl);
+    font-size: var(--text-xl);
     font-weight: 700;
     margin-bottom: var(--space-2);
   }
@@ -226,7 +213,195 @@ import ContactForm from '../components/react/ContactForm';
     line-height: var(--leading-relaxed);
   }
 
-  /* Contact form (React) */
+  .connect-page__traces {
+    text-align: center;
+  }
+
+  .connect-page__traces-heading {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0 auto var(--space-6);
+  }
+
+  .connect-page__social {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  /* Social — pill chips with nav-like hover personalities */
+  .connect-page .connect-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.25rem;
+    padding: var(--space-2) var(--space-4);
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+    transition:
+      color var(--duration-normal) var(--ease-out),
+      background var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-spring),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .connect-page .connect-link:hover,
+  .connect-page .connect-link:focus-visible {
+    text-decoration: none;
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .connect-page .connect-link--marker {
+    border-color: color-mix(in srgb, var(--color-secondary) 35%, var(--color-border));
+  }
+
+  .connect-page .connect-link--marker::before {
+    content: '';
+    position: absolute;
+    inset: 0.3rem 0.45rem;
+    background: color-mix(in srgb, var(--color-secondary) 40%, transparent);
+    border-radius: 2px 4px 3px 2px;
+    transform: scaleX(0.15) rotate(-0.5deg);
+    transform-origin: left center;
+    transition: transform var(--duration-slow) var(--ease-out);
+    z-index: 0;
+    opacity: 0.65;
+  }
+
+  .connect-page .connect-link--marker:hover::before {
+    transform: scaleX(1) rotate(-0.3deg);
+  }
+
+  .connect-page .connect-link--underline {
+    border-color: color-mix(in srgb, var(--color-accent) 25%, var(--color-border));
+  }
+
+  .connect-page .connect-link--underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0.4rem;
+    left: var(--space-3);
+    right: var(--space-3);
+    height: 2px;
+    background: var(--gradient-warm);
+    border-radius: 1px;
+    transform: scaleX(0.2);
+    transform-origin: center;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .connect-page .connect-link--underline:hover {
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+  }
+
+  .connect-page .connect-link--underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  .connect-page .connect-link--warm-line {
+    border-color: color-mix(in srgb, var(--topic-technology) 30%, var(--color-border));
+  }
+
+  .connect-page .connect-link--warm-line::after {
+    content: '';
+    position: absolute;
+    bottom: 0.4rem;
+    left: var(--space-3);
+    right: var(--space-3);
+    height: 2px;
+    background: linear-gradient(90deg, var(--topic-technology), var(--color-accent));
+    border-radius: 1px;
+    transform: scaleX(0.2);
+    transform-origin: center;
+    transition: transform var(--duration-slow) var(--ease-out);
+  }
+
+  .connect-page .connect-link--warm-line:hover {
+    color: var(--topic-technology);
+  }
+
+  .connect-page .connect-link--warm-line:hover::after {
+    transform: scaleX(1);
+  }
+
+  .connect-page .connect-link--lift {
+    border-style: dashed;
+    border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+  }
+
+  .connect-page .connect-link--lift:hover {
+    color: var(--color-accent);
+    border-style: solid;
+    transform: translateY(-3px) rotate(-1deg);
+  }
+
+  .connect-page .connect-link--scribble {
+    background: color-mix(in srgb, var(--color-highlight) 8%, var(--color-bg));
+    border-color: color-mix(in srgb, var(--color-highlight) 28%, var(--color-border));
+  }
+
+  .connect-page .connect-link--scribble:hover {
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 10%, var(--color-bg));
+    border-color: var(--color-accent);
+    transform: translateY(-2px) rotate(0.8deg);
+  }
+
+  @media (max-width: 640px) {
+    .connect-page__container {
+      max-width: 24rem;
+    }
+
+    .connect-page__form-card {
+      padding: var(--space-8) var(--space-5);
+      transform: none;
+    }
+
+    .connect-page__form-card:hover {
+      transform: none;
+    }
+
+    .connect-path--idea,
+    .connect-path--question,
+    .connect-path--lost {
+      transform: none;
+    }
+
+    .connect-path:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .connect-page__form-card:hover,
+    .connect-page .connect-link:hover,
+    .connect-path:hover,
+    .connect-path:hover .connect-path__arrow {
+      transform: none;
+    }
+  }
+</style>
+
+<style>
   :global(.contact-form) {
     display: flex;
     flex-direction: column;
@@ -320,19 +495,5 @@ import ContactForm from '../components/react/ContactForm';
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
-  }
-
-  @media (max-width: 900px) {
-    .connect-page__grid {
-      grid-template-columns: 1fr;
-    }
-
-    .connect-page__form-wrap {
-      position: static;
-    }
-
-    .connect-page__form-card {
-      transform: none;
-    }
   }
 </style>

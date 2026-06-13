@@ -41,28 +41,6 @@ export const INSIGHTS = [
   },
 ] as const;
 
-export const HERO_MIND_NODES = [
-  { label: 'Startups', icon: '🚀', href: '/tags/business', theme: 'coral' as const },
-  { label: 'Software', icon: '💻', href: '/tags/code', theme: 'purple' as const },
-  { label: 'Fitness', icon: '🏋️', href: '/tags/health', theme: 'green' as const },
-  { label: 'AI', icon: '🤖', href: '/tags/ai', theme: 'purple' as const },
-  { label: 'Marketing', icon: '📈', href: '/tags/productivity', theme: 'pink' as const },
-  { label: 'Writing', icon: '📝', href: '/blog', theme: 'coral' as const },
-  { label: 'Experiments', icon: '🧪', href: '/tags/code', theme: 'orange' as const },
-  { label: 'Ideas', icon: '💡', href: '/tags/opinions', theme: 'teal' as const },
-] as const;
-
-export const HERO_FLOATING_WORDS = [
-  'Building', 'Learning', 'Experimenting', 'Failing',
-  'Improving', 'Launching', 'Teaching', 'Growing',
-] as const;
-
-export const HERO_MICROCOPY = {
-  status: 'Building more things than I probably should.',
-  mood: 'Optimistic and slightly overwhelmed.',
-  experiment: 'Making software more human.',
-} as const;
-
 export const FOOTER_EXPLORE = [
   { href: '/blog', label: 'Notes' },
   { href: '/tags/code', label: 'Experiments' },

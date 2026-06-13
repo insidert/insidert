@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import PostMasonry from '../editorial/PostMasonry.astro';
-import SearchBlog from '../SearchBlog.astro';
 import BlogFilters from './BlogFilters.astro';
 import Pagination from './Pagination.astro';
 import FadeIn from '../react/FadeIn';
@@ -23,12 +22,11 @@ const { posts, currentPage, lastPage, tags } = Astro.props;
         <span class="scribble-label">The Notebook</span>
         <h1 class="blog-hero__title">All Notes</h1>
         <p class="blog-hero__desc">
-          A growing collection of experiments, guides, and lessons — browse by topic or search.
+          A growing collection of experiments, guides, and lessons — browse by topic.
         </p>
       </div>
     </FadeIn>
 
-    <SearchBlog />
     <BlogFilters tags={tags.slice(0, 8)} />
   </div>
 </section>

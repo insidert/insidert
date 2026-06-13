@@ -2,17 +2,14 @@
 import AppLayout from '../layouts/AppLayout.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../consts';
-import { getRecentNotes, sortPostsByDate } from '../lib/posts';
+import { getRecentNotes } from '../lib/posts';
 import Hero from '../components/home/Hero.astro';
 import Projects from '../components/home/Projects.astro';
 import RecentNotes from '../components/home/RecentNotes.astro';
-import Obsessions from '../components/home/Obsessions.astro';
 import ThingsLearned from '../components/home/ThingsLearned.astro';
-import Newsletter from '../components/home/Newsletter.astro';
 
 const posts = await getCollection('blog');
 const recentNotes = getRecentNotes(posts, 6);
-const latestPost = sortPostsByDate(posts)[0] ?? null;
 ---
 
 <AppLayout
@@ -20,10 +17,8 @@ const latestPost = sortPostsByDate(posts)[0] ?? null;
   description={SITE.description}
   fullWidth
 >
-  <Hero latestPost={latestPost} />
+  <Hero />
   <Projects />
   {recentNotes.length > 0 && <RecentNotes posts={recentNotes} />}
-  <Obsessions />
   <ThingsLearned />
-  <Newsletter />
 </AppLayout>

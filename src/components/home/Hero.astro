@@ -1,71 +1,155 @@
 ---
-import type { CollectionEntry } from 'astro:content';
 import HeroGradient from '../react/HeroGradient';
-import HeroMindMap from '../react/HeroMindMap';
-import { PROJECTS } from '../../consts';
-import { HERO_MIND_NODES, HERO_FLOATING_WORDS, HERO_MICROCOPY } from '../../lib/home';
-import '../../styles/hero.css';
-
-interface Props {
-  latestPost?: CollectionEntry<'blog'> | null;
-}
-
-const { latestPost } = Astro.props;
-const primaryProject = PROJECTS[0];
+import { OBSESSIONS, WRITING_ABOUT } from '../../lib/home';
 ---
 
-<section class="hero-inside">
+<section class="hero-workshop section--peach">
   <HeroGradient client:load />
 
-  <div class="hero-inside__inner">
-    <div class="hero-inside__micro container">
-      <span class="hero-inside__micro-item">
-        <strong>Status:</strong> {HERO_MICROCOPY.status}
-      </span>
-      <span class="hero-inside__micro-item">
-        <strong>Mood:</strong> {HERO_MICROCOPY.mood}
-      </span>
-      <span class="hero-inside__micro-item">
-        <strong>Experiment:</strong> {HERO_MICROCOPY.experiment}
-      </span>
+  <div class="hero-workshop__inner container">
+    <div class="hero-workshop__intro">
+      <p class="hero-workshop__status">
+        <span class="hero-workshop__pulse" aria-hidden="true" />
+        Open for experiments
+      </p>
+      <h1 class="hero-workshop__headline">
+        Hi, I'm <span class="gradient-text">Ravi Teja</span>.
+      </h1>
+      <p class="hero-workshop__tagline">
+        Builder, entrepreneur, and chronic note-taker. This is my digital workshop — wander around.
+      </p>
+      <span class="scribble-divider" aria-hidden="true" />
     </div>
 
-    <HeroMindMap
-      nodes={HERO_MIND_NODES}
-      words={HERO_FLOATING_WORDS}
-      client:load
-    />
+    <div class="hero-workshop__dashboard">
+      <div class="dash-panel dash-panel--thinking">
+        <h2 class="dash-panel__heading">Thinking about</h2>
+        <ul class="dash-panel__list">
+          {OBSESSIONS.map((item) => (
+            <li>
+              <a href={`/tags/${item.slug}`} class="dash-panel__link">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
-    <div class="hero-inside__desk">
-      <a
-        href={primaryProject.url}
-        class="hero-inside__card"
-        target={primaryProject.url.startsWith('http') ? '_blank' : undefined}
-        rel={primaryProject.url.startsWith('http') ? 'noopener noreferrer' : undefined}
-      >
-        <span class="hero-inside__card-label">Currently Building</span>
-        <span class="hero-inside__card-value hero-inside__card-value--accent">{primaryProject.name}</span>
-        <p class="hero-inside__card-desc">{primaryProject.description}</p>
-      </a>
-
-      <a href="/tags/ai" class="hero-inside__card hero-inside__card--tilt">
-        <span class="hero-inside__card-label">Currently Exploring</span>
-        <span class="hero-inside__card-value">AI Workflows</span>
-        <p class="hero-inside__card-desc">How AI changes the builder's daily rhythm.</p>
-      </a>
-
-      {latestPost && (
-        <a href={`/blog/${latestPost.id}/`} class="hero-inside__card">
-          <span class="hero-inside__card-label">Recently Published</span>
-          <span class="hero-inside__card-value">{latestPost.data.title}</span>
-        </a>
-      )}
-
-      <a href="/tags/opinions" class="hero-inside__card hero-inside__card--tilt">
-        <span class="hero-inside__card-label">Current Obsession</span>
-        <span class="hero-inside__card-value">Growth Systems</span>
-        <p class="hero-inside__card-desc">Building things that compound over time.</p>
-      </a>
+      <div class="dash-panel dash-panel--writing">
+        <h2 class="dash-panel__heading">Writing about</h2>
+        <ul class="dash-panel__list">
+          {WRITING_ABOUT.map((item) => (
+            <li>
+              <a href={item.href} class="dash-panel__link">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
+<style>
+  .hero-workshop {
+    position: relative;
+    overflow: hidden;
+    padding: var(--space-16) 0 var(--space-20);
+  }
+
+  .hero-workshop__inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: var(--space-12) var(--space-16);
+    align-items: start;
+  }
+
+  .hero-workshop__status {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-family: var(--font-accent);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-5);
+  }
+
+  .hero-workshop__pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+    animation: pulse-ring 2s ease-out infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+    70% { box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+  }
+
+  .hero-workshop__headline {
+    font-size: clamp(var(--text-4xl), 5.5vw, var(--text-6xl));
+    font-weight: 700;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    margin-bottom: var(--space-5);
+    max-width: 14ch;
+  }
+
+  .hero-workshop__tagline {
+    font-size: var(--text-lg);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    max-width: 32rem;
+  }
+
+  .hero-workshop__dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+  }
+
+  .dash-panel--thinking {
+    --panel-dot: var(--topic-technology);
+    transform: rotate(-0.5deg);
+  }
+
+  .dash-panel--writing {
+    --panel-dot: var(--topic-marketing);
+    transform: rotate(0.8deg);
+  }
+
+  @media (max-width: 900px) {
+    .hero-workshop__inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-10);
+    }
+
+    .hero-workshop__dashboard {
+      grid-template-columns: 1fr;
+    }
+
+    .dash-panel--thinking,
+    .dash-panel--writing {
+      transform: none;
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-workshop {
+      padding: var(--space-12) 0 var(--space-16);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-workshop__pulse {
+      animation: none;
+    }
+  }
+</style>

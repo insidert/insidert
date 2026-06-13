@@ -75,6 +75,16 @@ export function getAllTags(posts: BlogPost[]): string[] {
   return [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 }
 
+export function getTagCounts(posts: BlogPost[]): Map<string, number> {
+  const counts = new Map<string, number>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      counts.set(tag, (counts.get(tag) ?? 0) + 1);
+    }
+  }
+  return counts;
+}
+
 export function getRandomPosts(posts: BlogPost[], count = 5): BlogPost[] {
   const shuffled = [...posts].sort(() => Math.random() - 0.5);
   return shuffled.slice(0, count);

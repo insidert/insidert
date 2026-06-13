@@ -1,7 +1,6 @@
 ---
 import { INSIGHTS } from '../../lib/home';
 import FadeIn from '../react/FadeIn';
-import SectionWave from '../ui/SectionWave.astro';
 
 const THEME_CLASS: Record<string, string> = {
   coral: 'sticky-note--coral',
@@ -17,7 +16,7 @@ const THEME_CLASS: Record<string, string> = {
     <FadeIn client:visible>
       <div class="insights-zone__header">
         <span class="scribble-label">Pinned to the Wall</span>
-        <h2 class="zone-title zone-title--offset">Things I've Learned</h2>
+        <h2 class="zone-title">Things I've Learned</h2>
         <p class="insights-zone__desc">
           Lessons worth remembering — scribbled on sticky notes and pinned where I can't ignore them.
         </p>
@@ -41,20 +40,20 @@ const THEME_CLASS: Record<string, string> = {
   </div>
 </section>
 
-<SectionWave fill="var(--color-bg-cream)" />
-
 <style>
   .insights-zone {
     padding: var(--space-16) var(--space-6) var(--space-12);
   }
 
   .insights-zone__header {
-    max-width: 32rem;
-    margin-bottom: var(--space-10);
+    max-width: 36rem;
+    margin: 0 auto var(--space-10);
+    text-align: center;
   }
 
   .insights-zone__desc {
     margin-top: var(--space-4);
+    margin-inline: auto;
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);

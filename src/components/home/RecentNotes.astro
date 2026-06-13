@@ -2,7 +2,6 @@
 import type { CollectionEntry } from 'astro:content';
 import FadeIn from '../react/FadeIn';
 import PostMasonry from '../editorial/PostMasonry.astro';
-import SectionWave from '../ui/SectionWave.astro';
 
 interface Props {
   posts: CollectionEntry<'blog'>[];
@@ -36,8 +35,6 @@ const { posts } = Astro.props;
     </FadeIn>
   </div>
 </section>
-
-<SectionWave fill="var(--color-bg-lavender)" />
 
 <style>
   .recent-notes {
