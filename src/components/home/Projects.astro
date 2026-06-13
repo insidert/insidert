@@ -44,11 +44,11 @@ const cardGradients = [
           <FadeIn delay={i * 0.06} client:visible>
             <a
               href={project.url}
-              class="workbench__card"
-              style={`
-                transform: rotate(${layout.rotate}deg) translateY(${layout.offset}px);
-                width: ${layout.wide ? '340px' : '280px'};
-              `}
+              class:list={[
+                'workbench__card',
+                layout.wide ? 'workbench__card--wide' : 'workbench__card--narrow',
+              ]}
+              style={`transform: rotate(${layout.rotate}deg) translateY(${layout.offset}px);`}
               target={project.url.startsWith('http') ? '_blank' : undefined}
               rel={project.url.startsWith('http') ? 'noopener noreferrer' : undefined}
             >
@@ -147,5 +147,11 @@ const cardGradients = [
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 640px) {
+    .workbench-zone {
+      padding: var(--space-12) 0 var(--space-6);
+    }
   }
 </style>

@@ -52,22 +52,22 @@ export default function HeroGradient() {
           opacity: var(--hero-orb-opacity, 0.2);
         }
         .hero-gradient__orb--1 {
-          width: 600px;
-          height: 600px;
+          width: clamp(280px, 60vw, 600px);
+          height: clamp(280px, 60vw, 600px);
           top: -200px;
           left: 10%;
           background: #ff6b6b;
         }
         .hero-gradient__orb--2 {
-          width: 500px;
-          height: 500px;
+          width: clamp(240px, 50vw, 500px);
+          height: clamp(240px, 50vw, 500px);
           top: -100px;
           right: 5%;
           background: #ffb347;
         }
         .hero-gradient__orb--3 {
-          width: 400px;
-          height: 400px;
+          width: clamp(200px, 40vw, 400px);
+          height: clamp(200px, 40vw, 400px);
           top: 50px;
           left: 40%;
           background: #f472b6;

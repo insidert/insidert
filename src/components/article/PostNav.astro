@@ -144,9 +144,18 @@ const { prev, next } = Astro.props;
       grid-template-columns: 1fr;
     }
 
+    .post-nav__card--prev,
+    .post-nav__card--next {
+      transform: none;
+    }
+
     .post-nav__card--next {
       text-align: left;
       align-items: flex-start;
+    }
+
+    .post-nav__card:hover {
+      transform: translateY(-3px);
     }
   }
 </style>

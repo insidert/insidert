@@ -32,6 +32,26 @@ const { tags, activeTag } = Astro.props;
     margin-bottom: var(--space-8);
   }
 
+  @media (max-width: 640px) {
+    .blog-filters {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      margin-inline: calc(var(--space-4) * -1);
+      padding-inline: var(--space-4);
+      padding-bottom: var(--space-2);
+    }
+
+    .blog-filters::-webkit-scrollbar {
+      display: none;
+    }
+
+    .blog-filters__pill {
+      flex-shrink: 0;
+    }
+  }
+
   .blog-filters__pill {
     padding: var(--space-2) var(--space-4);
     font-family: var(--font-accent);

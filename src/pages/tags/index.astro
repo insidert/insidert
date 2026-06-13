@@ -104,7 +104,7 @@ const rotations = [-2.4, 1.6, -1.1, 2.2, -0.7, 1.4, -1.9, 0.8, -1.5, 2.6, -0.4, 
 
   .tags-wall__board {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 148px), 1fr));
     gap: var(--space-6) var(--space-5);
     padding: var(--space-8);
     background:
@@ -211,13 +211,17 @@ const rotations = [-2.4, 1.6, -1.1, 2.2, -0.7, 1.4, -1.9, 0.8, -1.5, 2.6, -0.4, 
 
   @media (max-width: 640px) {
     .tags-wall__board {
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(min(100%, 130px), 1fr));
       gap: var(--space-5);
       padding: var(--space-5);
     }
 
     .tag-note {
       min-height: 108px;
+    }
+
+    .tags-hero__stats {
+      flex-wrap: wrap;
     }
   }
 

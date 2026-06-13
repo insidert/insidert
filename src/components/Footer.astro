@@ -412,10 +412,21 @@ const SOCIAL_LINKS = [
   @media (max-width: 640px) {
     .footer-workshop__status-board {
       padding: var(--space-7) var(--space-5) var(--space-6);
+      transform: none;
+    }
+
+    .footer-workshop__status-item:nth-child(2),
+    .footer-workshop__status-item:nth-child(3) {
+      transform: none;
     }
 
     .footer-workshop__newsletter .newsletter-zone__card {
       padding: var(--space-10) var(--space-6);
+      transform: none;
+    }
+
+    .footer-workshop__newsletter .newsletter-zone__title {
+      font-size: var(--text-2xl);
     }
 
     .footer-workshop__newsletter .newsletter-zone__form {
@@ -425,6 +436,7 @@ const SOCIAL_LINKS = [
 
     .footer-workshop__newsletter .newsletter-zone__input {
       max-width: none;
+      min-width: 0;
     }
 
     .footer-workshop__bar {

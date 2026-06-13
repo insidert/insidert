@@ -475,4 +475,9 @@
   .prose > p:first-of-type::first-letter {
     font-size: 3em;
   }
+
+  .prose table {
+    display: block;
+    width: 100%;
+  }
 }

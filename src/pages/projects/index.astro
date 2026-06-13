@@ -54,7 +54,7 @@ import FadeIn from '../../components/react/FadeIn';
 <style>
   .projects-page-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
     gap: var(--space-6);
   }
 
@@ -97,8 +97,9 @@ import FadeIn from '../../components/react/FadeIn';
 
   .project-page-card__header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: var(--space-3);
     margin-bottom: var(--space-3);
   }
@@ -120,5 +121,11 @@ import FadeIn from '../../components/react/FadeIn';
     font-size: var(--text-sm);
     font-weight: 500;
     color: var(--color-accent-hover);
+  }
+
+  @media (max-width: 640px) {
+    .project-page-card {
+      padding: var(--space-6);
+    }
   }
 </style>

@@ -325,6 +325,26 @@
     box-shadow var(--duration-slow) var(--ease-out);
 }
 
+.workbench__card--wide {
+  width: 340px;
+}
+
+.workbench__card--narrow {
+  width: 280px;
+}
+
+@media (max-width: 640px) {
+  .workbench__card--wide,
+  .workbench__card--narrow {
+    width: min(calc(100vw - 3rem), 280px);
+  }
+
+  .workbench__track {
+    scroll-padding: var(--space-4);
+    padding: var(--space-6) var(--space-4) var(--space-10);
+  }
+}
+
 .workbench__card:hover {
   text-decoration: none;
   transform: rotate(0deg) translateY(-6px) !important;

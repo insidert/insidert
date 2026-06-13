@@ -118,6 +118,12 @@
   --max-width-post: 47.5rem;
   --header-height: 5rem;
 
+  /*
+   * Breakpoints (use matching px values in @media — custom properties
+   * cannot be referenced inside media query conditions)
+   * sm: 480px | md: 640px | nav: 768px | lg: 900px | xl: 1024px
+   */
+
   /* Radius */
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;

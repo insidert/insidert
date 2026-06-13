@@ -368,8 +368,13 @@ search-workshop {
 }
 
 @media (max-width: 768px) {
+  .search-page {
+    padding: var(--space-10) 0 var(--space-12);
+  }
+
   .search-page__layout {
     grid-template-columns: 1fr;
+    gap: var(--space-8);
   }
 
   .search-page__sidebar {
@@ -379,8 +384,21 @@ search-workshop {
   }
 
   .search-page__sidebar-card {
-    flex: 1;
-    min-width: 200px;
+    flex: 1 1 100%;
+    min-width: 0;
     transform: none;
+  }
+
+  .search-workshop__input {
+    font-size: var(--text-lg);
+    padding: var(--space-4) var(--space-4) var(--space-4) calc(var(--space-4) + 28px);
+  }
+
+  .search-workshop__featured-card {
+    padding: var(--space-5) var(--space-5);
+  }
+
+  .search-workshop__featured-title {
+    font-size: var(--text-xl);
   }
 }
