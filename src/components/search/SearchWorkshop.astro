@@ -117,6 +117,11 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
         keys: ['title', 'description', 'tags', 'category'],
       });
 
+      if (sessionStorage.getItem('search-autofocus') === '1') {
+        sessionStorage.removeItem('search-autofocus');
+        requestAnimationFrame(() => input?.focus());
+      }
+
       discoveryList.innerHTML = discovery.map((p: { id: string; title: string; category: string }) => `
         <li>
           <a href="/blog/${p.id}/" class="search-workshop__discovery-item">
@@ -126,12 +131,34 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
         </li>
       `).join('');
 
+      let selectedIndex = -1;
+      let resultLinks: HTMLAnchorElement[] = [];
+
+      function getResultLinks() {
+        if (resultsArea.hidden) return [];
+        const links: HTMLAnchorElement[] = [];
+        const featuredLink = featured.querySelector('a');
+        if (featuredLink) links.push(featuredLink);
+        list.querySelectorAll('a').forEach((link) => links.push(link as HTMLAnchorElement));
+        return links;
+      }
+
+      function updateSelection() {
+        resultLinks = getResultLinks();
+        resultLinks.forEach((link, i) => {
+          link.classList.toggle('search-workshop__result--active', i === selectedIndex);
+        });
+        resultLinks[selectedIndex]?.scrollIntoView({ block: 'nearest' });
+      }
+
       function render(query: string) {
         const q = query.trim();
         if (!q) {
           idle.hidden = false;
           resultsArea.hidden = true;
           empty.hidden = true;
+          selectedIndex = -1;
+          resultLinks = [];
           return;
         }
 
@@ -141,6 +168,8 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
         if (matches.length === 0) {
           resultsArea.hidden = true;
           empty.hidden = false;
+          selectedIndex = -1;
+          resultLinks = [];
           return;
         }
 
@@ -174,9 +203,30 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
             </li>
           `;
         }).join('');
+
+        selectedIndex = 0;
+        requestAnimationFrame(updateSelection);
       }
 
       input?.addEventListener('input', () => render(input.value));
+
+      input?.addEventListener('keydown', (e) => {
+        if (resultsArea.hidden || !resultLinks.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = Math.min(selectedIndex + 1, resultLinks.length - 1);
+          updateSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = Math.max(selectedIndex - 1, 0);
+          updateSelection();
+        } else if (e.key === 'Enter' && selectedIndex >= 0) {
+          e.preventDefault();
+          const href = resultLinks[selectedIndex]?.getAttribute('href');
+          if (href) window.location.assign(href);
+        }
+      });
 
       const params = new URLSearchParams(window.location.search);
       const initial = params.get('q');

@@ -6,7 +6,7 @@
 .prose {
   font-size: 1.125rem;
   line-height: var(--leading-prose);
-  color: var(--color-text-secondary);
+  color: color-mix(in srgb, var(--color-text) 82%, var(--color-text-secondary));
   width: 100%;
   --article-accent: var(--color-accent);
   --article-accent-muted: var(--color-accent-muted);
@@ -18,19 +18,6 @@
 
 .prose > * + * {
   margin-top: 1.5em;
-}
-
-/* Drop cap — first paragraph */
-.prose > p.drop-cap::first-letter,
-.prose > p:first-of-type::first-letter {
-  float: left;
-  font-family: var(--font-display);
-  font-size: 3.75em;
-  font-weight: 700;
-  line-height: 0.85;
-  padding-right: 0.08em;
-  padding-top: 0.04em;
-  color: var(--article-accent);
 }
 
 .prose > p.drop-cap,
@@ -113,6 +100,10 @@
   margin: 0;
 }
 
+.prose p + p {
+  margin-top: 1.25em;
+}
+
 .prose strong {
   color: var(--color-text);
   font-weight: 600;
@@ -151,7 +142,7 @@
 }
 
 .prose li {
-  margin-top: 0.5em;
+  margin-top: 0.3em;
   padding-left: 0.25em;
 }
 
@@ -469,11 +460,6 @@
     margin-left: 0;
     margin-right: 0;
     padding: var(--space-3);
-  }
-
-  .prose > p.drop-cap::first-letter,
-  .prose > p:first-of-type::first-letter {
-    font-size: 3em;
   }
 
   .prose table {

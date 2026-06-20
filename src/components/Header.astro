@@ -27,6 +27,23 @@ import { SITE, NAV_LINKS } from '../consts';
         <nav class="header__nav" aria-label="Main navigation">
           {NAV_LINKS.map((link) => (
             <HeaderLink href={link.href} variant={link.variant} class="header__nav-link">
+              {link.variant === 'notes' && (
+                <span class="nav-link__icon nav-link__icon--notes" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+                    <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5H6.5A.5.5 0 0 1 6 20V3.5z" />
+                    <path d="M15 3.5V8h4" />
+                    <path d="M9 11h6M9 14.5h6M9 18h4" />
+                  </svg>
+                </span>
+              )}
+              {link.variant === 'search' && (
+                <span class="nav-link__icon nav-link__icon--search" aria-hidden="true">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="11" cy="11" r="6.5" />
+                    <path d="m16.2 16.2 4.3 4.3" />
+                  </svg>
+                </span>
+              )}
               {link.variant === 'contact' && (
                 <span class="nav-link__icon nav-link__icon--contact" aria-hidden="true">
                   <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
@@ -66,6 +83,23 @@ import { SITE, NAV_LINKS } from '../consts';
     <nav class="header__drawer-nav" aria-label="Mobile navigation">
       {NAV_LINKS.map((link) => (
         <HeaderLink href={link.href} variant={link.variant} class="header__drawer-link">
+          {link.variant === 'notes' && (
+            <span class="nav-link__icon nav-link__icon--notes" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1">
+                <path d="M6 3.5h9l4 4V20a.5.5 0 0 1-.5.5H6.5A.5.5 0 0 1 6 20V3.5z" />
+                <path d="M15 3.5V8h4" />
+                <path d="M9 11h6M9 14.5h6M9 18h4" />
+              </svg>
+            </span>
+          )}
+          {link.variant === 'search' && (
+            <span class="nav-link__icon nav-link__icon--search" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                <circle cx="11" cy="11" r="6.5" />
+                <path d="m16.2 16.2 4.3 4.3" />
+              </svg>
+            </span>
+          )}
           {link.variant === 'contact' && (
             <span class="nav-link__icon nav-link__icon--contact" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25">
@@ -125,6 +159,28 @@ import { SITE, NAV_LINKS } from '../consts';
         setMenuOpen(false);
         toggle.focus();
       }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      const target = e.target as HTMLElement | null;
+      const isTypingTarget = !!target && (
+        target.tagName === 'INPUT'
+        || target.tagName === 'TEXTAREA'
+        || target.tagName === 'SELECT'
+        || target.isContentEditable
+      );
+
+      if (isTypingTarget || e.metaKey || e.ctrlKey || e.altKey || e.shiftKey) return;
+      if (e.key !== '/') return;
+
+      e.preventDefault();
+      if (window.location.pathname === '/search') {
+        (document.getElementById('workshop-search') as HTMLInputElement | null)?.focus();
+        return;
+      }
+
+      sessionStorage.setItem('search-autofocus', '1');
+      window.location.assign('/search');
     });
 
     document.addEventListener('astro:page-load', () => setMenuOpen(false));
@@ -352,6 +408,12 @@ import { SITE, NAV_LINKS } from '../consts';
     color: var(--color-text);
   }
 
+  .nav-link--notes:hover .nav-link__icon--notes,
+  .nav-link--notes.nav-link--active .nav-link__icon--notes {
+    opacity: 1;
+    transform: translateY(-1px) rotate(-5deg);
+  }
+
   .nav-link--notes:hover::before,
   .nav-link--notes.nav-link--active::before {
     transform: scaleX(1) rotate(-0.3deg);
@@ -363,8 +425,8 @@ import { SITE, NAV_LINKS } from '../consts';
     margin-right: 1px;
     font-weight: 700;
     color: var(--color-support);
-    opacity: 0;
-    transform: translateX(4px);
+    opacity: 0.72;
+    transform: translateX(0);
     transition:
       opacity var(--duration-normal) var(--ease-out),
       transform var(--duration-normal) var(--ease-spring);
@@ -372,7 +434,7 @@ import { SITE, NAV_LINKS } from '../consts';
 
   .nav-link--tags:hover .nav-link__text::before,
   .nav-link--tags.nav-link--active .nav-link__text::before {
-    opacity: 0.85;
+    opacity: 1;
     transform: translateX(0);
   }
 
@@ -405,6 +467,12 @@ import { SITE, NAV_LINKS } from '../consts';
   .nav-link--search:hover,
   .nav-link--search.nav-link--active {
     color: var(--color-accent);
+  }
+
+  .nav-link--search:hover .nav-link__icon--search,
+  .nav-link--search.nav-link--active .nav-link__icon--search {
+    opacity: 1;
+    transform: translateY(-1px) rotate(10deg) scale(1.06);
   }
 
   .nav-link--search::after {

@@ -16,10 +16,10 @@ const { posts } = Astro.props;
       <div class="recent-notes__header">
         <div>
           <span class="scribble-label">From the Notebook</span>
-          <h2 class="zone-title">Recent Notes</h2>
+          <h2 class="zone-title">Pinned Notes</h2>
         </div>
         <p class="recent-notes__desc">
-          Journal entries, experiments, and half-formed ideas — not every note looks the same.
+          Journal entries, experiments, opinions, code and half-formed ideas — not every note looks the same.
         </p>
       </div>
     </FadeIn>
@@ -30,7 +30,7 @@ const { posts } = Astro.props;
 
     <FadeIn client:visible>
       <div class="recent-notes__cta">
-        <a href="/blog" class="link-underline">Browse the full notebook →</a>
+        <a href="/blog" class="recent-notes__cta-link">Browse the full notebook →</a>
       </div>
     </FadeIn>
   </div>
@@ -61,6 +61,99 @@ const { posts } = Astro.props;
   .recent-notes__cta {
     margin-top: var(--space-10);
     text-align: center;
+  }
+
+  .recent-notes__cta-link {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-accent);
+    font-size: var(--text-base);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text);
+    text-decoration: none;
+    background: color-mix(in srgb, var(--color-bg-peach) 82%, var(--color-bg));
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, var(--color-border));
+    border-radius: 999px;
+    box-shadow:
+      0 8px 18px color-mix(in srgb, var(--color-accent) 16%, transparent),
+      0 1px 0 color-mix(in srgb, var(--color-bg) 80%, transparent) inset;
+    transform: rotate(-0.9deg);
+    transition:
+      transform var(--duration-normal) var(--ease-spring),
+      box-shadow var(--duration-normal) var(--ease-out),
+      border-color var(--duration-normal) var(--ease-out),
+      color var(--duration-normal) var(--ease-out),
+      background var(--duration-normal) var(--ease-out);
+  }
+
+  .recent-notes__cta-link::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    bottom: 8px;
+    height: 10px;
+    background: color-mix(in srgb, var(--color-secondary) 45%, transparent);
+    border-radius: 999px;
+    transform: scaleX(0.35) rotate(-1.5deg);
+    transform-origin: center;
+    opacity: 0.7;
+    z-index: -1;
+    transition:
+      transform var(--duration-slow) var(--ease-out),
+      opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .recent-notes__cta-link::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: 26px;
+    width: 54px;
+    height: 16px;
+    border-radius: 2px;
+    background: color-mix(in srgb, var(--color-highlight) 45%, transparent);
+    transform: rotate(7deg);
+    opacity: 0.7;
+    z-index: -1;
+  }
+
+  .recent-notes__cta-link:hover,
+  .recent-notes__cta-link:focus-visible {
+    text-decoration: none;
+    color: var(--color-accent);
+    border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+    background: color-mix(in srgb, var(--color-bg) 72%, var(--color-secondary) 28%);
+    box-shadow:
+      0 14px 24px color-mix(in srgb, var(--color-accent) 22%, transparent),
+      0 1px 0 color-mix(in srgb, var(--color-bg) 88%, transparent) inset;
+    transform: translateY(-3px) rotate(0deg);
+  }
+
+  .recent-notes__cta-link:hover::before,
+  .recent-notes__cta-link:focus-visible::before {
+    transform: scaleX(1) rotate(-0.4deg);
+    opacity: 0.95;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .recent-notes__cta-link,
+    .recent-notes__cta-link:hover,
+    .recent-notes__cta-link:focus-visible {
+      transform: none;
+    }
+
+    .recent-notes__cta-link::before,
+    .recent-notes__cta-link:hover::before,
+    .recent-notes__cta-link:focus-visible::before {
+      transform: none;
+    }
   }
 
   @media (max-width: 640px) {

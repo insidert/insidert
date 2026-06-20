@@ -17,9 +17,9 @@ const cardGradients = [
     <FadeIn client:visible>
       <div class="workbench-zone__header">
         <span class="scribble-label">The Workbench</span>
-        <h2 class="zone-title zone-title--offset">What I'm Building</h2>
+        <h2 class="zone-title">What I'm Building</h2>
         <p class="workbench-zone__desc">
-          Projects scattered across the desk — fitness, workforce, hospitality, and tools for makers.
+          Projects scattered across the desk.
         </p>
       </div>
     </FadeIn>
@@ -86,12 +86,14 @@ const cardGradients = [
   }
 
   .workbench-zone__header {
-    max-width: 32rem;
-    margin-bottom: var(--space-6);
+    max-width: 36rem;
+    margin: 0 auto var(--space-6);
+    text-align: center;
   }
 
   .workbench-zone__desc {
     margin-top: var(--space-4);
+    margin-inline: auto;
     font-size: var(--text-base);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);

@@ -188,6 +188,12 @@ search-workshop {
   transform: translateX(6px);
 }
 
+.search-workshop__featured-card.search-workshop__result--active {
+  text-decoration: none;
+  transform: translateX(6px);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--item-accent, var(--color-accent)) 35%, transparent);
+}
+
 .search-workshop__featured-label {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -234,6 +240,12 @@ search-workshop {
 .search-workshop__item:hover {
   text-decoration: none;
   background: color-mix(in srgb, var(--item-accent, var(--color-accent)) 4%, transparent);
+}
+
+.search-workshop__item.search-workshop__result--active {
+  text-decoration: none;
+  background: color-mix(in srgb, var(--item-accent, var(--color-accent)) 8%, transparent);
+  box-shadow: inset 3px 0 0 var(--item-accent, var(--color-accent));
 }
 
 .search-workshop__item-num {

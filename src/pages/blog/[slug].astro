@@ -3,11 +3,11 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import AppLayout from '../../layouts/AppLayout.astro';
 import ArticleHeader from '../../components/article/ArticleHeader.astro';
 import PostNav from '../../components/article/PostNav.astro';
+import PostFeedbackForm from '../../components/article/PostFeedbackForm.astro';
 import RelatedPosts from '../../components/article/RelatedPosts.astro';
 import ReadingProgress from '../../components/react/ReadingProgress';
 import { getCategory, getAdjacentPosts, getRelatedPosts } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
-import { getReadingTime } from '../../lib/reading';
 import '../../styles/article.css';
 
 export async function getStaticPaths() {
@@ -29,7 +29,7 @@ const categoryTheme = getTagTheme(post.data.tags[0]);
 const { prev, next } = getAdjacentPosts(allPosts, post.id);
 const related = getRelatedPosts(allPosts, post, 3);
 const heroImage = post.data.heroImage?.url?.trim();
-const { label: readingTime } = getReadingTime(post.body ?? '');
+const postUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
 ---
 
 <AppLayout
@@ -47,7 +47,6 @@ const { label: readingTime } = getReadingTime(post.body ?? '');
       theme={categoryTheme}
       title={post.data.title}
       description={post.data.description}
-      readingTime={readingTime}
       updatedDate={post.data.updatedDate}
       publishedDate={post.data.publishedDate}
     />
@@ -76,7 +75,10 @@ const { label: readingTime } = getReadingTime(post.body ?? '');
         </div>
       </div>
 
-      <footer class="article-page__footer">
+      <footer
+        class="article-page__footer"
+        style={`--article-accent: ${categoryTheme.color}; --article-accent-muted: ${categoryTheme.muted}`}
+      >
         {post.data.tags.length > 0 && (
           <div class="article-page__tags">
             {post.data.tags.map((tag) => (
@@ -84,6 +86,12 @@ const { label: readingTime } = getReadingTime(post.body ?? '');
             ))}
           </div>
         )}
+
+        <PostFeedbackForm
+          postTitle={post.data.title}
+          postUrl={postUrl}
+          postSlug={post.id}
+        />
 
         <PostNav prev={prev} next={next} />
       </footer>

@@ -66,7 +66,18 @@ const SOCIAL_LINKS = [
             <p class="newsletter-zone__desc">
               Occasional thoughts on startups, building products, and whatever I'm obsessing over this week.
             </p>
-            <form class="newsletter-zone__form" action="#" method="post">
+            <form
+              class="newsletter-zone__form"
+              name="subscribe"
+              method="POST"
+              action="/success"
+              data-netlify="true"
+              data-netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="form-name" value="subscribe" />
+              <p hidden>
+                <label>Don't fill this out: <input name="bot-field" /></label>
+              </p>
               <label for="footer-newsletter-email" class="sr-only">Email address</label>
               <input
                 type="email"
@@ -189,7 +200,7 @@ const SOCIAL_LINKS = [
 
   .footer-workshop__status-list {
     list-style: none;
-    margin: 0;
+    margin: 0 0 var(--space-4);
     padding: 0;
     display: flex;
     flex-wrap: wrap;

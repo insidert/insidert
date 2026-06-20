@@ -14,16 +14,16 @@ const SOCIAL_LINKS = [
 ---
 
 <AppLayout
-  title="Start a Conversation"
-  description="Get in touch with Ravi Teja — builder, entrepreneur, and writer."
+  title="Let's Connect"
+  description="Connect with Ravi Teja — builder, entrepreneur, and writer."
   fullWidth
 >
   <section class="connect-page section--peach">
     <div class="container connect-page__container">
       <FadeIn client:visible>
         <header class="connect-page__hero">
-          <span class="scribble-label">Say hello</span>
-          <h1 class="zone-title connect-page__title">You Found The Contact Page</h1>
+          <span class="scribble-label">Let's connect</span>
+          <h1 class="zone-title connect-page__title">You Found The Connect Page</h1>
           <p class="connect-page__subhead">Which means one of three things:</p>
           <div class="connect-page__paths" role="list">
             <span class="connect-path connect-path--idea" role="listitem">
@@ -46,8 +46,8 @@ const SOCIAL_LINKS = [
       <FadeIn delay={0.08} client:visible>
         <div class="connect-page__form-card">
           <div class="connect-page__form-tape" aria-hidden="true" />
-          <h2 class="connect-page__form-title">Send me a note</h2>
-          <p class="connect-page__form-desc">No corporate inbox. Just a direct line to {SITE.author.shortName}.</p>
+          <h2 class="connect-page__form-title">Send a connect note</h2>
+          <p class="connect-page__form-desc">Just a direct connect line to me.</p>
           <ContactForm client:load />
         </div>
       </FadeIn>
@@ -474,30 +474,5 @@ const SOCIAL_LINKS = [
   :global(.contact-form__submit) {
     align-self: flex-start;
     margin-top: var(--space-2);
-  }
-
-  :global(.contact-form--success) {
-    text-align: center;
-    padding: var(--space-10) var(--space-6);
-  }
-
-  :global(.contact-form__success-icon) {
-    display: block;
-    font-size: var(--text-4xl);
-    color: var(--color-accent);
-    margin-bottom: var(--space-4);
-  }
-
-  :global(.contact-form__success-title) {
-    font-family: var(--font-display);
-    font-size: var(--text-2xl);
-    font-weight: 700;
-    margin-bottom: var(--space-3);
-  }
-
-  :global(.contact-form__success-text) {
-    font-size: var(--text-base);
-    color: var(--color-text-secondary);
-    line-height: var(--leading-relaxed);
   }
 </style>

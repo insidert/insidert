@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import NetlifyForms from '../components/NetlifyForms.astro';
 import { SITE } from '../consts';
 import '../styles/global.css';
 import '../styles/prose.css';
@@ -75,6 +76,7 @@ const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}
   </head>
 
   <body>
+    <NetlifyForms />
     <div class="site">
       <Header />
       <main class:list={['main', { 'main--full': fullWidth }]}>

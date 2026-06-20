@@ -1,0 +1,283 @@
+---
+import AppLayout from '../layouts/AppLayout.astro';
+import FadeIn from '../components/react/FadeIn';
+---
+
+<AppLayout
+  title="Message Received"
+  description="Thanks for reaching out — your message was sent successfully."
+  fullWidth
+>
+  <section class="success-page section--peach">
+    <div class="success-page__glow" aria-hidden="true" />
+    <div class="success-page__sparkles" aria-hidden="true">
+      <span class="success-page__spark success-page__spark--1">✦</span>
+      <span class="success-page__spark success-page__spark--2">✧</span>
+      <span class="success-page__spark success-page__spark--3">✦</span>
+      <span class="success-page__spark success-page__spark--4">✧</span>
+    </div>
+
+    <div class="container success-page__container">
+      <FadeIn client:load>
+        <div class="success-page__card">
+          <div class="success-page__tape" aria-hidden="true" />
+          <div class="success-page__stamp" aria-hidden="true">
+            <svg viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="44" cy="44" r="40" stroke="currentColor" stroke-width="2.5" stroke-dasharray="4 6" opacity="0.35" />
+              <path
+                d="M26 44.5L38.5 57L62 33"
+                stroke="currentColor"
+                stroke-width="4"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+
+          <span class="scribble-label">Delivered</span>
+          <h1 class="zone-title success-page__title">Message received.</h1>
+          <p class="success-page__lead">
+            Your note landed safely in my inbox.
+          </p>
+
+          <div class="success-page__receipt" aria-hidden="true">
+            <span class="success-page__receipt-line" />
+            <span class="success-page__receipt-dot" />
+            <span class="success-page__receipt-line" />
+          </div>
+
+          <p class="success-page__aside">
+            In the meantime, wander the archive or head back home.
+          </p>
+
+          <div class="success-page__actions">
+            <a href="/" class="btn btn--primary success-page__btn">Back home</a>
+            <a href="/blog" class="btn btn--secondary success-page__btn">Read the notes</a>
+          </div>
+        </div>
+      </FadeIn>
+    </div>
+  </section>
+</AppLayout>
+
+<style>
+  .success-page {
+    position: relative;
+    overflow: hidden;
+    min-height: calc(100vh - 4rem);
+    padding: var(--space-16) 0 var(--space-20);
+    display: flex;
+    align-items: center;
+  }
+
+  .success-page__glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 55% 45% at 20% 25%, color-mix(in srgb, var(--color-secondary) 22%, transparent), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 85% 75%, color-mix(in srgb, var(--color-accent) 16%, transparent), transparent 55%);
+    pointer-events: none;
+  }
+
+  .success-page__sparkles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .success-page__spark {
+    position: absolute;
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+    opacity: 0.45;
+    animation: success-sparkle 4s ease-in-out infinite;
+  }
+
+  .success-page__spark--1 {
+    top: 18%;
+    left: 12%;
+    animation-delay: 0s;
+  }
+
+  .success-page__spark--2 {
+    top: 28%;
+    right: 14%;
+    font-size: var(--text-2xl);
+    animation-delay: 1.2s;
+  }
+
+  .success-page__spark--3 {
+    bottom: 22%;
+    left: 18%;
+    animation-delay: 2.4s;
+  }
+
+  .success-page__spark--4 {
+    bottom: 30%;
+    right: 10%;
+    animation-delay: 0.8s;
+  }
+
+  @keyframes success-sparkle {
+    0%,
+    100% {
+      opacity: 0.2;
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+
+    50% {
+      opacity: 0.7;
+      transform: translateY(-6px) rotate(12deg) scale(1.1);
+    }
+  }
+
+  .success-page__container {
+    position: relative;
+    z-index: 1;
+    max-width: 32rem;
+    margin: 0 auto;
+  }
+
+  .success-page__card {
+    position: relative;
+    padding: var(--space-12) var(--space-8) var(--space-10);
+    text-align: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    transform: rotate(-0.5deg);
+  }
+
+  .success-page__tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%) rotate(1.2deg);
+    width: 88px;
+    height: 22px;
+    background: color-mix(in srgb, var(--color-secondary) 38%, transparent);
+    border-radius: 1px;
+    opacity: 0.7;
+  }
+
+  .success-page__stamp {
+    width: 5.5rem;
+    height: 5.5rem;
+    margin: 0 auto var(--space-6);
+    color: var(--color-accent);
+    animation: success-stamp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .success-page__stamp svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  @keyframes success-stamp {
+    0% {
+      opacity: 0;
+      transform: scale(0.6) rotate(-12deg);
+    }
+
+    70% {
+      transform: scale(1.08) rotate(3deg);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+
+  .success-page__title {
+    margin: var(--space-2) 0 var(--space-5);
+    font-size: clamp(var(--text-2xl), 5vw, var(--text-4xl));
+  }
+
+  .success-page__lead {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+    margin: 0 auto var(--space-6);
+    max-width: 24rem;
+  }
+
+  .success-page__receipt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+    opacity: 0.5;
+  }
+
+  .success-page__receipt-line {
+    display: block;
+    width: 3.5rem;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .success-page__receipt-dot {
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+
+  .success-page__aside {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-8);
+  }
+
+  .success-page__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
+  }
+
+  .success-page__btn {
+    min-width: 9rem;
+  }
+
+  @media (max-width: 640px) {
+    .success-page {
+      padding: var(--space-12) 0 var(--space-16);
+      min-height: auto;
+    }
+
+    .success-page__card {
+      padding: var(--space-10) var(--space-6) var(--space-8);
+      transform: none;
+    }
+
+    .success-page__spark {
+      display: none;
+    }
+
+    .success-page__actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .success-page__btn {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .success-page__spark,
+    .success-page__stamp {
+      animation: none;
+    }
+  }
+</style>

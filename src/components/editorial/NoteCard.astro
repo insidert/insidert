@@ -145,7 +145,11 @@ const rotation = noteRotations[index % noteRotations.length];
   .note-card--sticky {
     position: relative;
     padding: var(--space-6) var(--space-5) var(--space-5);
-    background: linear-gradient(160deg, #fffbeb 0%, #fef9c3 100%);
+    background: linear-gradient(
+      160deg,
+      color-mix(in srgb, var(--note-accent) 8%, var(--color-bg)) 0%,
+      color-mix(in srgb, var(--note-accent) 14%, var(--color-surface)) 100%
+    );
     border: 1px solid color-mix(in srgb, var(--color-secondary) 30%, transparent);
     border-radius: var(--radius-sm);
     box-shadow: 2px 4px 12px rgba(28, 25, 23, 0.08);
@@ -367,21 +371,21 @@ const rotation = noteRotations[index % noteRotations.length];
     color: var(--color-text-muted);
   }
 
-  [data-theme='dark'] .note-card--sticky {
+  :global([data-theme='dark']) .note-card--sticky {
     background: linear-gradient(160deg, #3a3020 0%, #2a2218 100%);
     border-color: color-mix(in srgb, var(--color-secondary) 35%, transparent);
     box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.35);
   }
 
-  [data-theme='dark'] .note-card--sticky:hover {
+  :global([data-theme='dark']) .note-card--sticky:hover {
     box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.45);
   }
 
-  [data-theme='dark'] .note-card--sticky .note-card__title {
+  :global([data-theme='dark']) .note-card--sticky .note-card__title {
     color: #fef3c7;
   }
 
-  [data-theme='dark'] .note-card--sticky .note-card__date {
+  :global([data-theme='dark']) .note-card--sticky .note-card__date {
     color: #a8a29e;
   }
 </style>

@@ -25,7 +25,7 @@ export const NAV_LINKS = [
   { href: '/blog', label: 'Notes', variant: 'notes' as const },
   { href: '/tags', label: 'Tags', variant: 'tags' as const },
   { href: '/search', label: 'Search', variant: 'search' as const },
-  { href: '/connect', label: 'Contact', variant: 'contact' as const },
+  { href: '/connect', label: 'Connect', variant: 'contact' as const },
 ] as const;
 
 export const FOOTER_LINKS = [
@@ -47,32 +47,32 @@ export const TOPICS = [
 
 export const PROJECTS = [
   {
-    name: 'MF7+',
-    description: 'Fitness and wellness platform helping people build sustainable health habits.',
+    name: 'MF7',
+    description: 'CRM that helps manage gyms the simplest and easiest way.',
     status: 'Active' as const,
-    url: 'https://mf7plus.com',
+    url: 'https://mf7.in',
   },
   {
     name: 'WorkbaseHQ',
-    description: 'Workforce management and operations platform for modern teams.',
-    status: 'Active' as const,
+    description: 'Essential Tools and Resources for Your Daily Workflow',
+    status: 'WIP' as const,
     url: 'https://workbasehq.com',
   },
   {
-    name: 'RoomR',
-    description: 'Room and property management solution for hospitality businesses.',
-    status: 'Active' as const,
+    name: 'ROOMR',
+    description: 'The simplest and easiest way to rent without any non-sense.',
+    status: 'Building' as const,
     url: 'https://roomr.in',
   },
   {
     name: 'Bolty',
-    description: 'Lightning-fast tools for builders and independent makers.',
-    status: 'Building' as const,
-    url: '#',
+    description: 'Worry free denting, painting and detailing services.',
+    status: 'Active' as const,
+    url: 'https://bolty.in',
   },
   {
     name: 'Zoneout',
-    description: 'Focus and productivity app for deep work sessions.',
+    description: 'D2C perfume brand that make you escape, unwind and be yourself.',
     status: 'Building' as const,
     url: '#',
   },
