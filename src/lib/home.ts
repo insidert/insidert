@@ -11,6 +11,7 @@ export const WRITING_ABOUT = [
   // { label: 'Experiments', href: '/tags/code' },
   { label: 'Opinions', href: '/tags/opinions' },
   { label: 'Guides', href: '/tags/how-to' },
+  { label: 'Productivity', href: '/tags/productivity' },
 ] as const;
 
 export const INSIGHTS = [
