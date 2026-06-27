@@ -1,15 +1,15 @@
 export const OBSESSIONS = [
-  { label: 'AI', slug: 'ai', theme: 'technology' as const },
-  { label: 'Startups', slug: 'business', theme: 'entrepreneurship' as const },
-  { label: 'Fitness', slug: 'health', theme: 'fitness' as const },
-  { label: 'Design', slug: 'code', theme: 'product' as const },
-  { label: 'Marketing', slug: 'productivity', theme: 'marketing' as const },
+  { label: 'AI', slug: 'ai', theme: 'ai' as const },
+  { label: 'Business', slug: 'business', theme: 'business' as const },
+  { label: 'Fitness', slug: 'health', theme: 'health' as const },
+  { label: 'Code', slug: 'code', theme: 'code' as const },
+  { label: 'Productivity', slug: 'productivity', theme: 'productivity' as const },
 ] as const;
 
 export const WRITING_ABOUT = [
-  { label: 'Startups', href: '/tags/business' },
-  { label: 'Experiments', href: '/tags/code' },
-  { label: 'Lessons', href: '/tags/opinions' },
+  { label: 'Business', href: '/tags/business' },
+  // { label: 'Experiments', href: '/tags/code' },
+  { label: 'Opinions', href: '/tags/opinions' },
   { label: 'Guides', href: '/tags/how-to' },
 ] as const;
 
@@ -51,9 +51,9 @@ export const FOOTER_EXPLORE = [
 ] as const;
 
 export const CURRENT_STATUS = [
-  { icon: '☕', text: 'Drinking coffee' },
-  { icon: '🚀', text: 'Building products' },
-  { icon: '📚', text: 'Learning new things' },
+  { icon: '☕', text: 'Trying to be calm' },
+  { icon: '🚀', text: 'Figuring out about time' },
+  { icon: '📚', text: 'Trying to understand the world' },
 ] as const;
 
 export const FOOTER_QUOTES = [
