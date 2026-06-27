@@ -3,7 +3,7 @@ export const OBSESSIONS = [
   { label: 'Business', slug: 'business', theme: 'business' as const },
   { label: 'Fitness', slug: 'health', theme: 'health' as const },
   { label: 'Code', slug: 'code', theme: 'code' as const },
-  { label: 'Productivity', slug: 'productivity', theme: 'productivity' as const },
+  // { label: 'Productivity', slug: 'productivity', theme: 'productivity' as const },
 ] as const;
 
 export const WRITING_ABOUT = [
