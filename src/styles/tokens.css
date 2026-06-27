@@ -1,0 +1,209 @@
+/**
+ * Design System — Warm, playful palette. Light default, dark optional via [data-theme="dark"]
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Colors — Light (default) */
+  --color-bg: #fffbf7;
+  --color-surface: #fff8f3;
+  --color-surface-raised: #fff7ed;
+  --color-surface-overlay: rgba(255, 251, 247, 0.88);
+
+  /* Section washes */
+  --color-bg-peach: #fff8f3;
+  --color-bg-cream: #fff7ed;
+  --color-bg-rose: #fff1f2;
+  --color-bg-lavender: #fdf4ff;
+  --color-bg-purple: #faf5ff;
+
+  /* Core accents */
+  --color-accent: #ff6b6b;
+  --color-accent-hover: #e85555;
+  --color-accent-muted: rgba(255, 107, 107, 0.12);
+
+  --color-secondary: #ffb347;
+  --color-secondary-muted: rgba(255, 179, 71, 0.14);
+
+  --color-highlight: #f472b6;
+  --color-highlight-muted: rgba(244, 114, 182, 0.12);
+
+  --color-support: #a855f7;
+  --color-support-muted: rgba(168, 85, 247, 0.12);
+
+  --color-success: #22c55e;
+
+  --color-text: #1c1917;
+  --color-text-secondary: #78716c;
+  --color-text-muted: #a8a29e;
+
+  --color-border: #f0e4da;
+  --color-border-hover: rgba(255, 107, 107, 0.35);
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+  --gradient-accent-alt: linear-gradient(135deg, #f472b6 0%, #a855f7 100%);
+  --gradient-warm: linear-gradient(135deg, #ffb347 0%, #ff6b6b 100%);
+  --gradient-surface: linear-gradient(180deg, rgba(255, 107, 107, 0.05) 0%, transparent 100%);
+  --gradient-border: linear-gradient(135deg, #ff6b6b, #ffb347, #f472b6);
+  --gradient-text: linear-gradient(135deg, #ff6b6b 0%, #ffb347 100%);
+  --gradient-newsletter: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(244, 114, 182, 0.06) 100%);
+  --gradient-progress: linear-gradient(90deg, #ff6b6b, #ffb347, #f472b6);
+
+  /* Topic identity colors */
+  --topic-technology: #a855f7;
+  --topic-technology-muted: rgba(168, 85, 247, 0.12);
+  --topic-entrepreneurship: #ff6b6b;
+  --topic-entrepreneurship-muted: rgba(255, 107, 107, 0.12);
+  --topic-product: #ff8e53;
+  --topic-product-muted: rgba(255, 142, 83, 0.12);
+  --topic-marketing: #f472b6;
+  --topic-marketing-muted: rgba(244, 114, 182, 0.12);
+  --topic-life: #14b8a6;
+  --topic-life-muted: rgba(20, 184, 166, 0.12);
+  --topic-fitness: #22c55e;
+  --topic-fitness-muted: rgba(34, 197, 94, 0.12);
+
+  --hero-orb-opacity: 0.2;
+  --hero-orb-blur: 100px;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  --font-accent: 'Outfit', var(--font-sans);
+  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
+  --leading-prose: 1.9;
+
+  --tracking-tight: -0.03em;
+  --tracking-normal: -0.01em;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+
+  /* Layout */
+  --max-width: 72rem;
+  --max-width-prose: 47.5rem;
+  --max-width-post: 47.5rem;
+  --header-height: 5rem;
+
+  /*
+   * Breakpoints (use matching px values in @media — custom properties
+   * cannot be referenced inside media query conditions)
+   * sm: 480px | md: 640px | nav: 768px | lg: 900px | xl: 1024px
+   */
+
+  /* Radius */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(28, 25, 23, 0.05);
+  --shadow-md: 0 4px 12px rgba(28, 25, 23, 0.06);
+  --shadow-lg: 0 12px 40px rgba(28, 25, 23, 0.08);
+  --shadow-glow: 0 8px 32px rgba(255, 107, 107, 0.15);
+
+  /* Animation */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  /* Z-index */
+  --z-header: 100;
+  --z-progress: 110;
+  --z-overlay: 200;
+  --z-modal: 300;
+
+  /* Prose */
+  --color-code-bg: #1c1917;
+  --color-code-text: #fafaf9;
+  --color-lightbox-bg: rgba(255, 251, 247, 0.95);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-bg: #1a1210;
+  --color-surface: #231916;
+  --color-surface-raised: #2d211c;
+  --color-surface-overlay: rgba(26, 18, 16, 0.88);
+
+  --color-bg-peach: #231916;
+  --color-bg-cream: #2a1f1a;
+  --color-bg-rose: #2a1819;
+  --color-bg-lavender: #221525;
+  --color-bg-purple: #1f1528;
+
+  --color-accent-hover: #ff8585;
+  --color-accent-muted: rgba(255, 107, 107, 0.18);
+  --color-secondary-muted: rgba(255, 179, 71, 0.16);
+  --color-highlight-muted: rgba(244, 114, 182, 0.16);
+  --color-support-muted: rgba(168, 85, 247, 0.16);
+
+  --color-text: #fafaf9;
+  --color-text-secondary: #a8a29e;
+  --color-text-muted: #78716c;
+
+  --color-border: rgba(240, 228, 218, 0.1);
+  --color-border-hover: rgba(255, 107, 107, 0.45);
+
+  --gradient-surface: linear-gradient(180deg, rgba(255, 107, 107, 0.08) 0%, transparent 100%);
+  --gradient-text: linear-gradient(135deg, #ff8585 0%, #ffc470 100%);
+  --gradient-newsletter: linear-gradient(135deg, rgba(255, 107, 107, 0.18) 0%, rgba(244, 114, 182, 0.1) 100%);
+  --gradient-progress: linear-gradient(90deg, #ff6b6b, #ffb347, #f472b6);
+
+  --topic-technology-muted: rgba(168, 85, 247, 0.18);
+  --topic-entrepreneurship-muted: rgba(255, 107, 107, 0.18);
+  --topic-product-muted: rgba(255, 142, 83, 0.18);
+  --topic-marketing-muted: rgba(244, 114, 182, 0.18);
+  --topic-life-muted: rgba(20, 184, 166, 0.18);
+  --topic-fitness-muted: rgba(34, 197, 94, 0.18);
+
+  --hero-orb-opacity: 0.4;
+  --hero-orb-blur: 80px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 40px rgba(255, 107, 107, 0.2);
+
+  --color-lightbox-bg: rgba(26, 18, 16, 0.92);
+}

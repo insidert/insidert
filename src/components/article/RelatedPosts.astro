@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostMasonry from '../editorial/PostMasonry.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+---
+
+<section class="related" aria-labelledby="related-heading">
+  <div class="related__header">
+    <span class="scribble-label">Curated for you</span>
+    <h2 id="related-heading" class="zone-title">Continue Reading</h2>
+    <p class="related__desc">More notes from the notebook — mixed shapes, same workshop energy.</p>
+  </div>
+  <PostMasonry posts={posts} heroFirst />
+</section>
+
+<style>
+  .related__header {
+    margin-bottom: var(--space-10);
+    max-width: 28rem;
+  }
+
+  .related__desc {
+    margin-top: var(--space-3);
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+</style>

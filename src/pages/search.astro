@@ -1,10 +1,65 @@
 ---
-import AppLayout from "../layouts/AppLayout.astro";
-import SearchBlog from "../components/SearchBlog.astro";
+import AppLayout from '../layouts/AppLayout.astro';
+import SearchWorkshop from '../components/search/SearchWorkshop.astro';
+import FadeIn from '../components/react/FadeIn';
+import '../styles/search.css';
+
+const QUICK_TAGS = ['startup', 'laravel', 'fitness', 'ai', 'business', 'productivity'];
 ---
 
-<AppLayout title="Search the blog" description="Quickly find articles on Insidert">
-  <h1 class="mt-0">Search</h1>
-  <SearchBlog />
+<AppLayout title="Search the Notebook" description="Explore thoughts, experiments, and lessons on Insidert." fullWidth>
+  <section class="search-page">
+    <div class="container container--wide">
+      <div class="search-page__layout">
+        <aside class="search-page__sidebar">
+          <FadeIn client:visible>
+            <div class="search-page__sidebar-card">
+              <h2 class="search-page__sidebar-title">Try searching</h2>
+              <div class="search-page__tags">
+                {QUICK_TAGS.map((tag) => (
+                  <button type="button" class="search-page__tag" data-search-tag={tag}>{tag}</button>
+                ))}
+              </div>
+            </div>
+            <div class="search-page__sidebar-card">
+              <h2 class="search-page__sidebar-title">Tip</h2>
+              <p class="search-page__tip">
+                Search by topic, tool, or idea — like flipping through a notebook index.
+              </p>
+            </div>
+          </FadeIn>
+        </aside>
 
+        <div class="search-page__main">
+          <FadeIn client:visible>
+            <div class="search-page__main-header">
+              <span class="scribble-label">Dig deeper</span>
+              <h1 class="zone-title">Found in the Notebook</h1>
+              <p class="search-page__desc">
+                Rummage through experiments, guides, and half-formed ideas.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn client:visible>
+            <SearchWorkshop />
+          </FadeIn>
+        </div>
+      </div>
+    </div>
+  </section>
 </AppLayout>
+
+<script>
+  document.querySelectorAll('[data-search-tag]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tag = btn.getAttribute('data-search-tag');
+      const input = document.getElementById('workshop-search') as HTMLInputElement | null;
+      if (input && tag) {
+        input.value = tag;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.focus();
+      }
+    });
+  });
+</script>

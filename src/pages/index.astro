@@ -1,28 +1,24 @@
 ---
-import AppLayout from "../layouts/AppLayout.astro";
-import PostHeader from "../components/PostHeader.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import { getCollection } from "astro:content";
+import AppLayout from '../layouts/AppLayout.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../consts';
+import { getRecentNotes } from '../lib/posts';
+import Hero from '../components/home/Hero.astro';
+import Projects from '../components/home/Projects.astro';
+import RecentNotes from '../components/home/RecentNotes.astro';
+import ThingsLearned from '../components/home/ThingsLearned.astro';
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.publishedDate.valueOf() - a.data.publishedDate.valueOf()
-);
-
-const featuredPosts = posts.filter(post => post.data.isFeatured)
+const posts = await getCollection('blog');
+const recentNotes = getRecentNotes(posts, 6);
 ---
 
-<AppLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <p class="mb-0 text-center">
-    Hi, I am the co-founder of Prasanta Communications. I love to code and solve problems with technology. I share my opinions, observations, code snippets and more on this blog.  
-  </p>
-
-  <p class="text-center">Check out <a href="https://prasanta.business" target="_blank">the projects we built</a> on our business website. Explore <a href="/tags/code">Code</a>, <a href="/tags/opinions">Opinions</a>, <a href="/tags/business">Business</a>, <a href="/tags/productivity">Productivity</a> topics.</p>
-
-
-  <div>
-    <h6 class="text-center">Featured articles</h6>
-    <div>
-      {featuredPosts.map((post) => <PostHeader post={post} />)}
-    </div>
-  </div>
+<AppLayout
+  title={`${SITE.author.shortName} — ${SITE.tagline}`}
+  description={SITE.description}
+  fullWidth
+>
+  <Hero />
+  <Projects />
+  {recentNotes.length > 0 && <RecentNotes posts={recentNotes} />}
+  <ThingsLearned />
 </AppLayout>

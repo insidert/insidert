@@ -1,0 +1,67 @@
+---
+import { INSIGHTS } from '../../lib/home';
+import FadeIn from '../react/FadeIn';
+
+const THEME_CLASS: Record<string, string> = {
+  coral: 'sticky-note--coral',
+  amber: 'sticky-note--amber',
+  pink: 'sticky-note--pink',
+  teal: 'sticky-note--teal',
+  purple: 'sticky-note--purple',
+};
+---
+
+<section class="insights-zone section--peach" id="learned">
+  <div class="container">
+    <FadeIn client:visible>
+      <div class="insights-zone__header">
+        <span class="scribble-label">Pinned to the Wall</span>
+        <h2 class="zone-title">Things I've Learned</h2>
+        <p class="insights-zone__desc">
+          Statements worth remembering.
+        </p>
+      </div>
+    </FadeIn>
+
+    <div class="insights-wall">
+      {INSIGHTS.map((insight, i) => (
+        <FadeIn delay={i * 0.08} client:visible>
+          <div class="insights-wall__note">
+            <div
+              class:list={['sticky-note', THEME_CLASS[insight.theme]]}
+              style={`transform: rotate(${insight.rotate}deg)`}
+            >
+              <p class="sticky-note__text">{insight.text}</p>
+            </div>
+          </div>
+        </FadeIn>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .insights-zone {
+    padding: var(--space-16) var(--space-6) var(--space-12);
+  }
+
+  .insights-zone__header {
+    max-width: 36rem;
+    margin: 0 auto var(--space-10);
+    text-align: center;
+  }
+
+  .insights-zone__desc {
+    margin-top: var(--space-4);
+    margin-inline: auto;
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-relaxed);
+  }
+
+  @media (max-width: 640px) {
+    .insights-zone {
+      padding: var(--space-12) var(--space-4) var(--space-10);
+    }
+  }
+</style>

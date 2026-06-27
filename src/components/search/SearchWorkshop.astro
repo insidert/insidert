@@ -1,0 +1,243 @@
+---
+import { getCollection } from 'astro:content';
+import { sortPostsByDate, getCategory } from '../../lib/posts';
+
+const posts = await getCollection('blog');
+const sorted = sortPostsByDate(posts);
+
+const searchData = sorted.map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  description: p.data.description,
+  tags: p.data.tags,
+  category: getCategory(p),
+  isFeatured: p.data.isFeatured,
+  tag: p.data.tags[0] ?? '',
+}));
+
+const discoveryPosts = sorted.slice(0, 5).map((p) => ({
+  id: p.id,
+  title: p.data.title,
+  category: getCategory(p),
+}));
+---
+
+<search-workshop data-posts={JSON.stringify(searchData)} data-discovery={JSON.stringify(discoveryPosts)}>
+  <div class="search-workshop__input-area">
+    <label for="workshop-search" class="sr-only">Search the notebook</label>
+    <div class="search-workshop__input-wrap">
+      <svg class="search-workshop__icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input
+        type="search"
+        id="workshop-search"
+        class="search-workshop__input"
+        placeholder="What are you curious about?"
+        autocomplete="off"
+      />
+    </div>
+    <p class="search-workshop__hint">Search thoughts, experiments, and lessons...</p>
+  </div>
+
+  <div class="search-workshop__body">
+    <div class="search-workshop__idle" id="search-idle">
+      <p class="search-workshop__idle-text">
+        Start typing to search the index — or pick a tag from the sidebar.
+      </p>
+    </div>
+
+    <div class="search-workshop__results" id="search-results-area" hidden>
+      <p class="search-workshop__count" id="search-count"></p>
+      <div class="search-workshop__featured" id="search-featured"></div>
+      <ul class="search-workshop__list" id="search-list" role="list"></ul>
+    </div>
+
+    <div class="search-workshop__empty" id="search-empty" hidden>
+      <div class="search-workshop__empty-visual" aria-hidden="true">📭</div>
+      <h2 class="search-workshop__empty-title">Nothing in the index</h2>
+      <p class="search-workshop__empty-text">
+        I searched every corner of the workshop and couldn't find anything matching that.
+        Try a different keyword.
+      </p>
+      <div class="search-workshop__discovery">
+        <h3 class="search-workshop__discovery-title">You might enjoy these instead</h3>
+        <ul class="search-workshop__discovery-list" id="search-discovery" role="list"></ul>
+      </div>
+    </div>
+  </div>
+</search-workshop>
+
+<script>
+  import Fuse from 'fuse.js';
+
+  const TAG_COLORS: Record<string, string> = {
+    code: '#A855F7',
+    business: '#FF6B6B',
+    opinions: '#14B8A6',
+    productivity: '#F472B6',
+    'how-to': '#FF8E53',
+  };
+
+  function escapeRegex(s: string) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlight(text: string, query: string) {
+    if (!query.trim()) return text;
+    const re = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(re, '<mark class="search-highlight">$1</mark>');
+  }
+
+  function getAccent(tag: string) {
+    return TAG_COLORS[tag] ?? '#FF6B6B';
+  }
+
+  function padNum(n: number) {
+    return String(n).padStart(2, '0');
+  }
+
+  class SearchWorkshop extends HTMLElement {
+    connectedCallback() {
+      const posts = JSON.parse(this.dataset.posts ?? '[]');
+      const discovery = JSON.parse(this.dataset.discovery ?? '[]');
+      const input = this.querySelector('#workshop-search') as HTMLInputElement;
+      const idle = this.querySelector('#search-idle') as HTMLElement;
+      const resultsArea = this.querySelector('#search-results-area') as HTMLElement;
+      const empty = this.querySelector('#search-empty') as HTMLElement;
+      const count = this.querySelector('#search-count') as HTMLElement;
+      const featured = this.querySelector('#search-featured') as HTMLElement;
+      const list = this.querySelector('#search-list') as HTMLUListElement;
+      const discoveryList = this.querySelector('#search-discovery') as HTMLUListElement;
+
+      const fuse = new Fuse(posts, {
+        threshold: 0.35,
+        minMatchCharLength: 2,
+        keys: ['title', 'description', 'tags', 'category'],
+      });
+
+      if (sessionStorage.getItem('search-autofocus') === '1') {
+        sessionStorage.removeItem('search-autofocus');
+        requestAnimationFrame(() => input?.focus());
+      }
+
+      discoveryList.innerHTML = discovery.map((p: { id: string; title: string; category: string }) => `
+        <li>
+          <a href="/blog/${p.id}/" class="search-workshop__discovery-item">
+            <span class="search-workshop__discovery-cat">${p.category}</span>
+            <span class="search-workshop__discovery-title-text">${p.title}</span>
+          </a>
+        </li>
+      `).join('');
+
+      let selectedIndex = -1;
+      let resultLinks: HTMLAnchorElement[] = [];
+
+      function getResultLinks() {
+        if (resultsArea.hidden) return [];
+        const links: HTMLAnchorElement[] = [];
+        const featuredLink = featured.querySelector('a');
+        if (featuredLink) links.push(featuredLink);
+        list.querySelectorAll('a').forEach((link) => links.push(link as HTMLAnchorElement));
+        return links;
+      }
+
+      function updateSelection() {
+        resultLinks = getResultLinks();
+        resultLinks.forEach((link, i) => {
+          link.classList.toggle('search-workshop__result--active', i === selectedIndex);
+        });
+        resultLinks[selectedIndex]?.scrollIntoView({ block: 'nearest' });
+      }
+
+      function render(query: string) {
+        const q = query.trim();
+        if (!q) {
+          idle.hidden = false;
+          resultsArea.hidden = true;
+          empty.hidden = true;
+          selectedIndex = -1;
+          resultLinks = [];
+          return;
+        }
+
+        idle.hidden = true;
+        const matches = fuse.search(q).map((m) => m.item);
+
+        if (matches.length === 0) {
+          resultsArea.hidden = true;
+          empty.hidden = false;
+          selectedIndex = -1;
+          resultLinks = [];
+          return;
+        }
+
+        empty.hidden = true;
+        resultsArea.hidden = false;
+        count.textContent = `${matches.length} result${matches.length === 1 ? '' : 's'} · sorted by relevance`;
+
+        const top = matches[0];
+        const accent = getAccent(top.tag);
+        featured.innerHTML = `
+          <a href="/blog/${top.id}/" class="search-workshop__featured-card" style="--item-accent: ${accent}">
+            <span class="search-workshop__featured-label">#01 · best match · ${top.category}</span>
+            <h2 class="search-workshop__featured-title">${highlight(top.title, q)}</h2>
+            <p class="search-workshop__featured-desc">${highlight(top.description, q)}</p>
+          </a>
+        `;
+
+        const rest = matches.slice(1, 15);
+        list.innerHTML = rest.map((p: { id: string; title: string; description: string; category: string; tag: string }, i: number) => {
+          const c = getAccent(p.tag);
+          return `
+            <li>
+              <a href="/blog/${p.id}/" class="search-workshop__item" style="--item-accent: ${c}">
+                <span class="search-workshop__item-num">${padNum(i + 2)}</span>
+                <div class="search-workshop__item-body">
+                  <span class="search-workshop__item-meta">${p.category}</span>
+                  <span class="search-workshop__item-title">${highlight(p.title, q)}</span>
+                  <p class="search-workshop__item-desc">${highlight(p.description, q)}</p>
+                </div>
+              </a>
+            </li>
+          `;
+        }).join('');
+
+        selectedIndex = 0;
+        requestAnimationFrame(updateSelection);
+      }
+
+      input?.addEventListener('input', () => render(input.value));
+
+      input?.addEventListener('keydown', (e) => {
+        if (resultsArea.hidden || !resultLinks.length) return;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          selectedIndex = Math.min(selectedIndex + 1, resultLinks.length - 1);
+          updateSelection();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          selectedIndex = Math.max(selectedIndex - 1, 0);
+          updateSelection();
+        } else if (e.key === 'Enter' && selectedIndex >= 0) {
+          e.preventDefault();
+          const href = resultLinks[selectedIndex]?.getAttribute('href');
+          if (href) window.location.assign(href);
+        }
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const initial = params.get('q');
+      if (initial) {
+        input.value = initial;
+        render(initial);
+      }
+    }
+  }
+
+  if (!customElements.get('search-workshop')) {
+    customElements.define('search-workshop', SearchWorkshop);
+  }
+</script>

@@ -1,0 +1,18 @@
+---
+/** Hidden forms so Netlify detects them at build time (required for client-rendered forms). */
+---
+
+<form name="connect" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="message"></textarea>
+</form>
+
+<form name="note-feedback" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+  <textarea name="message"></textarea>
+  <input type="hidden" name="post-title" />
+  <input type="hidden" name="post-url" />
+  <input type="hidden" name="post-slug" />
+</form>

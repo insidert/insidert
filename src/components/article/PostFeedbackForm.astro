@@ -1,0 +1,288 @@
+---
+import MagneticButton from '../react/MagneticButton';
+
+interface Props {
+  postTitle: string;
+  postUrl: string;
+  postSlug: string;
+}
+
+const { postTitle, postUrl, postSlug } = Astro.props;
+const formId = `note-feedback-${postSlug}`;
+---
+
+<section class="note-feedback" aria-labelledby={`${formId}-heading`}>
+  <div class="note-feedback__shell">
+    <div class="note-feedback__tape" aria-hidden="true" />
+
+    <header class="note-feedback__header">
+      <span class="note-feedback__badge" aria-hidden="true">✦</span>
+      <div class="note-feedback__intro">
+        <span class="scribble-label">Over to you</span>
+        <h2 class="note-feedback__heading" id={`${formId}-heading`}>
+          Still got something brewing?
+        </h2>
+        <p class="note-feedback__kicker">
+          Agree, argue, or just say hi — I read every one.
+        </p>
+      </div>
+    </header>
+
+    <form
+      class="note-feedback__form"
+      name="note-feedback"
+      method="POST"
+      action="/success"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+    >
+      <input type="hidden" name="form-name" value="note-feedback" />
+      <input type="hidden" name="post-title" value={postTitle} />
+      <input type="hidden" name="post-url" value={postUrl} />
+      <input type="hidden" name="post-slug" value={postSlug} />
+      <p hidden>
+        <label>Don't fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div class="note-feedback__identity">
+        <div class="note-feedback__field">
+          <label class="note-feedback__label" for={`${formId}-name`}>Name</label>
+          <input
+            type="text"
+            id={`${formId}-name`}
+            name="name"
+            class="note-feedback__input"
+            required
+            autocomplete="name"
+            placeholder=""
+          />
+        </div>
+
+        <div class="note-feedback__field">
+          <label class="note-feedback__label" for={`${formId}-email`}>Email</label>
+          <input
+            type="email"
+            id={`${formId}-email`}
+            name="email"
+            class="note-feedback__input"
+            required
+            autocomplete="email"
+            placeholder=""
+          />
+        </div>
+      </div>
+
+      <div class="note-feedback__field note-feedback__field--stack">
+        <label class="note-feedback__label" for={`${formId}-message`}>Message</label>
+        <textarea
+          id={`${formId}-message`}
+          name="message"
+          class="note-feedback__input note-feedback__textarea"
+          rows={3}
+          placeholder=""
+          required
+        />
+      </div>
+
+      <div class="note-feedback__actions">
+        <MagneticButton type="submit" className="btn btn--primary note-feedback__submit" client:visible>
+          Send your thoughts →
+        </MagneticButton>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .note-feedback {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-6);
+  }
+
+  .note-feedback__shell {
+    position: relative;
+    padding: var(--space-4) var(--space-5) var(--space-4);
+    background: var(--color-bg);
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow:
+      2px 3px 0 color-mix(in srgb, var(--article-accent, var(--color-accent)) 10%, transparent),
+      var(--shadow-sm);
+    transform: rotate(-0.35deg);
+  }
+
+  .note-feedback__tape {
+    position: absolute;
+    top: -8px;
+    left: var(--space-6);
+    width: 56px;
+    height: 16px;
+    background: color-mix(in srgb, var(--article-accent, var(--color-secondary)) 30%, transparent);
+    border-radius: 1px;
+    transform: rotate(-2deg);
+    opacity: 0.7;
+  }
+
+  .note-feedback__header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px dashed color-mix(in srgb, var(--article-accent, var(--color-border)) 35%, var(--color-border));
+  }
+
+  .note-feedback__badge {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: var(--text-xs);
+    color: var(--article-accent, var(--color-accent));
+    background: color-mix(in srgb, var(--article-accent, var(--color-accent)) 12%, var(--color-bg));
+    border: 1px solid color-mix(in srgb, var(--article-accent, var(--color-accent)) 25%, var(--color-border));
+    border-radius: var(--radius-md);
+    transform: rotate(-8deg);
+  }
+
+  .note-feedback__intro {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .note-feedback__heading {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    line-height: var(--leading-snug);
+    margin: var(--space-1) 0 var(--space-1);
+  }
+
+  .note-feedback__kicker {
+    font-family: var(--font-accent);
+    font-size: var(--text-sm);
+    font-style: italic;
+    color: var(--color-text-muted);
+    line-height: var(--leading-relaxed);
+    margin: 0;
+  }
+
+  .note-feedback__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .note-feedback__identity {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .note-feedback__field {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: 0;
+  }
+
+  .note-feedback__field--stack {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+
+  .note-feedback__field--stack .note-feedback__label {
+    min-width: 0;
+  }
+
+  .note-feedback__label {
+    flex: 0 0 auto;
+    font-family: var(--font-accent);
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+  }
+
+  .note-feedback__input {
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: var(--space-2) var(--space-3);
+    font-family: var(--font-sans);
+    font-size: var(--text-sm);
+    color: var(--color-text);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .note-feedback__input::placeholder {
+    color: var(--color-text-muted);
+    opacity: 0.65;
+  }
+
+  .note-feedback__input:focus {
+    border-color: var(--article-accent, var(--color-accent));
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--article-accent, var(--color-accent)) 14%, transparent);
+  }
+
+  .note-feedback__textarea {
+    flex: none;
+    width: 100%;
+    resize: vertical;
+    min-height: 72px;
+    line-height: var(--leading-relaxed);
+  }
+
+  .note-feedback__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: var(--space-1);
+  }
+
+  .note-feedback__submit {
+    font-size: var(--text-sm);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  @media (max-width: 480px) {
+    .note-feedback__shell {
+      padding: var(--space-4);
+      transform: none;
+    }
+
+    .note-feedback__identity {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-2);
+    }
+
+    .note-feedback__field {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-1);
+    }
+
+    .note-feedback__submit {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .note-feedback__shell,
+    .note-feedback__badge {
+      transform: none;
+    }
+  }
+</style>

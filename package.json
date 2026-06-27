@@ -1,23 +1,26 @@
 {
-  "name": "@insidert/blog",
+  "name": "insidert-v6",
   "type": "module",
   "version": "0.0.1",
-  "private": true,
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^0.15.2",
-    "@astrojs/partytown": "^2.0.4",
-    "@astrojs/rss": "^2.1.0",
-    "@astrojs/sitemap": "^1.0.0",
-    "astro": "^2.0.1",
-    "extend": "^3.0.2",
-    "fuse.js": "^7.0.0",
-    "unified": "^11.0.4"
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/react": "^5.0.7",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.2",
+    "astro": "^6.1.5",
+    "framer-motion": "^12.40.0",
+    "fuse.js": "^7.3.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sharp": "^0.34.3"
   }
 }

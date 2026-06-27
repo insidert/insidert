@@ -1,0 +1,169 @@
+---
+---
+
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch between warm and cozy mode">
+  <span class="theme-toggle__pill" aria-hidden="true">
+    <span class="theme-toggle__face theme-toggle__face--warm">
+      <span class="theme-toggle__emoji">☀️</span>
+      <span class="theme-toggle__mode">Warm</span>
+    </span>
+    <span class="theme-toggle__face theme-toggle__face--cozy">
+      <span class="theme-toggle__emoji">🌙</span>
+      <span class="theme-toggle__mode">Cozy</span>
+    </span>
+  </span>
+</button>
+
+<style>
+  .theme-toggle {
+    position: relative;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+    border-radius: var(--radius-full);
+    background: color-mix(in srgb, var(--color-bg) 50%, transparent);
+    cursor: pointer;
+    overflow: hidden;
+    transition:
+      border-color var(--duration-normal) var(--ease-out),
+      background var(--duration-normal) var(--ease-out),
+      transform var(--duration-normal) var(--ease-spring),
+      box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .theme-toggle:hover {
+    border-color: color-mix(in srgb, var(--color-accent) 30%, var(--color-border));
+    background: color-mix(in srgb, var(--color-accent) 6%, var(--color-bg));
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .theme-toggle__pill {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 7.25rem;
+    height: 2.125rem;
+  }
+
+  .theme-toggle__face {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    padding: 0 var(--space-3);
+    font-family: var(--font-accent);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: var(--tracking-wide);
+    white-space: nowrap;
+    transition:
+      opacity var(--duration-slow) var(--ease-out),
+      transform var(--duration-slow) var(--ease-out);
+  }
+
+  .theme-toggle__emoji {
+    font-size: 0.875rem;
+    line-height: 1;
+    transition: transform var(--duration-slow) var(--ease-spring);
+  }
+
+  .theme-toggle__mode {
+    color: var(--color-text-secondary);
+    transition: color var(--duration-normal) var(--ease-out);
+  }
+
+  .theme-toggle__face--warm {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transform: translateX(0);
+    background: color-mix(in srgb, var(--color-secondary) 18%, transparent);
+    border-radius: var(--radius-full);
+  }
+
+  .theme-toggle__face--cozy {
+    opacity: 0;
+    transform: translateX(8px);
+  }
+
+  :global([data-theme='dark']) .theme-toggle__face--warm {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  :global([data-theme='dark']) .theme-toggle__face--cozy {
+    position: absolute;
+    inset: 0;
+    opacity: 1;
+    transform: translateX(0);
+    background: color-mix(in srgb, var(--topic-technology) 22%, transparent);
+    border-radius: var(--radius-full);
+  }
+
+  :global([data-theme='dark']) .theme-toggle__face--cozy .theme-toggle__mode {
+    color: var(--color-text);
+  }
+
+  .theme-toggle:hover .theme-toggle__emoji {
+    transform: scale(1.15) rotate(-6deg);
+  }
+
+  @media (max-width: 720px) {
+    .theme-toggle__pill {
+      min-width: 2.75rem;
+    }
+
+    .theme-toggle__mode {
+      display: none;
+    }
+
+    .theme-toggle__face {
+      padding: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .theme-toggle:hover {
+      transform: none;
+    }
+
+    .theme-toggle:hover .theme-toggle__emoji {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const STORAGE_KEY = 'insidert-theme';
+
+  function getTheme(): 'light' | 'dark' {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'light' || stored === 'dark') return stored;
+    return 'light';
+  }
+
+  function applyTheme(theme: 'light' | 'dark') {
+    document.documentElement.setAttribute('data-theme', theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0b1020' : '#ffffff');
+  }
+
+  function toggleTheme() {
+    const next = getTheme() === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(STORAGE_KEY, next);
+    applyTheme(next);
+  }
+
+  function bindToggle() {
+    const btn = document.getElementById('theme-toggle');
+    if (!btn || btn.dataset.bound) return;
+    btn.dataset.bound = 'true';
+    btn.addEventListener('click', toggleTheme);
+  }
+
+  bindToggle();
+  document.addEventListener('astro:page-load', bindToggle);
+</script>

@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../FormattedDate.astro';
+import { getCategory } from '../../lib/posts';
+import { getTagTheme } from '../../lib/topics';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const category = getCategory(post).toUpperCase();
+const tag = post.data.tags[0];
+const theme = getTagTheme(tag);
+---
+
+<p class="post-meta">
+  <span class="post-meta__category" style={`color: ${theme.color}`}>{category}</span>
+  <span class="post-meta__sep" aria-hidden="true">·</span>
+  <FormattedDate date={post.data.updatedDate} uppercase />
+</p>
+
+<style>
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4em;
+    margin: 0;
+    font-family: var(--font-accent);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  .post-meta__category {
+    font-weight: 600;
+  }
+
+  .post-meta__sep {
+    opacity: 0.45;
+    user-select: none;
+  }
+</style>

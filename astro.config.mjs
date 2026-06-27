@@ -1,18 +1,26 @@
-import { defineConfig } from 'astro/config';
+// @ts-check
+
 import mdx from '@astrojs/mdx';
+import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
-import partytown from "@astrojs/partytown";
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://insidert.com',
+	site: 'https://insidert.com',
   integrations: [
-    mdx(),
+    mdx({
+      components: {
+        Callout: './src/components/article/Callout.astro',
+      },
+    }),
+    react(),
     sitemap(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      }
-    })
-  ]
+  ],
+	markdown: {
+		shikiConfig: {
+			theme: 'github-dark-dimmed',
+			wrap: true,
+		},
+	},
 });

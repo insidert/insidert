@@ -1,0 +1,113 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import AppLayout from '../../layouts/AppLayout.astro';
+import ArticleHeader from '../../components/article/ArticleHeader.astro';
+import PostNav from '../../components/article/PostNav.astro';
+import PostFeedbackForm from '../../components/article/PostFeedbackForm.astro';
+import RelatedPosts from '../../components/article/RelatedPosts.astro';
+import ReadingProgress from '../../components/react/ReadingProgress';
+import { getCategory, getAdjacentPosts, getRelatedPosts } from '../../lib/posts';
+import { getTagTheme } from '../../lib/topics';
+import '../../styles/article.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const allPosts = await getCollection('blog');
+const { Content } = await render(post);
+
+const category = getCategory(post);
+const categoryTheme = getTagTheme(post.data.tags[0]);
+const { prev, next } = getAdjacentPosts(allPosts, post.id);
+const related = getRelatedPosts(allPosts, post, 3);
+const heroImage = post.data.heroImage?.url?.trim();
+const postUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
+---
+
+<AppLayout
+  title={post.data.title}
+  description={post.data.description}
+  ogType="article"
+  image={heroImage}
+  fullWidth
+>
+  <ReadingProgress client:load />
+
+  <article class="article-page">
+    <ArticleHeader
+      category={category}
+      theme={categoryTheme}
+      title={post.data.title}
+      description={post.data.description}
+      updatedDate={post.data.updatedDate}
+      publishedDate={post.data.publishedDate}
+    />
+
+    {heroImage && (
+      <figure class="article-page__hero">
+        <img
+          src={heroImage}
+          alt={post.data.heroImage?.alt ?? post.data.title}
+          class="article-page__hero-image"
+          loading="eager"
+        />
+        {post.data.heroImage?.alt && (
+          <figcaption class="article-page__hero-caption">{post.data.heroImage.alt}</figcaption>
+        )}
+      </figure>
+    )}
+
+    <div class="article-page__canvas">
+      <div
+        class="article-page__prose-wrap"
+        style={`--article-accent: ${categoryTheme.color}; --article-accent-muted: ${categoryTheme.muted}`}
+      >
+        <div class="prose">
+          <Content />
+        </div>
+      </div>
+
+      <footer
+        class="article-page__footer"
+        style={`--article-accent: ${categoryTheme.color}; --article-accent-muted: ${categoryTheme.muted}`}
+      >
+        {post.data.tags.length > 0 && (
+          <div class="article-page__tags">
+            {post.data.tags.map((tag) => (
+              <a href={`/tags/${tag}`} class="article-page__tag">#{tag}</a>
+            ))}
+          </div>
+        )}
+
+        <PostFeedbackForm
+          postTitle={post.data.title}
+          postUrl={postUrl}
+          postSlug={post.id}
+        />
+
+        <PostNav prev={prev} next={next} />
+      </footer>
+    </div>
+
+    {related.length > 0 && (
+      <div class="article-page__related container">
+        <RelatedPosts posts={related} />
+      </div>
+    )}
+  </article>
+</AppLayout>
+
+<script>
+  import { enhanceArticle } from '../../scripts/enhance-article.ts';
+
+  enhanceArticle();
+  document.addEventListener('astro:page-load', enhanceArticle);
+</script>
