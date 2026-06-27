@@ -4,7 +4,7 @@
  */
 
 .prose {
-  font-size: 1.125rem;
+  font-size: var(--text-xl);
   line-height: var(--leading-prose);
   color: color-mix(in srgb, var(--color-text) 82%, var(--color-text-secondary));
   width: 100%;

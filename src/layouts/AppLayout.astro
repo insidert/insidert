@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import NetlifyForms from '../components/NetlifyForms.astro';
-import { SITE } from '../consts';
+import { GA_MEASUREMENT_ID, SITE } from '../consts';
 import '../styles/global.css';
 import '../styles/prose.css';
 
@@ -47,7 +47,9 @@ const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}
     <link rel="shortcut icon" href="/favicons/v1/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index" />
     <link rel="canonical" href={canonicalURL} />
+    <slot name="head" />
 
     <title>{pageTitle}</title>
     <meta name="title" content={pageTitle} />
@@ -66,12 +68,12 @@ const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}
     <meta name="twitter:description" content={description} />
     {image && <meta name="twitter:image" content={new URL(image, Astro.url)} />}
 
-    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-N096Z2Y4XF"></script>
-    <script type="text/partytown">
+    <script type="text/partytown" async src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}></script>
+    <script type="text/partytown" define:vars={{ GA_MEASUREMENT_ID }}>
       window.dataLayer = window.dataLayer || [];
       function gtag() { dataLayer.push(arguments); }
       gtag('js', new Date());
-      gtag('config', 'G-N096Z2Y4XF');
+      gtag('config', GA_MEASUREMENT_ID);
     </script>
   </head>
 

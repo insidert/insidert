@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://insidert.com/sitemap-index.xml
+
+# LLM-readable site index: https://llmstxt.org/
+# https://insidert.com/llms.txt
+# https://insidert.com/llms-full.txt

@@ -48,8 +48,6 @@
 }
 
 .article-page__prose-wrap .prose {
-  text-align: justify;
-  hyphens: auto;
   text-wrap: pretty;
 }
 

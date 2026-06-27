@@ -6,6 +6,7 @@ import PostNav from '../../components/article/PostNav.astro';
 import PostFeedbackForm from '../../components/article/PostFeedbackForm.astro';
 import RelatedPosts from '../../components/article/RelatedPosts.astro';
 import ReadingProgress from '../../components/react/ReadingProgress';
+import { SITE } from '../../consts';
 import { getCategory, getAdjacentPosts, getRelatedPosts } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
 import '../../styles/article.css';
@@ -30,6 +31,23 @@ const { prev, next } = getAdjacentPosts(allPosts, post.id);
 const related = getRelatedPosts(allPosts, post, 3);
 const heroImage = post.data.heroImage?.url?.trim();
 const postUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedDate.toISOString(),
+  dateModified: post.data.updatedDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    name: SITE.author.name,
+    url: SITE.url,
+  },
+  url: postUrl,
+  mainEntityOfPage: postUrl,
+  keywords: post.data.tags.join(', '),
+  ...(heroImage ? { image: new URL(heroImage, Astro.site).href } : {}),
+};
 ---
 
 <AppLayout
@@ -39,6 +57,7 @@ const postUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
   image={heroImage}
   fullWidth
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <ReadingProgress client:load />
 
   <article class="article-page">

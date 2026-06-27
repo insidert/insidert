@@ -1,3 +1,5 @@
+export const GA_MEASUREMENT_ID = 'G-N096Z2Y4XF';
+
 export const SITE = {
   title: 'insidert',
   tagline: 'Inside Ravi Teja',
