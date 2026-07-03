@@ -6,7 +6,7 @@ import { getCategory } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'notes'>;
   variant: NoteVariant;
   index?: number;
 }
@@ -15,7 +15,7 @@ const { post, variant, index = 0 } = Astro.props;
 const tag = post.data.tags[0];
 const theme = getTagTheme(tag);
 const category = getCategory(post);
-const href = `/blog/${post.id}/`;
+const href = `/notes/${post.id}/`;
 const noteRotations = [-1.8, 1.2, -0.6, 2.1, -1.4, 0.9];
 const rotation = noteRotations[index % noteRotations.length];
 ---

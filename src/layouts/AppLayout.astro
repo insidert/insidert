@@ -11,12 +11,26 @@ export interface Props {
   description: string;
   image?: string;
   ogType?: string;
+  articlePublishedTime?: Date;
+  articleModifiedTime?: Date;
+  articleAuthor?: string;
+  noindex?: boolean;
   fullWidth?: boolean;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const { title, description, image, ogType = 'website', fullWidth = false } = Astro.props;
-const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}`;
+const {
+  title,
+  description,
+  image,
+  ogType = 'website',
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+  noindex = false,
+  fullWidth = false,
+} = Astro.props;
+const pageTitle = title.includes(SITE.title) ? title : `${title}`;
 ---
 
 <!doctype html>
@@ -48,12 +62,14 @@ const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable site index" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href={new URL('rss.xml', Astro.site)} />
     <link rel="canonical" href={canonicalURL} />
     <slot name="head" />
 
     <title>{pageTitle}</title>
     <meta name="title" content={pageTitle} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
 
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={Astro.url} />
@@ -61,6 +77,15 @@ const pageTitle = title.includes(SITE.title) ? title : `${title} | ${SITE.title}
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={SITE.title} />
     {image && <meta property="og:image" content={new URL(image, Astro.url)} />}
+    {ogType === 'article' && articlePublishedTime && (
+      <meta property="article:published_time" content={articlePublishedTime.toISOString()} />
+    )}
+    {ogType === 'article' && articleModifiedTime && (
+      <meta property="article:modified_time" content={articleModifiedTime.toISOString()} />
+    )}
+    {ogType === 'article' && articleAuthor && (
+      <meta property="article:author" content={articleAuthor} />
+    )}
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:creator" content="@insidert_" />

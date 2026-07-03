@@ -4,7 +4,7 @@ import PostMeta from './PostMeta.astro';
 import { getTagTheme } from '../../lib/topics';
 
 interface Props {
-  post: CollectionEntry<'blog'>;
+  post: CollectionEntry<'notes'>;
 }
 
 const { post } = Astro.props;
@@ -15,7 +15,7 @@ const isFeatured = post.data.isFeatured;
 
 <article class:list={['post-item', { 'post-item--featured': isFeatured }]}>
   <a
-    href={`/blog/${post.id}/`}
+    href={`/notes/${post.id}/`}
     class="post-item__link"
     style={`--item-accent: ${theme.color}`}
   >

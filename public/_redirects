@@ -1,0 +1,3 @@
+# Legacy /blog URLs → /notes (301 for search engines)
+/blog              /notes              301!
+/blog/*            /notes/:splat       301!

@@ -2,18 +2,18 @@
 import { getCollection } from 'astro:content';
 import AppLayout from '../../layouts/AppLayout.astro';
 import BlogListPage from '../../components/blog/BlogListPage.astro';
-import { BLOG_PAGE_SIZE } from '../../consts';
+import { NOTES_PAGE_SIZE } from '../../consts';
 import { sortPostsByDate, getAllTags } from '../../lib/posts';
 
-const allPosts = sortPostsByDate(await getCollection('blog'));
-const lastPage = Math.ceil(allPosts.length / BLOG_PAGE_SIZE);
-const posts = allPosts.slice(0, BLOG_PAGE_SIZE);
+const allPosts = sortPostsByDate(await getCollection('notes'));
+const lastPage = Math.ceil(allPosts.length / NOTES_PAGE_SIZE);
+const posts = allPosts.slice(0, NOTES_PAGE_SIZE);
 const tags = getAllTags(allPosts);
 ---
 
 <AppLayout
-  title="Blog"
-  description="Posts on startups, software, entrepreneurship, and building products."
+  title="Notes"
+  description="Notes on startups, software, entrepreneurship, and building products."
   fullWidth
 >
   <BlogListPage posts={posts} currentPage={1} lastPage={lastPage} tags={tags} />

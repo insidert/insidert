@@ -4,7 +4,7 @@ import FadeIn from '../react/FadeIn';
 import PostMasonry from '../editorial/PostMasonry.astro';
 
 interface Props {
-  posts: CollectionEntry<'blog'>[];
+  posts: CollectionEntry<'notes'>[];
 }
 
 const { posts } = Astro.props;
@@ -30,7 +30,7 @@ const { posts } = Astro.props;
 
     <FadeIn client:visible>
       <div class="recent-notes__cta">
-        <a href="/blog" class="recent-notes__cta-link">Browse the full notebook →</a>
+        <a href="/notes" class="recent-notes__cta-link">Browse the full notebook →</a>
       </div>
     </FadeIn>
   </div>

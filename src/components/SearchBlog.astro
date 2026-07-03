@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('notes');
 const filteredPosts = posts.map((p) => ({
   id: p.id,
   title: p.data.title,
@@ -150,7 +150,7 @@ const filteredPosts = posts.map((p) => ({
           .map(
             (r) => `
             <li role="option">
-              <a href="/blog/${r.item.id}/">${r.item.title}</a>
+              <a href="/notes/${r.item.id}/">${r.item.title}</a>
               <p>${r.item.description}</p>
             </li>
           `,

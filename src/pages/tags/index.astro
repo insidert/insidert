@@ -1,11 +1,11 @@
 ---
 import AppLayout from '../../layouts/AppLayout.astro';
 import { getCollection } from 'astro:content';
-import { getAllTags, getTagCounts } from '../../lib/posts';
+import { getAllTags, getTagCounts, normalizeTagSlug } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
 import FadeIn from '../../components/react/FadeIn';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('notes');
 const tags = getAllTags(posts);
 const tagCounts = getTagCounts(posts);
 const totalNotes = posts.length;
@@ -43,7 +43,7 @@ const rotations = [-2.4, 1.6, -1.1, 2.2, -0.7, 1.4, -1.9, 0.8, -1.5, 2.6, -0.4, 
           return (
             <FadeIn delay={i * 0.04} client:visible>
               <a
-                href={`/tags/${tag}`}
+                href={`/tags/${normalizeTagSlug(tag)}`}
                 class="tag-note"
                 style={`--tag-color: ${theme.color}; --tag-muted: ${theme.muted}; transform: rotate(${rotation}deg)`}
               >

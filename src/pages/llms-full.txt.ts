@@ -6,7 +6,7 @@ import { buildLlmsFullTxt } from '../lib/llms';
 export const prerender = true;
 
 export const GET: APIRoute = async ({ site }) => {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('notes');
   const content = buildLlmsFullTxt(posts, site?.href ?? SITE.url);
 
   return new Response(content, {

@@ -2,7 +2,7 @@ import type { CollectionEntry } from 'astro:content';
 import { PROJECTS, SITE, SOCIAL } from '../consts';
 import { sortPostsByDate } from './posts';
 
-type BlogPost = CollectionEntry<'blog'>;
+type Note = CollectionEntry<'notes'>;
 
 function absoluteUrl(path: string, siteUrl: string): string {
   return new URL(path, siteUrl).href;
@@ -12,12 +12,12 @@ function formatDate(date: Date): string {
   return date.toISOString().split('T')[0];
 }
 
-function formatPostLink(post: BlogPost, siteUrl: string): string {
-  const url = absoluteUrl(`/blog/${post.id}/`, siteUrl);
+function formatPostLink(post: Note, siteUrl: string): string {
+  const url = absoluteUrl(`/notes/${post.id}/`, siteUrl);
   return `- [${post.data.title}](${url}): ${post.data.description}`;
 }
 
-export function buildLlmsTxt(posts: BlogPost[], siteUrl: string): string {
+export function buildLlmsTxt(posts: Note[], siteUrl: string): string {
   const sorted = sortPostsByDate(posts);
 
   const lines = [
@@ -31,7 +31,7 @@ export function buildLlmsTxt(posts: BlogPost[], siteUrl: string): string {
     '',
     '## Pages',
     `- [Home](${absoluteUrl('/', siteUrl)}): ${SITE.tagline}`,
-    `- [Notes](${absoluteUrl('/blog/', siteUrl)}): Blog posts and essays`,
+    `- [Notes](${absoluteUrl('/notes/', siteUrl)}): Notes and essays`,
     `- [Tags](${absoluteUrl('/tags/', siteUrl)}): Browse posts by topic`,
     `- [Search](${absoluteUrl('/search/', siteUrl)}): Search the archive`,
     `- [Projects](${absoluteUrl('/projects/', siteUrl)}): Products and ventures being built`,
@@ -57,7 +57,7 @@ export function buildLlmsTxt(posts: BlogPost[], siteUrl: string): string {
   return `${lines.join('\n')}\n`;
 }
 
-export function buildLlmsFullTxt(posts: BlogPost[], siteUrl: string): string {
+export function buildLlmsFullTxt(posts: Note[], siteUrl: string): string {
   const sorted = sortPostsByDate(posts);
 
   const header = [
@@ -72,7 +72,7 @@ export function buildLlmsFullTxt(posts: BlogPost[], siteUrl: string): string {
   ].join('\n');
 
   const sections = sorted.map((post) => {
-    const url = absoluteUrl(`/blog/${post.id}/`, siteUrl);
+    const url = absoluteUrl(`/notes/${post.id}/`, siteUrl);
     const tags = post.data.tags.join(', ');
 
     return [

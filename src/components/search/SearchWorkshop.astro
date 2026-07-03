@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { sortPostsByDate, getCategory } from '../../lib/posts';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('notes');
 const sorted = sortPostsByDate(posts);
 
 const searchData = sorted.map((p) => ({
@@ -124,7 +124,7 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
 
       discoveryList.innerHTML = discovery.map((p: { id: string; title: string; category: string }) => `
         <li>
-          <a href="/blog/${p.id}/" class="search-workshop__discovery-item">
+          <a href="/notes/${p.id}/" class="search-workshop__discovery-item">
             <span class="search-workshop__discovery-cat">${p.category}</span>
             <span class="search-workshop__discovery-title-text">${p.title}</span>
           </a>
@@ -180,7 +180,7 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
         const top = matches[0];
         const accent = getAccent(top.tag);
         featured.innerHTML = `
-          <a href="/blog/${top.id}/" class="search-workshop__featured-card" style="--item-accent: ${accent}">
+          <a href="/notes/${top.id}/" class="search-workshop__featured-card" style="--item-accent: ${accent}">
             <span class="search-workshop__featured-label">#01 · best match · ${top.category}</span>
             <h2 class="search-workshop__featured-title">${highlight(top.title, q)}</h2>
             <p class="search-workshop__featured-desc">${highlight(top.description, q)}</p>
@@ -192,7 +192,7 @@ const discoveryPosts = sorted.slice(0, 5).map((p) => ({
           const c = getAccent(p.tag);
           return `
             <li>
-              <a href="/blog/${p.id}/" class="search-workshop__item" style="--item-accent: ${c}">
+              <a href="/notes/${p.id}/" class="search-workshop__item" style="--item-accent: ${c}">
                 <span class="search-workshop__item-num">${padNum(i + 2)}</span>
                 <div class="search-workshop__item-body">
                   <span class="search-workshop__item-meta">${p.category}</span>

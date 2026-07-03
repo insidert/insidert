@@ -3,27 +3,32 @@ import AppLayout from '../../layouts/AppLayout.astro';
 import PostMasonry from '../../components/editorial/PostMasonry.astro';
 import FadeIn from '../../components/react/FadeIn';
 import { getCollection } from 'astro:content';
-import { sortPostsByDate } from '../../lib/posts';
+import {
+  getCanonicalTagLabel,
+  getUniqueTagSlugs,
+  postHasTag,
+  sortPostsByDate,
+} from '../../lib/posts';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  const posts = await getCollection('notes');
 
-  return uniqueTags.map((tag) => ({
-    params: { tag },
+  return getUniqueTagSlugs(posts).map((tagSlug) => ({
+    params: { tag: tagSlug },
     props: {
-      posts: sortPostsByDate(posts.filter((post) => post.data.tags.includes(tag))),
+      displayTag: getCanonicalTagLabel(posts, tagSlug),
+      posts: sortPostsByDate(posts.filter((post) => postHasTag(post, tagSlug))),
     },
   }));
 }
 
-const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { tag: tagSlug } = Astro.params;
+const { displayTag, posts } = Astro.props;
 ---
 
 <AppLayout
-  title={`#${tag}`}
-  description={`Posts tagged with ${tag} on Insidert.`}
+  title={`#${displayTag}`}
+  description={`Posts tagged with ${displayTag} on Insidert.`}
   fullWidth
 >
   <section class="section section--lavender">
@@ -31,7 +36,7 @@ const { posts } = Astro.props;
       <FadeIn client:visible>
         <div class="tag-header">
           <span class="scribble-label">Topic</span>
-          <h1 class="zone-title">#{tag}</h1>
+          <h1 class="zone-title">#{displayTag}</h1>
           <p class="tag-count">{posts.length} note{posts.length === 1 ? '' : 's'}</p>
         </div>
       </FadeIn>
