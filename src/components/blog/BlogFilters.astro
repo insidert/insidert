@@ -1,4 +1,6 @@
 ---
+import { normalizeTagSlug } from '../../lib/posts';
+
 interface Props {
   tags: string[];
   activeTag?: string;
@@ -9,15 +11,15 @@ const { tags, activeTag } = Astro.props;
 
 <div class="blog-filters">
   <a
-    href="/blog"
+    href="/notes"
     class:list={['blog-filters__pill', { 'blog-filters__pill--active': !activeTag }]}
   >
     All
   </a>
   {tags.map((tag) => (
     <a
-      href={`/tags/${tag}`}
-      class:list={['blog-filters__pill', { 'blog-filters__pill--active': activeTag === tag }]}
+      href={`/tags/${normalizeTagSlug(tag)}`}
+      class:list={['blog-filters__pill', { 'blog-filters__pill--active': activeTag === normalizeTagSlug(tag) }]}
     >
       {tag}
     </a>

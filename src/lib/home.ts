@@ -43,7 +43,7 @@ export const INSIGHTS = [
 ] as const;
 
 export const FOOTER_EXPLORE = [
-  { href: '/blog', label: 'Notes' },
+  { href: '/notes', label: 'Notes' },
   { href: '/tags/code', label: 'Experiments' },
   { href: '/tags/opinions', label: 'Lessons' },
   { href: '/tags/business', label: 'Ideas' },

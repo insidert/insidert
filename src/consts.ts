@@ -4,12 +4,12 @@ export const SITE = {
   title: 'insidert',
   tagline: 'Inside Ravi Teja',
   description:
-    'Personal blog of Ravi Teja Veligatla — startups, software, entrepreneurship, and lessons from building products.',
+    'Personal blog of Ravi Teja Veligatla — writing about startups, software, entrepreneurship, and lessons from building products.',
   url: 'https://insidert.com',
   author: {
     name: 'Ravi Teja Veligatla',
     shortName: 'Ravi Teja',
-    bio: 'Co-founder of Prasanta Communications. Builder, entrepreneur, and product creator writing about startups, software, and the journey of making things.',
+    bio: 'Co-founder of Prasanta Communications. Coder, entrepreneur. Writing about startups, software, and the journey of making things.',
     avatar: '/favicons/v1/apple-touch-icon.png',
   },
 } as const;
@@ -24,7 +24,7 @@ export const SOCIAL = {
 } as const;
 
 export const NAV_LINKS = [
-  { href: '/blog', label: 'Notes', variant: 'notes' as const },
+  { href: '/notes', label: 'Notes', variant: 'notes' as const },
   { href: '/tags', label: 'Tags', variant: 'tags' as const },
   { href: '/search', label: 'Search', variant: 'search' as const },
   { href: '/connect', label: 'Connect', variant: 'contact' as const },
@@ -32,7 +32,7 @@ export const NAV_LINKS = [
 
 export const FOOTER_LINKS = [
   { href: '/connect', label: 'Say hello' },
-  { href: '/blog', label: 'Notes' },
+  { href: '/notes', label: 'Notes' },
   { href: '/projects', label: 'Building' },
   { href: '/search', label: 'Archive' },
 ] as const;
@@ -80,7 +80,7 @@ export const PROJECTS = [
   },
 ] as const;
 
-export const BLOG_PAGE_SIZE = 50;
+export const NOTES_PAGE_SIZE = 50;
 
 export const CATEGORY_LABELS: Record<string, string> = {
   code: 'Technology',

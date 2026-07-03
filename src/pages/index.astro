@@ -8,7 +8,7 @@ import Projects from '../components/home/Projects.astro';
 import RecentNotes from '../components/home/RecentNotes.astro';
 import ThingsLearned from '../components/home/ThingsLearned.astro';
 
-const posts = await getCollection('blog');
+const posts = await getCollection('notes');
 const recentNotes = getRecentNotes(posts, 6);
 ---
 

@@ -4,8 +4,8 @@ import { getCategory } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
 
 interface Props {
-  prev: CollectionEntry<'blog'> | null;
-  next: CollectionEntry<'blog'> | null;
+  prev: CollectionEntry<'notes'> | null;
+  next: CollectionEntry<'notes'> | null;
 }
 
 const { prev, next } = Astro.props;
@@ -19,7 +19,7 @@ const { prev, next } = Astro.props;
     <div class="post-nav__grid">
       {prev && (
         <a
-          href={`/blog/${prev.id}/`}
+          href={`/notes/${prev.id}/`}
           class="post-nav__card post-nav__card--prev"
           style={`--nav-accent: ${getTagTheme(prev.data.tags[0]).color}`}
         >
@@ -33,7 +33,7 @@ const { prev, next } = Astro.props;
       )}
       {next && (
         <a
-          href={`/blog/${next.id}/`}
+          href={`/notes/${next.id}/`}
           class="post-nav__card post-nav__card--next"
           style={`--nav-accent: ${getTagTheme(next.data.tags[0]).color}`}
         >

@@ -10,7 +10,7 @@ heroImage:
     alt: ""
 ---
 
-I like to code this website with new technologies or with latest and simple libraries and frameworks. I wrote how this blog has taken shape over the years in [this blog post.](/blog/how-i-built-this-blog/)
+I like to code this website with new technologies or with latest and simple libraries and frameworks. I wrote how this blog has taken shape over the years in [this blog post.](/notes/how-i-built-this-blog/)
 
 Now with AI, I want to update my blog. I have first iterated a simple and clean version. It was good compared to what was existing. 
 

@@ -6,7 +6,7 @@ import FadeIn from './react/FadeIn';
 import MagneticButton from './react/MagneticButton';
 
 const year = new Date().getFullYear();
-const posts = await getCollection('blog');
+const posts = await getCollection('notes');
 const postIds = posts.map((p) => p.id);
 
 const SOCIAL_LINKS = [
@@ -116,7 +116,7 @@ const SOCIAL_LINKS = [
   btn?.addEventListener('click', () => {
     const ids: string[] = JSON.parse(btn.dataset.posts ?? '[]');
     if (ids.length === 0) return;
-    window.location.href = `/blog/${ids[Math.floor(Math.random() * ids.length)]}/`;
+    window.location.href = `/notes/${ids[Math.floor(Math.random() * ids.length)]}/`;
   });
 </script>
 

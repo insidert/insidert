@@ -7,22 +7,22 @@ import PostFeedbackForm from '../../components/article/PostFeedbackForm.astro';
 import RelatedPosts from '../../components/article/RelatedPosts.astro';
 import ReadingProgress from '../../components/react/ReadingProgress';
 import { SITE } from '../../consts';
-import { getCategory, getAdjacentPosts, getRelatedPosts } from '../../lib/posts';
+import { getCategory, getAdjacentPosts, getRelatedPosts, normalizeTagSlug } from '../../lib/posts';
 import { getTagTheme } from '../../lib/topics';
 import '../../styles/article.css';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection('notes');
   return posts.map((post) => ({
     params: { slug: post.id },
     props: post,
   }));
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'notes'>;
 
 const post = Astro.props;
-const allPosts = await getCollection('blog');
+const allPosts = await getCollection('notes');
 const { Content } = await render(post);
 
 const category = getCategory(post);
@@ -30,7 +30,7 @@ const categoryTheme = getTagTheme(post.data.tags[0]);
 const { prev, next } = getAdjacentPosts(allPosts, post.id);
 const related = getRelatedPosts(allPosts, post, 3);
 const heroImage = post.data.heroImage?.url?.trim();
-const postUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
+const postUrl = new URL(`/notes/${post.id}/`, Astro.site).href;
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -55,6 +55,9 @@ const articleSchema = {
   description={post.data.description}
   ogType="article"
   image={heroImage}
+  articlePublishedTime={post.data.publishedDate}
+  articleModifiedTime={post.data.updatedDate}
+  articleAuthor={SITE.author.name}
   fullWidth
 >
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
@@ -101,7 +104,7 @@ const articleSchema = {
         {post.data.tags.length > 0 && (
           <div class="article-page__tags">
             {post.data.tags.map((tag) => (
-              <a href={`/tags/${tag}`} class="article-page__tag">#{tag}</a>
+              <a href={`/tags/${normalizeTagSlug(tag)}`} class="article-page__tag">#{tag}</a>
             ))}
           </div>
         )}
