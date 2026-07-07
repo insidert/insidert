@@ -103,29 +103,36 @@ const cardGradients = [
   }
 
   .workbench-card {
-    padding: var(--space-6);
+    padding: var(--space-4);
     background: var(--color-bg);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-md);
-    min-height: 200px;
     display: flex;
-    flex-direction: column;
-    gap: var(--space-4);
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-3);
+    height: 100%;
   }
 
   .workbench-card__icon {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-size: var(--text-lg);
+    font-size: var(--text-base);
     font-weight: 700;
     color: white;
     border-radius: var(--radius-lg);
     transform: rotate(-3deg);
+  }
+
+  .workbench-card__body {
+    flex: 1;
+    min-width: 0;
   }
 
   .workbench-card__top {
@@ -136,11 +143,12 @@ const cardGradients = [
   }
 
   .workbench-card__name {
-    font-size: var(--text-xl);
+    font-size: var(--text-lg);
     font-weight: 600;
   }
 
   .workbench-card__desc {
+    margin-top: var(--space-1);
     font-size: var(--text-sm);
     color: var(--color-text-secondary);
     line-height: var(--leading-relaxed);
@@ -153,10 +161,6 @@ const cardGradients = [
 
     .workbench__connector {
       display: none;
-    }
-
-    .workbench-card {
-      min-height: auto;
     }
   }
 </style>
