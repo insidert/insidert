@@ -288,36 +288,23 @@
   }
 }
 
-/* Workbench horizontal scroll */
+/* Workbench grid */
 .workbench {
   position: relative;
-  padding: var(--space-4) 0 var(--space-8);
+  padding: var(--space-4) 0 var(--space-6);
 }
 
 .workbench__track {
-  display: flex;
-  gap: var(--space-6);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding: var(--space-6);
-  padding: var(--space-8) var(--space-6) var(--space-12);
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
-}
-
-.workbench__track::-webkit-scrollbar {
-  height: 4px;
-}
-
-.workbench__track::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: var(--radius-full);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6) var(--space-8);
+  align-items: start;
 }
 
 .workbench__card {
-  flex-shrink: 0;
-  scroll-snap-align: start;
   text-decoration: none;
   color: inherit;
   transition:
@@ -326,46 +313,59 @@
 }
 
 .workbench__card--wide {
-  width: 340px;
+  grid-column: span 2;
 }
 
 .workbench__card--narrow {
-  width: 280px;
+  grid-column: span 1;
+}
+
+/* Center lone last card when count is odd */
+.workbench__card:nth-child(5):last-child {
+  grid-column: 2;
+}
+
+@media (max-width: 768px) {
+  .workbench__track {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 36rem;
+  }
+
+  .workbench__card--wide {
+    grid-column: span 2;
+  }
+
+  .workbench__card--narrow {
+    grid-column: span 1;
+  }
+
+  .workbench__card:nth-child(5):last-child {
+    grid-column: span 1;
+    justify-self: center;
+    width: calc(50% - var(--space-2));
+  }
 }
 
 @media (max-width: 640px) {
   .workbench__track {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-5);
-    overflow-x: visible;
-    scroll-snap-type: none;
-    scroll-padding: unset;
-    padding: var(--space-4) var(--space-4) var(--space-8);
-  }
-
-  .workbench__track > * {
-    width: 100%;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    max-width: none;
+    padding: var(--space-4) var(--space-4) var(--space-6);
   }
 
   .workbench__card--wide,
-  .workbench__card--narrow {
-    width: 100%;
-    max-width: none;
-  }
-
-  .workbench__card {
-    transform: none !important;
-  }
-
-  .workbench__card:hover {
-    transform: translateY(-4px) !important;
+  .workbench__card--narrow,
+  .workbench__card:nth-child(5):last-child {
+    grid-column: span 1;
+    justify-self: stretch;
+    width: auto;
   }
 }
 
 .workbench__card:hover {
   text-decoration: none;
-  transform: rotate(0deg) translateY(-6px) !important;
+  transform: rotate(0deg) translateY(-4px) !important;
   box-shadow: var(--shadow-lg);
 }
 
