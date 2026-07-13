@@ -40,6 +40,11 @@ export const INSIGHTS = [
     theme: 'purple' as const,
     rotate: -0.8,
   },
+  {
+    text: 'If you are to suffer, only think about you rather about the group around you.',
+    theme: 'coral' as const,
+    rotate: 2.0,
+  }
 ] as const;
 
 export const FOOTER_EXPLORE = [
