@@ -12,13 +12,13 @@ heroImage:
 
 I miss writing code.
 
-I miss thining a lot to write the name of a function or a variable.
+I miss thinking - a lot - to write the name of a function or a variable.
 
-I miss writing the flow charts by hand and coding as I go.
+I miss writing the flow charts by hand and code as I go.
 
-I miss architecting the codebase.
+I miss architecting the codebase and database.
 
-I miss thinking about a problem in the background and doing some task and then suddenly having an aha moment about the solution.
+I miss thinking about a problem in the background and doing other task. And then suddenly having an *aha* moment about the solution.
 
 I miss thinking about problems in terms of coding.
 
